@@ -1,0 +1,22 @@
+snippet [
+	[% ${1} %]
+snippet if
+	[% IF ${1} %]
+		${2}
+	[% END %]
+snippet elsif
+	[% ELSIF ${1} %]
+		${2}
+snippet else
+	[% ELSE %]
+		${1}
+snippet end
+	[% END %]
+snippet for
+	[% FOR ${1} IN ${2} %]
+		${3}
+	[% END %]
+snippet inc
+	[%  INCLUDE ${0} %]
+snippet loc
+	[% loc('${1}') %]

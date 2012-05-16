@@ -1,0 +1,35 @@
+defscrollback 10000                               # scroll-num saved / must be placed before `screen'
+
+                                                  # --- KeyBind
+escape ^Jj                                        # ^j -> screen command
+bind h prev                                       # h  -> prev
+bind n next                                       # n  -> next
+bind l windowlist                                 # l  -> list
+bindkey "\033[5D" next                            # bind Terminal
+bindkey "\033[5C" prev                            # bind Terminal
+bindkey ";9C" next
+bindkey ";9D" prev
+
+                                                  # ---encoding
+defkanji    utf-8                                 # use utf
+defencoding utf-8                                 # use utf
+encoding    utf-8 utf-8                           # use utf
+
+                                                  # ---caption
+caption always "%{= kb} %-w%{=bu dr}%n %t%{-}%+w" # caption simple
+screen -t                                         # tab1
+screen -t                                         # tab2
+screen -t                                         # tab3
+
+                                                  # ---etc
+termcapinfo xterm* ti@:te@                        # use Mouse in Terminal.app
+startup_message off                               # hide login message
+vbell off                                         # visual-bell off
+autodetach on                                     # detach when closing window
+deflog on
+logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
+bell_msg "^G"
+select 1
+scrollback 10000
+
+termcapinfo xterm* ti@:te@

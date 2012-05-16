@@ -1,0 +1,11 @@
+snippet p Data::Printer
+	use DDP; p ${1};
+snippet d Data::Dumper
+	use Data::Dumper; warn Dumper ${1};
+snippet r Carp::REPL
+	use DDP; use Carp::REPL qw/repl/; ${1: repl();}${2}
+snippet sub
+	sub ${1}{
+		my (${2:$self}) = ${3:@_};
+		${4}
+	}
