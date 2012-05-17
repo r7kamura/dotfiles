@@ -11,8 +11,12 @@ class DotfilesInstaller
     Rakefile
   ]
 
-  def self.run
+  def self.install
     new.install
+  end
+
+  def self.uninstall
+    new.uninstall
   end
 
   def initialize
@@ -21,17 +25,33 @@ class DotfilesInstaller
 
   def install
     @paths.each { |path| put_symlink(path) }
+    puts "Successfully installed!"
+  end
+
+  def uninstall
+    @paths.each { |path| remove_symlink(path) }
+    puts "Successfully uninstalled!"
   end
 
   private
 
+  def remove_symlink(path)
+    from = File.expand_path(path, "~")
+    if File.symlink?(from)
+      to = File.readlink(from)
+      File.delete(from)
+      puts "Remove symlink: #{from} -> #{to}"
+    end
+  rescue Errno::ENOENT
+  end
+
   def put_symlink(path)
-    new = File.expand_path(path, "~")
-    old = File.expand_path(path)
-    File.symlink(old, new)
-    puts "Create symlink: #{new} -> #{old}"
+    from = File.expand_path(path, "~")
+    to   = File.expand_path(path)
+    File.symlink(to, from)
+    puts "Create symlink: #{from} -> #{to}"
   rescue Errno::EEXIST => e
-    puts "Already exists: #{new}"
+    puts "Already exists: #{from}"
   end
 
   def ignore_regexp
@@ -43,9 +63,14 @@ class DotfilesInstaller
   end
 end
 
-desc "Symlink dotfiles to $HOME"
+desc "Create symlink of dotfiles to $HOME"
 task :install do
-  DotfilesInstaller.run
+  DotfilesInstaller.install
+end
+
+desc "Remove symlink of dotfiles from $HOME"
+task :uninstall do
+  DotfilesInstaller.uninstall
 end
 
 task :default => :install
