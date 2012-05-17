@@ -1,66 +1,64 @@
 [user]
   name = Ryo NAKAMURA
   email = r7kamura@gmail.com
+
+[github]
+  user = r7kamura
+  token = !cat .githubtoken
+
 [color]
-  diff = auto
-  status = auto
-  branch = auto
+  diff        = auto
+  grep        = auto
+  branch      = auto
+  status      = auto
   interactive = auto
-  grep = auto
+
 [push]
   default = current
+
 [core]
-  autocrlf = input                 # CRLFを自動変換
-  quotepath = false
+  autocrlf     = input
+  quotepath    = false
   excludesfile = /Users/r7kamura/.gitexcludes
+
+[branch]
+  quotepath       = true
+  autosetuprebase = always
+
 [alias]
   st = status
   sh = show
   so = remote show origin
   ft = fetch
-  up = pull --rebase       # pull rebase
-  rbm = rebase master      # masterへのrebaseはよく使うのでalias
+  rb = rebase master
   ad = add
-  ci = commit -a           # modifiedなファイルを全てstageへ
-  cam = commit -a --amend  # 直前のcommitを修正
+  ci = commit -a
   co = checkout
-  # branch関連
+
   br = branch
-  ba = branch -a           # originも含めた全てのbranchを表示
-  bm = branch --merged     # merge済みのbranchを表示
-  bn = branch --no-merged  # mergeしてないbranchを表示
-  # log関連
-  wc = whatchanged         # logに変更されたファイルも一緒に出す
-  ls = log --stat          # logに変更されたファイルも一緒に出す
-  lp = log -p              # diffも一緒に出す
-  la = log --pretty=\"format:%ad %h (%an): %s\" --date=short  # ざっくりログ出す
-  lr = log origin          # originのlog
-  oneline = log --pretty=oneline
-  ranking = shortlog -s -n --no-merges
-  # logをtree表示
-  log-graph = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
-  log-all = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
-  # diff関連
-  dm = diff master           # masterとのdiff
-  dw = diff --color-words    # 単語単位でいろつけてdiff
-  dc = diff --cached         # addされているものとのdiff
-  ds = diff --staged         # 同上(1.6.1移行)
-  d1 = diff HEAD~            # HEADから1つ前とdiff
-  d2 = diff HEAD~~           # HEADから2つ前とdiff
-  d3 = diff HEAD~~~          # HEADから3つ前とdiff
-  d4 = diff HEAD~~~~         # HEADから4つ前とdiff
-  d5 = diff HEAD~~~~~        # HEADから5つ前とdiff
-  d10 = diff HEAD~~~~~~~~~~  # HEADから10前とdiff
-  # mergeの際にconflictが起きたファイルを編集
+  bm = branch --merged
+  bn = branch --no-merged
+
+  ls = log --stat
+  lp = log -p
+  la = log --pretty=\"format:%ad %h (%an): %s\" --date=short
+  lr = log origin
+  lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
+  ll = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+  ra = shortlog -s -n --no-merges
+
+  dm = diff master
+  dw = diff --color-words
+  dc = diff --cached
+  d1 = diff HEAD~1
+  d2 = diff HEAD~2
+  d3 = diff HEAD~3
+  d4 = diff HEAD~4
+  d5 = diff HEAD~5
+
+  # use in conflict
   edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; gvim `f`"
-  # mergeの際にconflictが起きたファイルをadd
-  add-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-  # grep関連
+  add-unmerged  = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
+
   gr = grep
   gn = grep -n
-[branch]
-  autosetuprebase = always
-  quotepath = true
-[github]
-  user = r7kamura
-  token = 33e05166da53a3af65c83c18ffb8bc63
