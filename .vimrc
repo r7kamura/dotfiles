@@ -43,7 +43,7 @@ map  k      gk
 map  <Up>   g<Up>
 map  <Down> g<Down>
 nmap <ESC><ESC> :nohlsearch<CR><ESC>" ESCx2 => :nohlsearch
-map Y       Dp
+map Y       y$
 
 au BufNewFile,BufRead *.md   set filetype=markdown
 au BufNewFile,BufRead *.htn  set filetype=hatena
