@@ -19,7 +19,7 @@
 [core]
   autocrlf     = input
   quotepath    = false
-  excludesfile = /Users/r7kamura/.gitexcludes
+  excludesfile = ~/.gitexcludes
 
 [branch]
   quotepath       = true
@@ -57,7 +57,7 @@
   d5 = diff HEAD~5
 
   # use in conflict
-  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; gvim `f`"
+  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; $EDITOR `f`"
   add-unmerged  = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
 
   gr = grep
