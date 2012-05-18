@@ -71,3 +71,6 @@ bindkey '\@' copy-line
 # Ruby
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 case "${TERM}" in screen) preexec() { echo -ne "\ek${1%% *}\e\\" } esac
+
+# Personal
+[[ -f "$HOME/.zshrc.mine" ]] && source "$HOME/.zshrc.mine"
