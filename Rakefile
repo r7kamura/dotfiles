@@ -9,6 +9,7 @@ class DotfilesInstaller
     .DS_Store
     *.swp
     Rakefile
+    README.md
   ]
 
   def self.install
@@ -25,12 +26,10 @@ class DotfilesInstaller
 
   def install
     @paths.each { |path| put_symlink(path) }
-    puts "Successfully installed!"
   end
 
   def uninstall
     @paths.each { |path| remove_symlink(path) }
-    puts "Successfully uninstalled!"
   end
 
   private
@@ -38,9 +37,8 @@ class DotfilesInstaller
   def remove_symlink(path)
     from = File.expand_path(path, "~")
     if File.symlink?(from)
-      to = File.readlink(from)
       File.delete(from)
-      puts "Remove symlink: #{from} -> #{to}"
+      puts "Remove symlink: #{path} -> ~/#{path}"
     end
   rescue Errno::ENOENT
   end
@@ -49,9 +47,9 @@ class DotfilesInstaller
     from = File.expand_path(path, "~")
     to   = File.expand_path(path)
     File.symlink(to, from)
-    puts "Create symlink: #{from} -> #{to}"
+    puts "Create symlink: #{path} -> ~/#{path}"
   rescue Errno::EEXIST => e
-    puts "Already exists: #{from}"
+    puts "Already exists: ~/#{path}"
   end
 
   def ignore_regexp

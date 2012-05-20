@@ -30,20 +30,22 @@ if has("mouse")                     " use mouse
   set mouse=a
 end
 
-vnoremap < <gv
-vnoremap > >gv
+map j      gj
+map k      gk
+map <Up>   g<Up>
+map <Down> g<Down>
+map Y y$
+map <F2> <Plug>(altr-forward)
+map <F3> <Plug>(altr-back)
 imap {} {}<Left>
 imap [] []<Left>
 imap () ()<Left>
+imap <> <><Left>
 imap "" ""<Left>
 imap '' ''<Left>
-imap <> <><Left>
-map  j      gj
-map  k      gk
-map  <Up>   g<Up>
-map  <Down> g<Down>
-nmap <ESC><ESC> :nohlsearch<CR><ESC>" ESCx2 => :nohlsearch
-map Y       y$
+nmap <ESC><ESC> :nohlsearch<CR><ESC>
+vnoremap < <gv
+vnoremap > >gv
 
 au BufNewFile,BufRead *.md   set filetype=markdown
 au BufNewFile,BufRead *.htn  set filetype=hatena
@@ -100,3 +102,17 @@ autocmd FileType css compiler csslint
 " quickrun
 let g:quickrun_config = {}
 let g:quickrun_config['coffee'] = {'command' : 'coffee', 'exec' : ['%c -cbp %s']}
+
+" vim-altr
+call altr#remove_all()
+call altr#define(
+\  'app/models/%.rb',
+\  'spec/models/%_spec.rb',
+\  'spec/factories/%s.rb')
+call altr#define(
+\ 'app/controllers/%_controller.rb',
+\ 'spec/controllers/%_spec.rb',
+\ 'spec/requests/%_spec.rb')
+call altr#define(
+\ 'app/helpers/%.rb',
+\ 'spec/helpers/%_spec.rb')
