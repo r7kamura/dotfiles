@@ -1,6 +1,3 @@
-## Requirements
-* Git
-
 ## Install
 
 ```
