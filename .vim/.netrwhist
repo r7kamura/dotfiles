@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/Users/r7kamura/work/Hatena-Epic/script'
 let g:netrw_dirhist_2='/Users/r7kamura/tmp/syoboi_calendar'
 let g:netrw_dirhist_3='/Users/r7kamura/Dropbox/src/team10/.git'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/Users/r7kamura/Dropbox/src/dropbox_sdk'
 let g:netrw_dirhist_6='/Users/r7kamura/Dropbox/src/hakolog/app/assets/javascripts/backbone'
 let g:netrw_dirhist_7='/Users/r7kamura/dotfiles/.vim/autoload'
 let g:netrw_dirhist_8='/Users/r7kamura/dotfiles'
+let g:netrw_dirhist_9='/Users/r7kamura/.rvm/gems/ruby-1.9.3-p0/gems/haml-3.1.4/lib'

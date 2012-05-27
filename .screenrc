@@ -1,10 +1,9 @@
-scrollback 10000
-defscrollback 10000
-
 escape ^Jj
 bind h prev
 bind n next
 bind l windowlist
+bindkey "[C" next
+bindkey "[D" prev
 bindkey "\033[5D" next
 bindkey "\033[5C" prev
 bindkey ";9C" next
@@ -27,3 +26,6 @@ deflog on
 logfile "$HOME/.screen/screen-%Y%m%d-%n.log"
 bell_msg "^G"
 select 1
+
+scrollback 10000
+defscrollback 10000

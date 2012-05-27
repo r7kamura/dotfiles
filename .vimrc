@@ -21,6 +21,7 @@ set shiftround                      " round indent
 set modelines=0                     " line num in :set
 set number                          " show line num
 set autoindent                      " auto indent
+set cursorline
 set clipboard+=unnamed              " clipboard <=> yank
 set list                            " highlight space/tab at the end of line
 set listchars=tab:^\ ,trail:~       " highlight space/tab at the end of line
@@ -35,6 +36,7 @@ map k      gk
 map <Up>   g<Up>
 map <Down> g<Down>
 map Y y$
+map <F1> :CopyPath<CR><ESC>
 map <F2> <Plug>(altr-forward)
 map <F3> <Plug>(altr-back)
 imap {} {}<Left>
@@ -91,13 +93,6 @@ let g:gist_open_browser_after_post = 1
 
 " ctrlp.vim
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*.swo
-
-" gjslint
-autocmd FileType javascript :compiler gjslint
-autocmd QuickfixCmdPost make copen
-
-" csslint
-autocmd FileType css compiler csslint
 
 " quickrun
 let g:quickrun_config = {}

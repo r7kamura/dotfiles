@@ -76,9 +76,11 @@ alias q='exit'
 alias z='v ~/.zshrc'
 alias zz='. ~/.zshrc'
 alias vv='v ~/.vimrc'
+alias gg='git grep'
 alias src='cd ~/Dropbox/src'
 alias blog='open ~/Dropbox/Apps/hakolog/entries'
 alias snip='open ~/.vim/bundle/snipMate/snippets'
+alias br='git branch -a 2>/dev/null | grep "^*" | tr -d "\* "'
 a() { git add . $1; git status --short }
 m() { git commit -m "$*" }
 

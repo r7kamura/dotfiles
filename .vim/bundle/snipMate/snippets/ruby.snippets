@@ -8,15 +8,11 @@ snippet do
 	do${1}
 		${2}
 	end
-snippet c
-	class ${1:ClassName}
-		${2}
-	end
 snippet m
 	module ${1:ModuleName}
 		${2}
 	end
-snippet pry
+snippet p
 	require "pry"; binding.pry
 snippet ap
 	require "awesome_print"; ap ${1}
@@ -25,8 +21,12 @@ snippet it
 		${2}
 	end
 snippet d
-	describe ${1} do
+	describe "${1}" do
 		${2}
 	end
-snippet e
-	# encoding: UTF-8
+snippet c
+	context "${1}"
+		${2}
+	end
+snippet u
+	# coding: UTF-8
