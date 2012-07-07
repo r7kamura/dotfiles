@@ -1,3 +1,6 @@
+scrollback 10000
+defscrollback 10000
+
 escape ^Jj
 bind h prev
 bind n next

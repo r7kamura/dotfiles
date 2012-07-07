@@ -17,6 +17,7 @@ set expandtab                       " change tab into space
 set tabstop=2                       " tab width
 set softtabstop=2                   " tab width
 set shiftwidth=2                    " tab width
+set textwidth=0                     " prevent auto linebreak
 set shiftround                      " round indent
 set modelines=0                     " line num in :set
 set number                          " show line num
@@ -59,7 +60,6 @@ au BufNewFile,BufRead *.t    set shiftwidth=4 tabstop=4 softtabstop=4
 au BufNewFile,BufRead *.css  set shiftwidth=2 tabstop=2 softtabstop=2
 au BufNewFile,BufRead *.erb  set shiftwidth=2 tabstop=2 softtabstop=2
 au BufNewFile,BufRead *.tt   set filetype=tt2html shiftwidth=2 tabstop=2 softtabstop=2
-au BufNewFile,BufRead *.html set filetype=tt2html shiftwidth=2 tabstop=2 softtabstop=2
 
 
 " emphasis space at the end of line

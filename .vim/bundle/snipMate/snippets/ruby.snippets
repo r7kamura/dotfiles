@@ -12,7 +12,7 @@ snippet m
 	module ${1:ModuleName}
 		${2}
 	end
-snippet p
+snippet pry
 	require "pry"; binding.pry
 snippet ap
 	require "awesome_print"; ap ${1}
@@ -25,8 +25,10 @@ snippet d
 		${2}
 	end
 snippet c
-	context "${1}"
+	context "${1}" do
 		${2}
 	end
 snippet u
 	# coding: UTF-8
+snippet f
+	, :focus => true

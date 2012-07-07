@@ -1,6 +1,6 @@
 [user]
   name = Ryo NAKAMURA
-  email = r7kamura@gmail.com
+  email = ryo-nakamura@cookpad.com
 
 [github]
   user = r7kamura
@@ -32,7 +32,7 @@
   ft = fetch
   rb = rebase master
   ad = add
-  ci = commit -a
+  mm = commit
   co = checkout
 
   br = branch
@@ -45,6 +45,7 @@
   lr = log origin
   lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
   ll = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
+  lc = log --graph --date-order --pretty=format:'%Cblue%h %Cgreen%ci %Cred%an %Cblue%m %Creset%s %Cred%d'
   ra = shortlog -s -n --no-merges
 
   dm = diff master

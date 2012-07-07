@@ -23,6 +23,7 @@ SPROMPT="%{${fg[red]}%}correct: %R -> %r [nyae]? %{${reset_color}%}"
 VCS_PROMPT="%1(v|%F{green} %1v%f|)"
 DIR_PROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
 RPROMPT="$VCS_PROMPT $DIR_PROMPT"
+export MYSQL_PS1="$(echo -e "<\\\U> [\\\d]\\\n(L:\\\c) \e[33m✘╹◡╹✘\e[m ")"
 
 setopt auto_cd
 setopt auto_pushd
@@ -61,7 +62,9 @@ export PATH="$HOME/bin:$PATH"
 export EDITOR=vim
 export CLICOLOR=YES
 
+alias git="hub"
 alias g="git"
+alias x='xargs'
 alias b='bundle exec'
 alias p='pbcopy'
 alias o='open'
@@ -71,7 +74,7 @@ alias d='git diff'
 alias s='git status --short'
 alias t='tig'
 alias n='screen'
-alias r='bundle exec rspec'
+alias r='bundle exec rspec -f d'
 alias q='exit'
 alias z='v ~/.zshrc'
 alias zz='. ~/.zshrc'
@@ -80,9 +83,31 @@ alias gg='git grep'
 alias src='cd ~/Dropbox/src'
 alias blog='open ~/Dropbox/Apps/hakolog/entries'
 alias snip='open ~/.vim/bundle/snipMate/snippets'
-alias br='git branch -a 2>/dev/null | grep "^*" | tr -d "\* "'
+alias br='git symbolic-ref HEAD | cut -b 12-'
+alias sha1='git rev-parse HEAD'
 a() { git add . $1; git status --short }
 m() { git commit -m "$*" }
+u() { cd ./$(git rev-parse --show-cdup)/$1 }
+ga() {
+  if [ $# -eq 1 ]; then
+      git add `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
+  fi
+}
+gd() {
+  if [ $# -eq 1 ]; then
+      git diff -- `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
+  fi
+}
+gv() {
+  if [ $# -eq 1 ]; then
+      $EDITOR `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
+  fi
+}
+gr() {
+  if [ $# -eq 1 ]; then
+      git reset `git status -s -b | grep -v "^#" | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1"`
+  fi
+}
 
 copy-line() { print -rn $BUFFER | pbcopy; zle -M "Copied: ${BUFFER}" }
 zle -N copy-line
