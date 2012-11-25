@@ -1,0 +1,5 @@
+# If you'd like to call `bindkey -e`,
+# please load this after that to prevent from comflict
+_copyline() { print -rn $BUFFER | pbcopy; zle -M "Copied: ${BUFFER}" }
+zle -N _copyline
+bindkey '@@' _copyline

@@ -1,0 +1,18 @@
+autoload -Uz colors
+autoload -Uz vcs_info
+colors
+
+zstyle ':vcs_info:git:*' check-for-changes true
+zstyle ':vcs_info:git:*' stagedstr "+"
+zstyle ':vcs_info:git:*' unstagedstr "-"
+zstyle ':vcs_info:git:*' formats '(%b)%c%u'
+zstyle ':vcs_info:git:*' actionformats '(%b|%a)%c%u'
+function _update_vcs_info_msg() {
+  psvar=()
+  LANG=en_US.UTF-8 vcs_info
+  [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+add-zsh-hook precmd _update_vcs_info_msg
+VCS_PROMPT="%1(v|%F{green} %1v%f|)"
+DIR_PROMPT="%{${fg[blue]}%}[%~]%{${reset_color}%}"
+RPROMPT="$VCS_PROMPT $DIR_PROMPT"
