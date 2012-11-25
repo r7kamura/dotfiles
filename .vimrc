@@ -31,6 +31,7 @@ set visualbell t_vb=                " kill beep flash
 set t_vb=                           " kill beep sound
 set laststatus=2
 set formatoptions=q                 " disable auto-insert line feeds
+set nofoldenable                    " disable auto-folding
 if has("mouse")                     " use mouse
   set mouse=a
 end
