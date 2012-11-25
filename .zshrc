@@ -18,7 +18,7 @@ setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
 
 
-## environment variable
+## variable
 export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export EDITOR=vim
