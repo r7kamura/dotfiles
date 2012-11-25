@@ -2,9 +2,11 @@
   name = Ryo NAKAMURA
   email = ryo-nakamura@cookpad.com
 
+[include]
+  path = .gitconfig.local
+
 [github]
   user = r7kamura
-  token = !cat .githubtoken
 
 [color]
   diff        = auto
@@ -12,6 +14,12 @@
   branch      = auto
   status      = auto
   interactive = auto
+
+[merge]
+  ff = false # from 1.7.6
+
+[pull]
+  rebase = true # from 1.7.9
 
 [push]
   default = current
@@ -39,27 +47,5 @@
   bm = branch --merged
   bn = branch --no-merged
 
-  ls = log --stat
-  lp = log -p
-  la = log --pretty=\"format:%ad %h (%an): %s\" --date=short
-  lr = log origin
-  lg = log --graph --date=short --pretty=format:'%Cgreen%h %cd %Cblue%cn %Creset%s'
-  ll = log --graph --all --color --pretty='%x09%h %cn%x09%s %Cred%d%Creset'
-  lc = log --graph --date-order --pretty=format:'%Cblue%h %Cgreen%ci %Cred%an %Cblue%m %Creset%s %Cred%d'
-  ra = shortlog -s -n --no-merges
-
-  dm = diff master
-  dw = diff --color-words
-  dc = diff --cached
-  d1 = diff HEAD~1
-  d2 = diff HEAD~2
-  d3 = diff HEAD~3
-  d4 = diff HEAD~4
-  d5 = diff HEAD~5
-
-  # use in conflict
-  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; $EDITOR `f`"
-  add-unmerged  = "!f() { git ls-files --unmerged | cut -f2 | sort -u ; }; git add `f`"
-
-  gr = grep
-  gn = grep -n
+  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u }; $EDITOR `f`"
+  add-unmerged  = "!f() { git ls-files --unmerged | cut -f2 | sort -u }; git add `f`"
