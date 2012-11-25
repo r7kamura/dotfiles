@@ -17,8 +17,14 @@ snippet closure
 		return function() {
 		};
 	})();
+snippet f; function
+	function(${1}) {
+		${2}
+	}${3};
 snippet f function
-	function(${1}) {${2}}
+	function(${1}) {
+		${2}
+	}${3}
 snippet fun named function
 	function ${1:name} (${2}) {
 		${3}
