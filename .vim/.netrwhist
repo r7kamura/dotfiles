@@ -1,6 +1,0 @@
-let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =4
-let g:netrw_dirhist_1='/Users/r7kamura/Dropbox/src/azucat/lib/azucat'
-let g:netrw_dirhist_2='/Users/r7kamura/tmp'
-let g:netrw_dirhist_3='/Users/r7kamura/Dropbox/src/github_issue_bot'
-let g:netrw_dirhist_4='/Users/r7kamura/Dropbox/src/guideline'

@@ -1,3 +1,4 @@
 .githubtoken
 .DS_Store
 *.swp
+.vim/.netrwhist
