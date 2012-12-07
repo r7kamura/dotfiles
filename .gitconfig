@@ -1,6 +1,5 @@
 [user]
-  name = Ryo NAKAMURA
-  email = ryo-nakamura@cookpad.com
+  name = Ryo Nakamura
 
 [include]
   path = .gitconfig.local
