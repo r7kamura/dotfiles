@@ -60,6 +60,9 @@ zstyle :compinstall filename "$HOME/.zshrc"
 
 ## alias
 alias ls='ls -1'
+alias xl='tmux list-session'
+alias xa='tmux a -t'
+alias xn='tmux new -s'
 alias b='bundle exec'
 alias o='open'
 alias c='open .'
