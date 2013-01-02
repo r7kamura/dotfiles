@@ -22,7 +22,7 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export EDITOR=vim
 export CLICOLOR=YES
-export NODE_PATH='/usr/local/lib/node_modules/'
+
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
 SAVEHIST=100000
