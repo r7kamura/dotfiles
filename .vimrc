@@ -32,9 +32,15 @@ set t_vb=                           " kill beep sound
 set laststatus=2
 set formatoptions=q                 " disable auto-insert line feeds
 set nofoldenable                    " disable auto-folding
+set noswapfile                      " do not create .*.swp
 if has("mouse")                     " use mouse
   set mouse=a
 end
+
+" for crontab
+augroup CrontabForVim
+  autocmd BufReadPre crontab.* setl nowritebackup
+augroup END
 
 map j      gj
 map k      gk
