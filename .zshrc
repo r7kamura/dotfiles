@@ -5,7 +5,6 @@ autoload -Uz add-zsh-hook
 autoload -Uz compinit
 autoload -Uz history-search-end
 autoload -Uz my_rprompt
-autoload -Uz my_rvm
 autoload -Uz my_copyline
 
 
@@ -43,7 +42,6 @@ fi
 colors
 compinit
 my_rprompt
-my_rvm
 my_copyline
 
 
