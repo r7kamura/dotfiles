@@ -1,3 +1,5 @@
+alias :r :require
+
 begin
   require "awesome_print"
 
