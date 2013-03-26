@@ -1,5 +1,13 @@
 alias :r :require
 
+def r(name)
+  require name.to_s
+end
+
+def rr
+  require "active_support/all"
+end
+
 begin
   require "awesome_print"
 
