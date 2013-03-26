@@ -18,7 +18,7 @@ setopt HIST_IGNORE_SPACE
 
 
 ## variable
-export PATH="/usr/local/bin:$PATH"
+export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export EDITOR=vim
 export CLICOLOR=YES
@@ -76,8 +76,8 @@ alias br='git symbolic-ref HEAD | cut -b 12-'
 alias t='tig'
 alias r='bundle exec rspec -f d'
 alias q='exit'
-alias z='v ~/.zshrc'
-alias zz='. ~/.zshrc'
+alias zz='v ~/.zshrc'
+alias zzz='. ~/.zshrc'
 alias v='open -a macvim "$@"'
 alias vv='v ~/.vimrc'
 alias snip='open ~/.vim/bundle/snipMate/snippets'
