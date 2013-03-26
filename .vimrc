@@ -110,9 +110,11 @@ endif
 call altr#remove_all()
 call altr#define('lib/%.rb', 'spec/%_spec.rb', 'spec/libs/%_spec.rb')
 call altr#define(
+\  'app/decorators/%.rb',
+\  'spec/decorators/%_spec.rb')
+call altr#define(
 \  'app/models/%.rb',
-\  'spec/models/%_spec.rb',
-\  'spec/factories/%s.rb')
+\  'spec/models/%_spec.rb')
 call altr#define(
 \ 'app/controllers/%_controller.rb',
 \ 'spec/controllers/%_spec.rb',
@@ -148,3 +150,64 @@ function! InsertTabOrComplement()
   endif
 endfunction
 imap <S-tab> <c-r>=InsertTabOrComplement()<cr>
+
+
+" For CRuby
+function! s:CRuby_setup()
+  setlocal tabstop=8 softtabstop=4 shiftwidth=4 noexpandtab
+  syntax keyword cType VALUE ID RUBY_DATA_FUNC BDIGIT BDIGIT_DBL BDIGIT_DBL_SIGNED ruby_glob_func
+  syntax keyword cType rb_global_variable
+  syntax keyword cType rb_classext_t rb_data_type_t
+  syntax keyword cType rb_gvar_getter_t rb_gvar_setter_t rb_gvar_marker_t
+  syntax keyword cType rb_encoding rb_transcoding rb_econv_t rb_econv_elem_t rb_econv_result_t
+  syntax keyword cType RBasic RObject RClass RFloat RString RArray RRegexp RHash RFile RRational RComplex RData RTypedData RStruct RBignum
+  syntax keyword cType st_table st_data
+  syntax match   cType display "\<\(RUBY_\)\?T_\(OBJECT\|CLASS\|MODULE\|FLOAT\|STRING\|REGEXP\|ARRAY\|HASH\|STRUCT\|BIGNUM\|FILE\|DATA\|MATCH\|COMPLEX\|RATIONAL\|NIL\|TRUE\|FALSE\|SYMBOL\|FIXNUM\|UNDEF\|NODE\|ICLASS\|ZOMBIE\)\>"
+  syntax keyword cStatement ANYARGS NORETURN PRINTF_ARGS
+  syntax keyword cStorageClass RUBY_EXTERN
+  syntax keyword cOperator IMMEDIATE_P SPECIAL_CONST_P BUILTIN_TYPE SYMBOL_P FIXNUM_P NIL_P RTEST CLASS_OF
+  syntax keyword cOperator INT2FIX UINT2NUM LONG2FIX ULONG2NUM LL2NUM ULL2NUM OFFT2NUM SIZET2NUM SSIZET2NUM
+  syntax keyword cOperator NUM2LONG NUM2ULONG FIX2INT NUM2INT NUM2UINT FIX2UINT
+  syntax keyword cOperator NUM2LL NUM2ULL NUM2OFFT NUM2SIZET NUM2SSIZET NUM2DBL NUM2CHR CHR2FIX
+  syntax keyword cOperator NEWOBJ OBJSETUP CLONESETUP DUPSETUP
+  syntax keyword cOperator PIDT2NUM NUM2PIDT
+  syntax keyword cOperator UIDT2NUM NUM2UIDT
+  syntax keyword cOperator GIDT2NUM NUM2GIDT
+  syntax keyword cOperator FIX2LONG FIX2ULONG
+  syntax keyword cOperator POSFIXABLE NEGFIXABLE
+  syntax keyword cOperator ID2SYM SYM2ID
+  syntax keyword cOperator RSHIFT BUILTIN_TYPE TYPE
+  syntax keyword cOperator RB_GC_GUARD_PTR RB_GC_GUARD
+  syntax keyword cOperator Check_Type
+  syntax keyword cOperator StringValue StringValuePtr StringValueCPtr
+  syntax keyword cOperator SafeStringValue Check_SafeStr
+  syntax keyword cOperator ExportStringValue
+  syntax keyword cOperator FilePathValue
+  syntax keyword cOperator FilePathStringValue
+  syntax keyword cOperator ALLOC ALLOC_N REALLOC_N ALLOCA_N MEMZERO MEMCPY MEMMOVE MEMCMP
+  syntax keyword cOperator RARRAY RARRAY_LEN RARRAY_PTR RARRAY_LENINT
+  syntax keyword cOperator RBIGNUM RBIGNUM_POSITIVE_P RBIGNUM_NEGATIVE_P RBIGNUM_LEN RBIGNUM_DIGITS
+  syntax keyword cOperator Data_Wrap_Struct Data_Make_Struct Data_Get_Struct
+  syntax keyword cOperator TypedData_Wrap_Struct TypedData_Make_Struct TypedData_Get_Struct
+
+  syntax keyword cConstant Qtrue Qfalse Qnil Qundef
+  syntax keyword cConstant IMMEDIATE_MASK FIXNUM_FLAG SYMBOL_FLAG
+
+  " for bignum.c
+  syntax keyword cOperator BDIGITS BIGUP BIGDN BIGLO BIGZEROP
+  syntax keyword cConstant BITPERDIG BIGRAD DIGSPERLONG DIGSPERLL BDIGMAX
+endfunction
+
+function! s:CRuby_ext_setup()
+  let dirname = expand("%:h")
+  let extconf = dirname . "/extconf.rb"
+  if filereadable(extconf)
+    call s:CRuby_setup()
+  endif
+endfunction
+
+augroup CRuby
+  autocmd!
+  autocmd BufWinEnter,BufNewFile ~/Dropbox/src/ruby/*.[chy] call s:CRuby_setup()
+  autocmd BufWinEnter,BufNewFile *.{c,cc,cpp,h,hh,hpp} call s:CRuby_ext_setup()
+augroup END
