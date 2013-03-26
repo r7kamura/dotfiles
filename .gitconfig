@@ -48,3 +48,5 @@
 
   edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u }; $EDITOR `f`"
   add-unmerged  = "!f() { git ls-files --unmerged | cut -f2 | sort -u }; git add `f`"
+[remote "origin"]
+  fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
