@@ -82,17 +82,13 @@ alias v='open -a macvim "$@"'
 alias vv='v ~/.vimrc'
 alias snip='open ~/.vim/bundle/snipMate/snippets'
 alias copy='tmux save - | pbcopy'
+alias gv='git commit -v'
 
 
 ## function
 a() { git add . $1; git status --short }
 m() { git commit -m "$*" }
 u() { cd ./$(git rev-parse --show-cdup)/$1 }
-gl() { [ $# -eq 1 ] && git status -s | awk '{print$1="";print}' | grep -v "^$" | awk "NR==$1" }
-ga() { [ $# -eq 1 ] && git add $(gl $1) && s }
-gd() { [ $# -eq 1 ] && git diff -- $(gl $1) && s}
-gr() { [ $# -eq 1 ] && git reset -- $(gl $1) && s}
-gv() { [ $# -eq 1 ] && v $(gl $1) }
 
 
 ## local
