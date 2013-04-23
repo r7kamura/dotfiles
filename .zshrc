@@ -39,8 +39,8 @@ fi
 
 
 ## execution
+# compinit
 colors
-compinit
 my_rprompt
 my_copyline
 
@@ -59,7 +59,7 @@ zstyle :compinstall filename "$HOME/.zshrc"
 
 
 ## alias
-alias ls='ls -1'
+alias ll='ls -1'
 alias xl='tmux list-session'
 alias xa='tmux a -t'
 alias xn='tmux new -s'
