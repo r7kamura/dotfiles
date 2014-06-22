@@ -22,6 +22,7 @@ export PATH="/usr/local/bin:/usr/local/sbin:$PATH"
 export PATH="$HOME/bin:$PATH"
 export EDITOR=vim
 export CLICOLOR=YES
+export GOPATH=$HOME
 
 HISTFILE=~/.zsh_history
 HISTSIZE=100000
@@ -83,13 +84,14 @@ alias vv='v ~/.vimrc'
 alias snip='open ~/.vim/bundle/snipMate/snippets'
 alias copy='tmux save - | pbcopy'
 alias gv='git commit -v'
+alias e='ghq list -p | p cd'
 
 
 ## function
-a() { git add . $1; git status --short }
+a() { git add . $1 --all; git status --short }
 m() { git commit -m "$*" }
 u() { cd ./$(git rev-parse --show-cdup)/$1 }
-
+p() { peco | while read LINE; do $@ $LINE; done }
 
 ## local
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
