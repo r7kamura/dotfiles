@@ -53,6 +53,7 @@ imap <> <><Left>
 imap "" ""<Left>
 imap '' ''<Left>
 nmap <ESC><ESC> :nohlsearch<CR><ESC>
+nmap "" :s/'/"/g<CR>
 vnoremap < <gv
 vnoremap > >gv
 vnoremap <F4> :Alignta <<0 \ /1<CR>
