@@ -48,7 +48,8 @@
 
   edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u }; $EDITOR `f`"
   add-unmerged  = "!f() { git ls-files --unmerged | cut -f2 | sort -u }; git add `f`"
+  dbr = !git branch --merged | grep -v \"\\* \" | xargs git branch --delete
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
 [ghq]
-	root = /Users/r7kamura/src
+  root = /Users/r7kamura/src
