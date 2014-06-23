@@ -86,6 +86,7 @@ alias copy='tmux save - | pbcopy'
 alias gv='git commit -v'
 alias e='ghq list -p | p cd'
 alias gget='ghq get -p $@'
+alias ll='ls -1'
 
 
 ## function
