@@ -52,4 +52,4 @@
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
 [ghq]
-  root = /Users/r7kamura/src
+  root = ~/src
