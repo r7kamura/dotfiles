@@ -21,4 +21,23 @@ function commandLineToolsShouldBeInstalled() {
   fi
 }
 
+function homebrewShouldBeInstalled() {
+  echo -n "[    ] Checking Homebrew..."
+  if isHomebrewInstalled; then
+    echo -e "\r\033[K[ OK ] Checking Homebrew...Success"
+  else
+    echo -e "\r\033[K[ NG ] Checking Homebrew...Failure"
+    installHomebrew
+  fi
+}
+
+function isHomebrewInstalled() {
+  which brew 2>/dev/null 1>&2
+}
+
+function installHomebrew() {
+  ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+}
+
 commandLineToolsShouldBeInstalled
+homebrewShouldBeInstalled
