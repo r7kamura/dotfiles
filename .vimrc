@@ -119,3 +119,6 @@ let g:indent_guides_enable_on_vim_startup = 1
 augroup CrontabForVim
   autocmd BufReadPre crontab.* setl nowritebackup
 augroup END
+
+command! -nargs=* -range GitBrowseRemote !git browse-remote --rev -L<line1>,<line2> <f-args> -- %
+map <F5> V:GitBrowseRemote<CR><CR>

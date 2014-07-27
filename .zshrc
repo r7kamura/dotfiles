@@ -96,5 +96,8 @@ m() { git commit -m "$*" }
 u() { cd ./$(git rev-parse --show-cdup)/$1 }
 p() { peco | while read LINE; do $@ $LINE; done }
 
+## Go...
+export PATH=$PATH:/usr/local/Cellar/go/1.2.1/libexec/bin
+
 ## local
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
