@@ -20,7 +20,7 @@ module Dotfiles
     end
 
     def uninstall
-      checker.installed_packages.each do |package|
+      checker.uninstallable_packages.each do |package|
         package.uninstall
         puts "[ \e[32mOK\e[0m ] Uninstall #{package.name}"
       end

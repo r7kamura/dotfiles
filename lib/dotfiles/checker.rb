@@ -6,13 +6,13 @@ module Dotfiles
     end
 
     # @return [Array<Dotfiles::Packages::Base>]
-    def lacking_packages
-      packages.reject(&:installed_with_memoize?)
+    def installable_packages
+      packages.select(&:installable?)
     end
 
     # @return [Array<Dotfiles::Packages::Base>]
-    def installed_packages
-      packages.select(&:installed_with_memoize?)
+    def uninstallable_packages
+      packages.select(&:uninstallable?)
     end
 
     private

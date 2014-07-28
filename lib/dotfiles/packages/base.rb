@@ -11,9 +11,14 @@ module Dotfiles
         self.class.name.split("::").last
       end
 
-      # @return [true, false]
-      def installed_with_memoize?
-        @installed = instance_variable_defined?(:@installed) ? @installed : installed?
+      # @return [true, false] True if not yet installed
+      def installable?
+        @installable = instance_variable_defined?(:@installable) ? @installable : installed?
+      end
+
+      # @return [true, false] True if already installed and respondable to .uninstall method
+      def uninstallable?
+        !installable? && respond_to?(:uninstall)
       end
 
       private
