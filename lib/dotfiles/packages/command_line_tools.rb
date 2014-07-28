@@ -12,8 +12,8 @@ module Dotfiles
         system("xcode-select -p", out: IO::NULL, err: IO::NULL)
       end
 
+      # @note Uninstalling CommandLineTools is not supported
       def uninstall
-        puts "Uninstalling CommandLineTools is not supported."
       end
     end
   end
