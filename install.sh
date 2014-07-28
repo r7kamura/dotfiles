@@ -7,7 +7,7 @@ curl -LSfs -o /tmp/dotfiles.zip https://github.com/r7kamura/dotfiles/archive/mas
 echo "Done"
 
 # Unzip installer into /tmp/dotfiles/dotfiles-master
-unzip -q /tmp/dotfiles.zip -d /tmp/dotfiles
+unzip -oq /tmp/dotfiles.zip -d /tmp/dotfiles
 
 # Run installer
 /tmp/dotfiles/dotfiles-master/bin/install
