@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 set -eo pipefail
 
-# Download zipped installer
-echo -n "Downloading installer..."
+# Download zipped uninstaller
+echo -n "Downloading uninstaller..."
 curl -LSfs -o /tmp/dotfiles.zip https://github.com/r7kamura/dotfiles/archive/master.zip
 echo "Done"
 
