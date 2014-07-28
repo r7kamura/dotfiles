@@ -5,6 +5,5 @@ curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh
 
 ## Uninstall
 ```sh
-cd /path/to/dotfiles
-rake uninstall
+curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/uninstall.sh | bash -s
 ```
