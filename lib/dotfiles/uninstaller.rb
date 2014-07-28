@@ -1,28 +1,9 @@
 module Dotfiles
-  class Uninstaller
-    def self.call
-      new.call
-    end
-
+  class Uninstaller < Installer
     def call
-      check
-      uninstall
-    end
-
-    private
-
-    def check
-      puts checker.uninstallable_packages.map(&:uninstallation_status)
-    end
-
-    def checker
-      @checker ||= Checker.new
-    end
-
-    def uninstall
       checker.uninstallable_packages.each do |package|
-        package.uninstall
-        puts "[ \e[32mOK\e[0m ] Uninstall #{package.name}"
+        package.uninstall if package.installed?
+        puts "[ #{package.installed? ? DONE : SKIP} ] Uninstall #{package.name}"
       end
     end
   end

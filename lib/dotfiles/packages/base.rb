@@ -15,11 +15,6 @@ module Dotfiles
       end
 
       # @return [String]
-      def installation_status
-        "[ #{installed? ? OK : NG} ] #{name} should be installed"
-      end
-
-      # @return [String]
       def uninstallation_status
         "[ #{installed? ? NG : OK} ] #{name} should be uninstalled"
       end
