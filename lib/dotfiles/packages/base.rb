@@ -25,7 +25,7 @@ module Dotfiles
 
       # @return [String]
       def ok_or_ng
-        installed_with_memoize? ? green("OK") : red("NG")
+        !installable? ? green("OK") : red("NG")
       end
 
       # @return [String]
