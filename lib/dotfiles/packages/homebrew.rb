@@ -13,7 +13,7 @@ module Dotfiles
       def uninstall
         system("brew prune")
         system("ls -A1 $(brew --prefix) | xargs rm -rf")
-        system("rm -rf ~/Library/Caches/Homebrew ~/Library/Logs/Homebrew /Library/Caches/Homebrew")
+        system("rm -rf ~/Library/Caches/Homebrew ~/Library/Logs/Homebrew")
       end
     end
   end

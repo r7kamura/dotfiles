@@ -21,8 +21,8 @@ module Dotfiles
 
     def install
       checker.lacking_packages.each do |package|
-        puts "Installing #{package.name}"
         package.install
+        puts "[ \e[32mOK\e[0m ] Install #{package.name}"
       end
     end
   end
