@@ -10,7 +10,7 @@ module Dotfiles
       end
 
       def uninstall
-        raise NotImplementedError
+        FileUtils.rmtree(`xcode-select -p`.chomp)
       end
     end
   end
