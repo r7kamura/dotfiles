@@ -3,6 +3,7 @@ module Dotfiles
     class Homebrew < Base
       def install
         system(%<ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)">)
+        system("brew update")
       end
 
       def installed?
@@ -10,7 +11,9 @@ module Dotfiles
       end
 
       def uninstall
-        system("curl -LSfs https://gist.githubusercontent.com/mxcl/1173223/raw/a833ba44e7be8428d877e58640720ff43c59dbad/uninstall_homebrew.sh | bash -s")
+        system("brew prune")
+        system("ls -A1 $(brew --prefix) | xargs rm -rf")
+        system("rm -rf ~/Library/Caches/Homebrew ~/Library/Logs/Homebrew /Library/Caches/Homebrew")
       end
     end
   end

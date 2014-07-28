@@ -21,6 +21,7 @@ module Dotfiles
 
     def uninstall
       checker.installed_packages.each do |package|
+        puts ""
         puts "Uninstalling #{package.name}"
         package.uninstall
       end
