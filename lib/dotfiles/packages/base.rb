@@ -3,7 +3,7 @@ module Dotfiles
     class Base
       # @return [String] Human readable installation status
       def installation_status
-        "[ #{ok_or_ng} ] #{name}"
+        "[ #{ok_or_ng} ] Check #{name}"
       end
 
       # @return [String]
