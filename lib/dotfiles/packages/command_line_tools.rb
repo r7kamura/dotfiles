@@ -13,7 +13,7 @@ module Dotfiles
       end
 
       def uninstall
-        FileUtils.rmtree(`xcode-select -p`.chomp)
+        puts "Uninstalling CommandLineTools is not supported."
       end
     end
   end
