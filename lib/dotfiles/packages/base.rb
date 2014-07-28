@@ -13,7 +13,7 @@ module Dotfiles
 
       # @return [true, false] True if not yet installed
       def installable?
-        @installable = instance_variable_defined?(:@installable) ? @installable : installed?
+        @installable = instance_variable_defined?(:@installable) ? @installable : !installed?
       end
 
       # @return [true, false] True if already installed and respondable to .uninstall method
