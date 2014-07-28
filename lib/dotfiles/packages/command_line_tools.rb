@@ -1,3 +1,5 @@
+require "fileutils"
+
 module Dotfiles
   module Packages
     class CommandLineTools < Base
