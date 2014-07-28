@@ -5,6 +5,7 @@ module Dotfiles
     class CommandLineTools < Base
       def install
         system("xcode-select --install", out: IO::NULL, err: IO::NULL)
+        sleep 5 until installed?
       end
 
       def installed?
