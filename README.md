@@ -1,6 +1,6 @@
 ## Install
 ```sh
-curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/installer.sh | bash -s
+curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh | bash -s
 ```
 
 ## Uninstall
