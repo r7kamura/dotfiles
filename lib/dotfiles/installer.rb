@@ -9,8 +9,12 @@ module Dotfiles
 
     def call
       checker.packages.each do |package|
-        package.install unless package.installed?
-        puts "[ #{package.installed? ? SKIP : DONE} ] Install #{package.name}"
+        if package.installed?
+          puts "[ #{SKIP} ] #{message}"
+        else
+          package.install
+          puts "[ #{DONE} ] #{message}"
+        end
       end
     end
 
@@ -18,6 +22,10 @@ module Dotfiles
 
     def checker
       @checker ||= Checker.new
+    end
+
+    def message
+      "Install #{package.name}"
     end
   end
 end
