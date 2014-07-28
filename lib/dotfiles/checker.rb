@@ -10,6 +10,11 @@ module Dotfiles
       packages.reject(&:installed_with_memoize?)
     end
 
+    # @return [Array<Dotfiles::Packages::Base>]
+    def installed_packages
+      packages.select(&:installed_with_memoize?)
+    end
+
     private
 
     # @return [Array<Dotfiles::Packages::Base>]
