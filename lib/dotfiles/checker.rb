@@ -5,6 +5,10 @@ module Dotfiles
       packages.select(&:uninstallable?)
     end
 
+    def not_installed_packages
+      packages.reject(&:installed?)
+    end
+
     # @return [Array<Dotfiles::Packages::Base>]
     def packages
       @packages ||= Dotfiles::Packages.packages

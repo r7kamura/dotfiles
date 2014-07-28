@@ -20,7 +20,7 @@ module Dotfiles
     end
 
     def install
-      checker.packages.each do |package|
+      checker.not_installed_packages.each do |package|
         package.install
         puts "[ \e[32mOK\e[0m ] Install #{package.name}"
       end
