@@ -1,41 +1,27 @@
 module Dotfiles
   module Packages
     class Base
-      # @return [String] Human readable installation status
-      def installation_status
-        "[ #{ok_or_ng} ] Check #{name}"
-      end
+      NG = "\e[31mNG\e[0m"
+      OK = "\e[32mOK\e[0m"
 
       # @return [String]
       def name
         self.class.name.split("::").last
       end
 
-      # @return [true, false] True if not yet installed
-      def installable?
-        @installable = instance_variable_defined?(:@installable) ? @installable : !installed?
-      end
-
       # @return [true, false] True if already installed and respondable to .uninstall method
       def uninstallable?
-        !installable? && respond_to?(:uninstall)
-      end
-
-      private
-
-      # @return [String]
-      def ok_or_ng
-        !installable? ? green("OK") : red("NG")
+        installed? && respond_to?(:uninstall)
       end
 
       # @return [String]
-      def green(str)
-        "\e[32m#{str}\e[0m"
+      def installation_status
+        "[ #{installed? ? OK : NG} ] #{name} should be installed"
       end
 
       # @return [String]
-      def red(str)
-        "\e[31m#{str}\e[0m"
+      def uninstallation_status
+        "[ #{installed? ? NG : OK} ] #{name} should be uninstalled"
       end
     end
   end

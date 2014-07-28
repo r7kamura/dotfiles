@@ -12,7 +12,7 @@ module Dotfiles
     private
 
     def check
-      puts checker.installation_statuses
+      puts checker.packages.map(&:installation_status)
     end
 
     def checker

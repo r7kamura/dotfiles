@@ -12,7 +12,7 @@ module Dotfiles
     private
 
     def check
-      puts checker.installation_statuses
+      puts checker.uninstallable_packages.map(&:uninstallation_status)
     end
 
     def checker
