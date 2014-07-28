@@ -1,5 +1,5 @@
 module Dotfiles
-  class Installer
+  class Uninstaller
     def self.call
       new.call
     end
