@@ -10,7 +10,7 @@ module Dotfiles
       end
 
       def uninstall
-        system("brew prune && (ls -A1 $(brew --prefix) | xargs rm -rf) && rm -rf ~/Library/Caches/Homebrew ~/Library/Logs/Homebrew", out: IO::NULL, err: IO::NULL)
+        system("brew prune && (ls -A1 $(brew --prefix) | xargs rm -rf) && rm -rf ~/Library/Caches/Homebrew ~/Library/Logs/Homebrew /Library/Caches/Homebrew", out: IO::NULL, err: IO::NULL)
       end
     end
   end
