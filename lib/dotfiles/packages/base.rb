@@ -21,7 +21,7 @@ module Dotfiles
 
       # @return [String] A message used to tell the result of uninstallation
       def uninstallation_message
-        uninstalled ? skip_uninstallation_message : done_uninstallation_message
+        installed ? done_uninstallation_message : skip_uninstallation_message
       end
 
       # @return [String] A message to tell the installation was just done
