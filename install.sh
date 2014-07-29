@@ -10,8 +10,14 @@ curl -LSfs -o ${tempfile} https://github.com/r7kamura/dotfiles/archive/master.zi
 # Unzip installer into workspace
 unzip -oq ${tempfile} -d ${workspace}
 
+# Move to repository root path
+pushd ${workspace}/dotfiles-master
+
 # Run installer
-${workspace}/dotfiles-master/bin/install
+bin/install
+
+# Move to original path
+popd
 
 # Cleanup
 rm -rf ${tempfile} ${workspace}

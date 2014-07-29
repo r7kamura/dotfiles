@@ -4,14 +4,20 @@ set -e
 tempfile=/tmp/dotfiles.zip
 workspace=/tmp/dotfiles
 
-# Download zipped uninstaller
+# Download zipped installer
 curl -LSfs -o ${tempfile} https://github.com/r7kamura/dotfiles/archive/master.zip
 
-# Unzip uninstaller into workspace
+# Unzip installer into workspace
 unzip -oq ${tempfile} -d ${workspace}
 
-# Run uninstaller
-${workspace}/dotfiles-master/bin/uninstall
+# Move to repository root path
+pushd ${workspace}/dotfiles-master
+
+# Run installer
+bin/uninstall
+
+# Move to original path
+popd
 
 # Cleanup
 rm -rf ${tempfile} ${workspace}
