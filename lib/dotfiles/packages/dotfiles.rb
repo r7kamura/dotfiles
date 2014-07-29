@@ -9,6 +9,10 @@ module Dotfiles
         EOS
       end
 
+      def installed?
+        true
+      end
+
       def uninstall
         system("rake uninstall")
       end
