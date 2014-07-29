@@ -16,7 +16,7 @@ module Dotfiles
 
       # @return [String] A message used to tell the result of installation
       def installation_message
-        package.installed ? skip_installation_message : done_installation_message
+        installed ? skip_installation_message : done_installation_message
       end
 
       # @return [String] A message to tell the installation was just done

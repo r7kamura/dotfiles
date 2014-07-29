@@ -7,7 +7,7 @@ module Dotfiles
     # For each package, install if not installed then print out message
     def call
       checker.packages.each do |package|
-        package.install if package.installed
+        package.install unless package.installed
         puts package.installation_message
       end
     end
