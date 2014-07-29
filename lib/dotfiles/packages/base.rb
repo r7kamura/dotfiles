@@ -32,7 +32,7 @@ module Dotfiles
       # @return [true, false]
       # @note Memoized version of .installed?
       def installed
-        @installed = instaance_variable_defined?(:installed) ? @installed : installed?
+        @installed = instance_variable_defined?(:installed) ? @installed : installed?
       end
 
       # @note override to change options parameter
