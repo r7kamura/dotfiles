@@ -1,10 +1,8 @@
 ## Install
 After opening your brand-new macbook, open Terminal.app and copy-paste the following command.
-After a few minutes, all of these packages will be installed.
 If there are already installed packages, their installation steps will be skipped.
-Note: The installing/uninstalling Homebrew step requires sudo permission,
-so you may need to type your password following to the prompt message.
 
+### Installed pacakges
 * CommandLineTools
 * Homebrew
 * Ghq
@@ -16,6 +14,9 @@ curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh
 ## Uninstall
 The following packages will be uninstalled.
 Note: You need sudo permission to remove Homebrew's cache files from system directory.
+
+### Uninstalled pacakges
+Note: CommandLineTools won't be uninstalled.
 
 * Homebrew
 * Ghq
