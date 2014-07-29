@@ -1,20 +1,14 @@
 module Dotfiles
   class Installer
-    DONE = "\e[31mDONE\e[0m"
-    SKIP = "\e[32mSKIP\e[0m"
-
     def self.call
       new.call
     end
 
+    # For each package, install if not installed then print out message
     def call
       checker.packages.each do |package|
-        if package.installed?
-          puts "[ #{SKIP} ] Install #{package.name}"
-        else
-          package.install
-          puts "[ #{DONE} ] Install #{package.name}"
-        end
+        package.install if package.installed
+        puts package.installation_message
       end
     end
 
