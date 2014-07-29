@@ -10,7 +10,7 @@ module Dotfiles
 
       # @return [Array<Symbol>]
       def package_names
-        Dotfiles::Packages.constants - [:Base]
+        constants - [:Base]
       end
 
       # @return [Array<Class>]
