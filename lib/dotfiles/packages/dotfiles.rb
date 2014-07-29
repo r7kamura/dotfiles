@@ -2,9 +2,9 @@ module Dotfiles
   module Packages
     class Dotfiles < Base
       def update
-        system({ "GOPATH" => ENV["HOME"] }, <<-EOS)
-          ghq get r7kamura/dotfiles
-          cd $(ghq list -p r7kamura/dotfiles)
+        system(<<-EOS)
+          GOPATH=$HOME ghq get r7kamura/dotfiles
+          GOPATH=$HOME cd $(ghq list -p r7kamura/dotfiles)
           rake install
         EOS
       end
