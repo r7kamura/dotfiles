@@ -4,18 +4,29 @@ module Dotfiles
       new.call
     end
 
-    # For each package, install if not installed then print out message
     def call
-      checker.packages.each do |package|
-        package.install unless package.installed
-        puts package.installation_message
-      end
+      install
+      update
     end
 
     private
 
     def checker
       @checker ||= Checker.new
+    end
+
+    def install
+      checker.installable_packages.each do |package|
+        package.install unless package.installed
+        puts package.installation_message
+      end
+    end
+
+    def update
+      checker.updatable_packages.each do |package|
+        package.update
+        puts package.update_message
+      end
     end
   end
 end

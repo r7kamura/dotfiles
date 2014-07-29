@@ -9,9 +9,19 @@ module Dotfiles
         self.class.name.split("::").last
       end
 
+      # @return [true, false] True if the receiver is an installable package
+      def installable?
+        respond_to?(:install)
+      end
+
       # @return [true, false] True if the receiver is an uninstallable package
       def uninstallable?
         respond_to?(:uninstall)
+      end
+
+      # @return [true, false] True if the receiver is an updatable package
+      def updatable?
+        respond_to?(:update)
       end
 
       # @return [String] A message used to tell the result of installation
@@ -22,6 +32,11 @@ module Dotfiles
       # @return [String] A message used to tell the result of uninstallation
       def uninstallation_message
         installed ? done_uninstallation_message : skip_uninstallation_message
+      end
+
+      # @return [String] A message used to tell an update was finished
+      def update_message
+        "[ #{DONE} ] Update #{name}"
       end
 
       # @return [String] A message to tell the installation was just done
