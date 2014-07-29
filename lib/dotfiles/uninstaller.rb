@@ -2,12 +2,8 @@ module Dotfiles
   class Uninstaller < Installer
     def call
       checker.uninstallable_packages.each do |package|
-        if package.installed?
-          package.uninstall
-          puts "[ #{DONE} ] Uninstall #{package.name}"
-        else
-          puts "[ #{SKIP} ] Uninstall #{package.name}"
-        end
+        package.uninstall if package.installed
+        puts package.uninstallation_message
       end
     end
   end

@@ -9,14 +9,19 @@ module Dotfiles
         self.class.name.split("::").last
       end
 
-      # @return [true, false] True if already installed and respondable to .uninstall method
+      # @return [true, false] True if the receiver is an uninstallable package
       def uninstallable?
-        installed && respond_to?(:uninstall)
+        respond_to?(:uninstall)
       end
 
       # @return [String] A message used to tell the result of installation
       def installation_message
         installed ? skip_installation_message : done_installation_message
+      end
+
+      # @return [String] A message used to tell the result of uninstallation
+      def uninstallation_message
+        uninstalled ? skip_uninstallation_message : done_uninstallation_message
       end
 
       # @return [String] A message to tell the installation was just done
@@ -27,6 +32,16 @@ module Dotfiles
       # @return [String] A message to tell the installation was skipped
       def skip_installation_message
         "[ #{SKIP} ] Install #{name}"
+      end
+
+      # @return [String] A message to tell the uninstallation was just done
+      def done_uninstallation_message
+        "[ #{DONE} ] Uninstall #{name}"
+      end
+
+      # @return [String] A message to tell the uninstallation was skipped
+      def skip_uninstallation_message
+        "[ #{SKIP} ] Uninstall #{name}"
       end
 
       # @return [true, false]
