@@ -2,7 +2,11 @@ module Dotfiles
   module Packages
     class Dotfiles < Base
       def update
-        system("rake install")
+        system("GOPATH" => ENV["HOME"], <<-EOS)
+          ghq get r7kamura/dotfiles
+          cd $(ghq list -p r7kamura/dotfiles)
+          rake install
+        EOS
       end
 
       def uninstall
