@@ -3,7 +3,7 @@ module Dotfiles
     class Ghq < Base
       def install
         system(<<-EOS)
-          brew tap motemen/ghq
+          brew tap r7kamura/ghq
           brew install ghq
         EOS
       end
@@ -13,7 +13,10 @@ module Dotfiles
       end
 
       def uninstall
-        system("brew uninstall ghq")
+        system(<<-EOS)
+          brew untap r7kamura/ghq
+          brew uninstall ghq
+        EOS
       end
     end
   end
