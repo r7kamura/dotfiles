@@ -1,6 +1,6 @@
 module Dotfiles
   module Packages
-    class Ghq < Base
+    class Homebrew < Base
       def install
         system(<<-EOS)
           ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" &&
