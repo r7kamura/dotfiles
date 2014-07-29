@@ -1,6 +1,7 @@
 update
 upgrade
 
+install go
 install openssl
 install rbenv
 install readline
