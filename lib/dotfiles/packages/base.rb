@@ -34,6 +34,11 @@ module Dotfiles
       def installed
         @installed = instaance_variable_defined?(:installed) ? @installed : installed?
       end
+
+      # @note override to change options parameter
+      def system(script, options = { out: IO::NULL, err: IO::NULL })
+        super
+      end
     end
   end
 end

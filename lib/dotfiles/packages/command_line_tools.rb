@@ -9,14 +9,14 @@ module Dotfiles
       end
 
       def installed?
-        system("xcode-select -p", out: IO::NULL, err: IO::NULL)
+        system("xcode-select -p")
       end
 
       private
 
       # Prompt user to install CommandLineTools via GUI
       def prompt
-        system("xcode-select --install", out: IO::NULL, err: IO::NULL)
+        system("xcode-select --install")
       end
     end
   end
