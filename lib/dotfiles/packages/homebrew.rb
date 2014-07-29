@@ -1,16 +1,23 @@
 module Dotfiles
   module Packages
-    class Homebrew < Base
+    class Ghq < Base
       def install
-        system(%<ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" && brew update>, out: IO::NULL, err: IO::NULL)
+        system(<<-EOS)
+          ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" &&
+          brew update
+        EOS
       end
 
       def installed?
-        system("which brew", out: IO::NULL, err: IO::NULL)
+        system("which brew")
       end
 
       def uninstall
-        system("brew prune && (ls -A1 $(brew --prefix) | xargs rm -rf) && rm -rf ~/Library/Caches/Homebrew ~/Library/Logs/Homebrew /Library/Caches/Homebrew", out: IO::NULL, err: IO::NULL)
+        system(<<-EOS)
+          brew prune &&
+          (ls -A1 $(brew --prefix) | xargs rm -rf) &&
+          rm -rf ~/Library/Caches/Homebrew ~/Library/Logs/Homebrew /Library/Caches/Homebrew
+        EOS
       end
     end
   end
