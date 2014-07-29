@@ -13,7 +13,7 @@ unzip -oq ${tempfile} -d ${workspace}
 # Move to repository root path
 pushd ${workspace}/dotfiles-master
 
-# Run installer
+# Run uninstaller
 bin/uninstall
 
 # Move to original path
