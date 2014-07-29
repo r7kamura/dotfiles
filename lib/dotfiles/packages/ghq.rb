@@ -2,7 +2,10 @@ module Dotfiles
   module Packages
     class Ghq < Base
       def install
-        system("brew install ghq")
+        system(<<-EOS)
+          brew tap motemen/ghq
+          brew install ghq
+        EOS
       end
 
       def installed?
