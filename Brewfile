@@ -1,9 +1,6 @@
 update
 upgrade
 
-tap caskroom/cask || true
-
-install brew-cask
 install openssl
 install rbenv
 install readline
@@ -16,6 +13,11 @@ install tree
 install vim
 install zsh
 
+tap caskroom/cask || true
+install brew-cask
 cask install google-chrome
+
+tap r7kamura/ghq
+install ghq
 
 cleanup
