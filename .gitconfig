@@ -34,21 +34,7 @@
   autosetuprebase = always
 
 [alias]
-  st = status
-  sh = show
-  so = remote show origin
-  ft = fetch
-  rb = rebase master
-  ad = add
-  mm = commit
-  co = checkout
-
   br = branch
-  bm = branch --merged
-  bn = branch --no-merged
-
-  edit-unmerged = "!f() { git ls-files --unmerged | cut -f2 | sort -u }; $EDITOR `f`"
-  add-unmerged  = "!f() { git ls-files --unmerged | cut -f2 | sort -u }; git add `f`"
   dbr = !git branch --merged | grep -v \"\\* \" | xargs git branch --delete
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
