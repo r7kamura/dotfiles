@@ -4,8 +4,8 @@ module Dotfiles
       # Homebrew tries to use ~/Library/Caches/Homebrew then /Library/Caches/Homebrew
       def install
         system(<<-EOS)
+          mkdir ~/Library/Caches/Homebrew &&
           ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" &&
-          mkdir ~/Library/Caches/Homebrew
           brew update
         EOS
       end
