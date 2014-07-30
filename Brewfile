@@ -16,8 +16,11 @@ install zsh
 
 tap caskroom/cask || true
 install brew-cask
+cask install alfred
+cask install divvy
 cask install google-chrome
 cask install macvim
+cask install yorufukurou
 
 tap r7kamura/ghq
 install ghq
