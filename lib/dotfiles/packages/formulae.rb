@@ -10,6 +10,7 @@ module Dotfiles
       end
 
       def uninstall
+        system("brew cask list | xargs brew cask uninstall")
         system("brew list | xargs brew uninstall")
       end
     end
