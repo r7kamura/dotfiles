@@ -2,7 +2,7 @@ if has('gui_macvim')
   set antialias
   set nobackup
 
-  set guifont=Bitstream\ Vera\ Sans\ Mono\ for\ Powerline:h16
+  set guifont=Menlo:h16
   let g:Powerline_symbols = 'fancy'
 
   set showtabline=2
