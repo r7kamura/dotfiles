@@ -18,9 +18,10 @@ tap caskroom/cask || true
 install brew-cask
 cask alfred link
 cask install alfred
-cask install karabiner
 cask install google-chrome
+cask install gyazo
 cask install iterm2
+cask install karabiner
 cask install macvim
 cask install totalfinder
 cask install yorufukurou
