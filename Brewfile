@@ -19,6 +19,7 @@ install brew-cask
 cask alfred link
 cask install alfred
 cask install google-chrome
+cask install iterm2
 cask install macvim
 cask install yorufukurou
 
