@@ -15,6 +15,7 @@ setopt EXTENDED_HISTORY
 setopt HIST_EXPAND
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_IGNORE_SPACE
+setopt transient_rprompt
 
 
 ## variable
