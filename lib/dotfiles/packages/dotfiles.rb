@@ -4,10 +4,12 @@ module Dotfiles
       PATH = File.expand_path("~/src/github.com/r7kamura/dotfiles")
 
       def update
-        system(<<-EOS)
-          cd #{PATH}/linked &&
-          ls -FA | grep -v .DS_Store | xargs -I% ln -s $(PWD)/% ~/%
-        EOS
+        (Dir.entries("linked") - [".DS_Store", ".", ".."]).each do |filename|
+          destination = File.expand_path("linked/#{filename}")
+          destination = destination + "/" if File.directory?(destination)
+          source = File.expand_path("~/#{filename}")
+          File.symlink(destination, source) rescue nil
+        end
       end
 
       def installed?
