@@ -17,11 +17,9 @@ install zsh
 tap caskroom/cask || true
 install brew-cask
 cask install google-chrome
+cask install macvim
 
 tap r7kamura/ghq
 install ghq
-
-tap supermomonga/homebrew-splhack
-install macvim-kaoriya --HEAD
 
 cleanup
