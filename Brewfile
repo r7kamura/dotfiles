@@ -21,6 +21,7 @@ cask install alfred
 cask install google-chrome
 cask install iterm2
 cask install macvim
+cask install totalfinder
 cask install yorufukurou
 
 tap r7kamura/ghq
