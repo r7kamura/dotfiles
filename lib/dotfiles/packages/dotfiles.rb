@@ -6,7 +6,7 @@ module Dotfiles
       def update
         system(<<-EOS)
           cd #{PATH}/linked &&
-          ls -A | grep -v .DS_Store | xargs -I% [ -L ~/% ] || ln -s $(PWD)/% ~/%
+          ls -FA | grep -v .DS_Store | xargs -I% ln -s $(PWD)/% ~/%
         EOS
       end
 
