@@ -21,4 +21,7 @@ cask install google-chrome
 tap r7kamura/ghq
 install ghq
 
+tap supermomonga/homebrew-splhack
+install macvim-kaoriya --HEAD
+
 cleanup
