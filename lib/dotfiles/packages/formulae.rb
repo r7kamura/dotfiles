@@ -5,6 +5,10 @@ module Dotfiles
         system("brew bundle")
       end
 
+      def installed?
+        true
+      end
+
       def uninstall
         system("brew list | xargs brew uninstall")
       end
