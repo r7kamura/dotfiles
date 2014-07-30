@@ -28,4 +28,7 @@ cask install yorufukurou
 tap r7kamura/ghq
 install ghq
 
+tap peco/peco
+install peco
+
 cleanup
