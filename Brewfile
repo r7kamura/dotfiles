@@ -18,7 +18,6 @@ tap caskroom/cask || true
 install brew-cask
 cask alfred link
 cask install alfred
-cask install divvy
 cask install google-chrome
 cask install macvim
 cask install yorufukurou
