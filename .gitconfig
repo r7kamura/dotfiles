@@ -1,5 +1,6 @@
 [user]
   name = Ryo Nakamura
+  email = r7kamura@gmail.com
 
 [include]
   path = .gitconfig.local
