@@ -19,9 +19,11 @@ install brew-cask
 cask alfred link
 cask install alfred
 cask install google-chrome
+cask install google-japanese-ime
 cask install gyazo
 cask install iterm2
 cask install karabiner
+cask install kobito
 cask install macvim
 cask install totalfinder
 cask install yorufukurou
