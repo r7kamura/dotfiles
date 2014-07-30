@@ -20,9 +20,8 @@ module Dotfiles
 
       def uninstall
         system(<<-EOS)
-          pushd #{PATH}/linked
+          cd #{PATH}/linked
           ls -A | xargs -I% rm ~/%
-          popd
           rm -rf #{PATH}
         EOS
       end
