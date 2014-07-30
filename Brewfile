@@ -2,6 +2,7 @@ update
 upgrade
 
 install go
+install mysql
 install openssl
 install rbenv
 install readline
