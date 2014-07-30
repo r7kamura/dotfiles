@@ -4,7 +4,10 @@ module Dotfiles
       PATH = File.expand_path("~/src/github.com/r7kamura/dotfiles")
 
       def update
-        system("cd #{PATH}/linked && ls -A | grep -v .DS_Store | xargs -I% ln -s $(PWD)/% ~/%")
+        system(<<-EOS)
+          cd #{PATH}/linked &&
+          ls -A | grep -v .DS_Store | xargs -I% [ -L ~/% ] || ln -s $(PWD)/% ~/%
+        EOS
       end
 
       def installed?
