@@ -35,6 +35,7 @@
 
 [alias]
   br = branch
+  co = checkout
   dbr = !git branch --merged | grep -v \"\\* \" | xargs git branch --delete
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
