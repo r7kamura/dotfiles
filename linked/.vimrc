@@ -95,23 +95,23 @@ let g:gist_open_browser_after_post = 1
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*.swo
 
 " vim-altr
-call altr#remove_all()
-call altr#define('lib/%.rb', 'spec/%_spec.rb', 'spec/libs/%_spec.rb')
-call altr#define(
-\  'app/decorators/%.rb',
-\  'spec/decorators/%_spec.rb')
-call altr#define(
-\  'app/models/%.rb',
-\  'spec/models/%_spec.rb')
-call altr#define(
-\ 'app/controllers/%_controller.rb',
-\ 'spec/controllers/%_spec.rb',
-\ 'spec/controllers/%_controller_spec.rb',
-\ 'spec/requests/%_spec.rb',
-\ 'spec/integration/%_spec.rb')
-call altr#define(
-\ 'app/helpers/%.rb',
-\ 'spec/helpers/%_spec.rb')
+" call altr#remove_all()
+" call altr#define('lib/%.rb', 'spec/%_spec.rb', 'spec/libs/%_spec.rb')
+" call altr#define(
+" \  'app/decorators/%.rb',
+" \  'spec/decorators/%_spec.rb')
+" call altr#define(
+" \  'app/models/%.rb',
+" \  'spec/models/%_spec.rb')
+" call altr#define(
+" \ 'app/controllers/%_controller.rb',
+" \ 'spec/controllers/%_spec.rb',
+" \ 'spec/controllers/%_controller_spec.rb',
+" \ 'spec/requests/%_spec.rb',
+" \ 'spec/integration/%_spec.rb')
+" call altr#define(
+" \ 'app/helpers/%.rb',
+" \ 'spec/helpers/%_spec.rb')
 
 let g:indent_guides_enable_on_vim_startup = 1
 
