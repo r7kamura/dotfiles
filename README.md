@@ -1,8 +1,9 @@
 ## Install
 * command-line-tools
 * dotfiles
+* homebrew
+* karabiner
 * login-shell
-* homebrew w/ bottles
 
 ```sh
 curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh | bash
