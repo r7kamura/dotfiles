@@ -20,6 +20,7 @@ tap caskroom/cask || true
 install brew-cask
 cask alfred link
 cask install alfred
+cask install atom
 cask install dropbox
 cask install google-chrome
 cask install google-japanese-ime
