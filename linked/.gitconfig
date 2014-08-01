@@ -28,6 +28,7 @@
   autocrlf     = input
   quotepath    = false
   excludesfile = ~/.gitexcludes
+  editor = atom --wait
 
 [branch]
   quotepath       = true
