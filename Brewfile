@@ -28,6 +28,7 @@ cask install gyazo
 cask install iterm2
 cask install karabiner
 cask install kobito
+cask install licecap
 cask install macvim
 cask install totalfinder
 cask install yorufukurou
