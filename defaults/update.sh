@@ -16,5 +16,5 @@ defaults write -g com.apple.keyboard.fnState -bool true
 # Enable full-keyboard-access (allowing tab-key to focus on all things)
 defaults write -g AppleKeyboardUIMode -int 3
 
-# Reboot Dock to reflect the changes
+# Reboot Dock to reflect the changes of com.apple.dock
 killall Dock
