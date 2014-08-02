@@ -13,5 +13,8 @@ defaults write com.apple.dock persistent-others -array
 # Use function keys as normal
 defaults write -g com.apple.keyboard.fnState -bool true
 
+# Enable full-keyboard-access (allowing tab-key to focus on all things)
+defaults write -g AppleKeyboardUIMode -int 3
+
 # Reboot Dock to reflect the changes
 killall Dock
