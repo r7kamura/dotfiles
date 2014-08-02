@@ -33,6 +33,7 @@ cask install licecap
 cask install macvim
 cask install slack
 cask install totalfinder
+cask install vlc
 cask install yorufukurou
 
 tap r7kamura/ghq
