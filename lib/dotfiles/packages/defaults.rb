@@ -2,7 +2,7 @@ module Dotfiles
   module Packages
     class Defaults < Base
       def update
-        system("bash defaults/install.sh")
+        system("bash defaults/update.sh")
       end
     end
   end
