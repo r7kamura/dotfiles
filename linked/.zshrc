@@ -98,5 +98,9 @@ p() { peco | while read LINE; do $@ $LINE; done }
 ## Go...
 export PATH=$PATH:/usr/local/Cellar/go/1.2.1/libexec/bin
 
+## Ruby
+export PATH="$HOME/.rbenv/bin:$PATH"
+eval "$(rbenv init -)"
+
 ## local
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
