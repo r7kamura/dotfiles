@@ -6,6 +6,7 @@ install hub
 install mysql
 install openssl
 install rbenv
+install rbenv-default-gems # depends on rbenv
 install readline
 install reattach-to-user-namespace
 install redis
