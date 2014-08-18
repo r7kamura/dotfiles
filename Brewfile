@@ -4,6 +4,7 @@ upgrade
 install go
 install hub
 install mysql
+install npm
 install openssl
 install rbenv
 install rbenv-default-gems # depends on rbenv
