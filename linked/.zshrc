@@ -102,5 +102,7 @@ export PATH=$PATH:/usr/local/Cellar/go/1.2.1/libexec/bin
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 
+export ATOM_PATH=/opt/homebrew-cask/Caskroom/atom/latest
+
 ## local
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
