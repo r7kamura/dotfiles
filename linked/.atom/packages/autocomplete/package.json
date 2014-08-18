@@ -1,0 +1,31 @@
+{
+  "name": "autocomplete",
+  "version": "0.31.0",
+  "main": "./lib/autocomplete",
+  "description": "Display possible completions in the editor with `ctrl-space`.",
+  "activationEvents": {
+    "autocomplete:toggle": ".editor"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/atom/autocomplete"
+  },
+  "engines": {
+    "atom": "*"
+  },
+  "dependencies": {
+    "underscore-plus": "1.x"
+  },
+  "readme": "# Autocomplete package [![Build Status](https://travis-ci.org/atom/autocomplete.svg?branch=master)](https://travis-ci.org/atom/autocomplete)\n\nView and insert possible completions in the editor using `ctrl-space`.\n\nLooking to use a different keybinding? Copy the following to your\n`~/.atom/keymap.cson` to tweak:\n\n```coffee\n'.active.pane':\n  'ctrl-space': 'autocomplete:toggle'\n```\n\n![](https://f.cloud.github.com/assets/671378/2241254/23bc3d0c-9cc8-11e3-80fe-68f58316a52a.png)\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/atom/autocomplete/issues"
+  },
+  "homepage": "https://github.com/atom/autocomplete",
+  "_id": "autocomplete@0.31.0",
+  "dist": {
+    "shasum": "6d90f1b674ddbc0f9c63c0a4752b9144cfba4627"
+  },
+  "_resolved": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-114718-11013-10yaxvo/package.tgz",
+  "_from": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-114718-11013-10yaxvo/package.tgz"
+}

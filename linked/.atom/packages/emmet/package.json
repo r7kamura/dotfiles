@@ -1,0 +1,28 @@
+{
+  "name": "emmet",
+  "description": "Emmet – the essential tool for web developers",
+  "main": "./lib/emmet",
+  "version": "2.1.2",
+  "dependencies": {
+    "emmet": "^1.1.6"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/emmetio/emmet-atom"
+  },
+  "engines": {
+    "atom": "*"
+  },
+  "readme": "# Emmet plugin Atom editor\n\n[Emmet](http://emmet.io) support for [Atom](http://atom.io).\n\n## Installation\n\nIn Atom, open Preferences > Packages, search for `Emmet` package. Once it found, click `Install` button to install package.\n\n### Manual installation\n\nYou can install the latest Emmet version manually from console:\n\n```bash\ncd ~/.atom/packages\ngit clone https://github.com/emmetio/emmet-atom\ncd emmet-atom\nnpm install\n```\n\nThen restart Atom editor.\n\n## Features:\n\n* Expand abbreviations by <kbd>Tab</kbd> key.\n* Multiple cursor support: most [Emmet actions](http://docs.emmet.io/actions/) like Expand Abbreviation, Wrap with Abbreviation, Update Tag can run in multi-cursor mode.\n* Interactive actions (Interactive Expand Abbreviation, Wrap With Abbreviation, Update Tag) allows you to preview result real-time as you type.\n* Better tabstops in generated content: when abbreviation expanded, hit <kbd>Tab</kbd> key to quickly traverse between important code points.\n* [Emmet v1.1 core](http://emmet.io/blog/beta-v1-1/).\n\nPlease report any problems at [issue tracker](https://github.com/emmetio/emmet-atom/issues).\n\n## Default Keybindings\n\nYou can change these Preferences > Emmet.\n\nCommand | Darwin | Linux/Windows\n------- | ------ | -------------\nExpand Abbreviation | <kbd>tab</kbd> or <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>e</kbd> | <kbd>tab</kbd> or <kbd>ctrl</kbd> + <kbd>e</kbd>\nExpand Abbreviation (interactive) | <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>enter</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>enter</kbd>\nWrap with Abbreviation | <kbd>ctrl</kbd> + <kbd>w</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>w</kbd>\nBalance (outward) | <kbd>ctrl</kbd> + <kbd>d</kbd> | <kbd>ctrl</kbd> + <kbd>,</kbd>\nBalance (inward) | <kbd>alt</kbd> + <kbd>d</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>0</kbd>\nGo to Matching Pair | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>j</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>j</kbd>\nNext Edit Point | <kbd>ctrl</kbd> + <kbd>→</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>→</kbd>\nPrevious Edit Point | <kbd>ctrl</kbd> + <kbd>←</kbd> | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>←</kbd>\nSelect Next Item | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>→</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>.</kbd>\nSelect Previous Item | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>←</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>,</kbd>\nToggle Comment | <kbd>⌘</kbd> + <kbd>/</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>/</kbd>\nSplit/Join Tag | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>j</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>`</kbd>\nRemove Tag | <kbd>⌘</kbd> + <kbd>'</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>;</kbd>\nEvaluate Math Expression | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>y</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>y</kbd>\nIncrement Number by 0.1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>↑</kbd> | <kbd>alt</kbd> + <kbd>↑</kbd>\nDecrement Number by 0.1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>↓</kbd> | <kbd>alt</kbd> + <kbd>↓</kbd>\nIncrement Number by 1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>↑</kbd> | <kbd>ctrl</kbd> + <kbd>↑</kbd>\nDecrement Number by 1 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>↓</kbd> | <kbd>ctrl</kbd> + <kbd>↓</kbd>\nIncrement Number by 10 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>shift</kbd> + <kbd>↑</kbd> | <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>↑</kbd>\nDecrement Number by 10 | <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>⌘</kbd> + <kbd>shift</kbd> + <kbd>↓</kbd> | <kbd>shift</kbd> + <kbd>alt</kbd> + <kbd>↓</kbd>\nReflect CSS value | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>r</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>r</kbd>\nUpdate Image Size | <kbd>ctrl</kbd> + <kbd>i</kbd> | <kbd>ctrl</kbd> + <kbd>u</kbd>\nEncode/Decode image to data:URL | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>i</kbd> | <kbd>ctrl</kbd> + <kbd>'</kbd>\nUpdate Tag | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>u</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>'</kbd>\nMerge Lines | <kbd>shift</kbd> + <kbd>⌘</kbd> + <kbd>m</kbd> | <kbd>ctrl</kbd> + <kbd>shift</kbd> + <kbd>m</kbd>\n\nAll actions and their keyboard shortcuts are available under Packages > Emmet menu item.\n\n## Extensions support\n\nYou can easily [extend](http://docs.emmet.io/customization/) Emmet with new actions and filters or customize existing ones. In Preferences > Emmet, set Extensions path to folder with Emmet extensions. By default, it’s `~/emmet`, e.g. `emmet` folder in your system HOME folder.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/emmetio/emmet-atom/issues"
+  },
+  "homepage": "https://github.com/emmetio/emmet-atom",
+  "_id": "emmet@2.1.2",
+  "dist": {
+    "shasum": "d2c01362a084df8ca3d8f3c0dddd3aa2ccdd75be"
+  },
+  "_resolved": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-11479-1703-c6297m/package.tgz",
+  "_from": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-11479-1703-c6297m/package.tgz"
+}

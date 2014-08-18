@@ -1,0 +1,51 @@
+@import 'ui-variables';
+
+.emmet-panel {
+	position: absolute;
+	z-index: 10;
+	background: @pane-item-background-color;
+	color: @text-color;
+	padding: 5px;
+	min-width: 200px;
+	font-size: 12px;
+	-webkit-box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+	box-shadow: 0 0 20px rgba(0, 0, 0, .5);
+	
+	&-tail {
+		position: absolute;
+		left: 8px;
+		margin-top: -6px;
+		width: 15px;
+		height: 15px;
+		content: '';
+		display: inline-block;
+		background: inherit;
+		z-index: -1;
+		-webkit-transform: rotate(45deg);
+		transform: rotate(45deg);
+	}
+
+	.editor.mini {
+		z-index: 1;
+		line-height: 16px;
+	}
+}
+
+.emmet-prompt {
+	min-width: -webkit-min-content;
+	padding: 10px;
+
+	/* &__label {
+		display: inline-block;
+		white-space: nowrap;
+		min-width: -webkit-min-content;
+		min-width: min-content;
+		padding-right: 10px;
+		margin: 0;
+	} */
+
+	&__input {
+		flex: 1 100%;
+		margin: 0;
+	}
+}

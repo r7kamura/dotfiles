@@ -1,0 +1,6 @@
+'.editor':
+  'ctrl-space': 'autocomplete:toggle'
+
+'.autocomplete .mini.editor input':
+  'enter': 'core:confirm'
+  'tab': 'core:confirm'
