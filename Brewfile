@@ -36,6 +36,7 @@ cask install macvim
 cask install skitch
 cask install slack
 cask install totalfinder
+cask install vagrant
 cask install vlc
 cask install yorufukurou
 
