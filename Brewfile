@@ -34,6 +34,7 @@ cask install karabiner
 cask install kobito
 cask install licecap
 cask install macvim
+cask install sequel-pro
 cask install skitch
 cask install slack
 cask install totalfinder
