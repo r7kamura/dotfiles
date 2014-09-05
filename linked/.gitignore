@@ -2,3 +2,4 @@
 .DS_Store
 *.swp
 .vim/.netrwhist
+node_modules
