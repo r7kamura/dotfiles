@@ -1,0 +1,5 @@
+{
+  ".editor": {
+    "ctrl-b": "git-blame:toggle"
+  }
+}

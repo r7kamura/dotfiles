@@ -1,7 +1,8 @@
 'editor':
-  'fontSize': 15
   'showInvisibles': true
   'softWrap': true
+  'preferredLineLength': 100
+  'fontSize': 15
 'core':
   'excludeVcsIgnoredPaths': true
 'exception-reporting':
@@ -13,3 +14,9 @@
 'tree-view':
   'hideVcsIgnoredFiles': true
   'hideIgnoredNames': true
+'atom-alignment':
+  'alignmentSpaceChars': [
+    '='
+    ':'
+    '=>'
+  ]

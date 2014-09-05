@@ -1,0 +1,34 @@
+{
+  "name": "git-blame",
+  "main": "./lib/git-blame",
+  "version": "0.2.4",
+  "description": "Toggle git-blame annotations in the gutter of atom editor.",
+  "activationEvents": [
+    "git-blame:toggle"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexcorre/git-blame"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+    "underscore": "1.6.0",
+    "moment": "2.6.x",
+    "loophole": "1.0.x"
+  },
+  "readme": "#git-blame\n\n> Toggle git-blame annotations for the current file in the gutter of atom editor.\n\n![screenshot](https://raw.githubusercontent.com/alexcorre/git-blame/master/images/screen-shot.png)\n\n## Usage\n\nShow git blame for the current editor with the command `ctrl-b`. Only works when `.editor` is active. Submodules? No problem. Click on the revision to be taken to the commit page on Github, Bitbucket, or your remote repository url of choice.\n\n## Setting a Custom Remote Repo Url\nThis plugin will first check to see if your repo is backed by **Github** or **Bitbucket** so nothing is required if your repo is hosted on one of these.\n\nIf its not, you can easily set a custom revision URL string like so:\n- From the settings view go to settings for this package *Git Blame*\n- Check the box for \"Use Custom Url Template If Standard Remotes Fail\"\n- Set your url format string in the box labeled Custom Commit Url String\n\n![url-settings](https://raw.githubusercontent.com/alexcorre/git-blame/master/images/url-settings.png)\n\nThe URL string should contain the following three placeholder variables wrapped in underscore template delimiters like so: `<%- variable %>`.\n- `project` - Will be replaced with the name of the project in your remote git repository. For this repo it would be `alexcorre`.\n- `repo` - Will be replaced with the name of the repository. For this repo it would be `git-blame`.\n- `revision` - Will be replaced with the full git revision hash you clicked on.\n\nI'll use github as an example. Its already supported out of the box, but if it wasn't its custom url string would be:\n\n```\nhttps://github.com/<%- project %>/<%- repo %>/commit/<%- revision %>\n```\nSo when you clicked on hash revision 12345 in this git-blame repository, you would visit the following url:\n\n```\nhttps://github.com/alexcorre/git-blame/commit/12345\n```\n\n## Release History\n\n* **0.2.0**: Initial Release\n* **0.2.1**\n  - Fix [Issue #1](https://github.com/alexcorre/git-blame/issues/1). Remote URL parsing.\n  - Added RemoteRevision unit tests\n* **0.2.2**: [Pull #6](https://github.com/alexcorre/git-blame/pull/6). Remote URL parsing without .git.\n* **0.2.3**: [Issue #5](https://github.com/alexcorre/git-blame/issues/5). Fix multiple gutters. Better error handling.\n* **0.2.4**: React editor support. Support for repsitories that dont specify a project.\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/alexcorre/git-blame/issues"
+  },
+  "homepage": "https://github.com/alexcorre/git-blame",
+  "_id": "git-blame@0.2.4",
+  "dist": {
+    "shasum": "3d9adeda716cd5acebc59920310c7acbfe3463e0"
+  },
+  "_resolved": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-11481-49603-q7fb23/package.tgz",
+  "_from": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-11481-49603-q7fb23/package.tgz"
+}

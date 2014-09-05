@@ -7,12 +7,13 @@ describe "Operators", ->
     vimMode = atom.packages.loadPackage('vim-mode')
     vimMode.activateResources()
 
-    editorView = helpers.cacheEditor(editorView)
-    editor = editorView.editor
+    helpers.cacheEditor editorView, (view) ->
+      editorView = view
+      editor = editorView.editor
 
-    vimState = editorView.vimState
-    vimState.activateCommandMode()
-    vimState.resetCommandMode()
+      vimState = editorView.vimState
+      vimState.activateCommandMode()
+      vimState.resetCommandMode()
 
   keydown = (key, options={}) ->
     options.element ?= editorView[0]
@@ -436,6 +437,8 @@ describe "Operators", ->
 
       it "saves the line to the default register", ->
         expect(vimState.getRegister('"').text).toBe "012 345\n"
+
+      it "leaves the cursor at the starting position", ->
         expect(editor.getCursorScreenPosition()).toEqual [0, 4]
 
     describe "when followed with a repeated y", ->
@@ -446,6 +449,9 @@ describe "Operators", ->
 
       it "copies n lines, starting from the current", ->
         expect(vimState.getRegister('"').text).toBe "012 345\nabc\n"
+
+      it "leaves the cursor at the starting position", ->
+        expect(editor.getCursorScreenPosition()).toEqual [0, 4]
 
     describe "with a register", ->
       beforeEach ->
@@ -464,6 +470,31 @@ describe "Operators", ->
 
       it "saves the first word to the default register", ->
         expect(vimState.getRegister('"').text).toBe '345'
+
+      it "leaves the cursor at the starting position", ->
+        expect(editor.getCursorScreenPosition()).toEqual [0, 4]
+
+    describe "with a left motion", ->
+      beforeEach ->
+        keydown('y')
+        keydown('h')
+
+        it "saves the left letter to the default register", ->
+          expect(vimState.getRegister('"').text).toBe " "
+
+        it "moves the cursor position to the left", ->
+          expect(editor.getCursorScreenPosition()).toEqual [0, 3]
+
+    describe "with a down motion", ->
+      beforeEach ->
+        keydown 'y'
+        keydown 'j'
+
+      it "saves both full lines to the default register", ->
+        expect(vimState.getRegister('"').text).toBe "012 345\nabc\n"
+
+      it "leaves the cursor at the starting position", ->
+        expect(editor.getCursorScreenPosition()).toEqual [0, 4]
 
   describe "the yy keybinding", ->
     describe "on a single line file", ->
@@ -489,8 +520,17 @@ describe "Operators", ->
         keydown('y')
         keydown('p')
 
-        expect(vimState.getRegister('"').text).toBe "no newline!"
+        expect(vimState.getRegister('"').text).toBe "no newline!\n"
         expect(editor.getText()).toBe "no newline!\nno newline!"
+
+      it "copies the entire line and pastes it respecting count and new lines", ->
+        keydown('y')
+        keydown('y')
+        keydown('2')
+        keydown('p')
+
+        expect(vimState.getRegister('"').text).toBe "no newline!\n"
+        expect(editor.getText()).toBe "no newline!\nno newline!\nno newline!"
 
   describe "the Y keybinding", ->
     beforeEach ->
@@ -541,39 +581,53 @@ describe "Operators", ->
 
           expect(editor.getText()).toBe "abcdetwo three\none "
 
+      describe "with a selection", ->
+        beforeEach ->
+          editor.selectRight()
+          keydown('p')
+
+        it "replaces the current selection", ->
+          expect(editor.getText()).toBe "34512\n"
+          expect(editor.getCursorScreenPosition()).toEqual [0, 2]
 
     describe "with linewise contents", ->
-      beforeEach ->
-        editor.getBuffer().setText("012")
-        editor.setCursorScreenPosition([0, 1])
-        vimState.setRegister('"', text: " 345\n", type: 'linewise')
-        keydown('p')
+      describe "on a single line", ->
+        beforeEach ->
+          editor.getBuffer().setText("012")
+          editor.setCursorScreenPosition([0, 1])
+          vimState.setRegister('"', text: " 345\n", type: 'linewise')
 
-      it "inserts the contents of the default register", ->
-        expect(editor.getText()).toBe "012\n 345"
-        expect(editor.getCursorScreenPosition()).toEqual [1, 1]
+        it "inserts the contents of the default register", ->
+          keydown('p')
 
-    describe "with linewise contents", ->
-      beforeEach ->
-        editor.getBuffer().setText("012\n 345")
-        editor.setCursorScreenPosition([0, 1])
-        vimState.setRegister('"', text: " 456\n", type: 'linewise')
-        keydown('p')
+          expect(editor.getText()).toBe "012\n 345"
+          expect(editor.getCursorScreenPosition()).toEqual [1, 1]
 
-      it "inserts the contents of the default register at middle line", ->
-        expect(editor.getText()).toBe "012\n 456\n 345"
-        expect(editor.getCursorScreenPosition()).toEqual [1, 1]
+        it "replaces the current selection", ->
+          editor.selectRight()
+          keydown('p')
 
-    describe "with linewise contents", ->
-      beforeEach ->
-        editor.getBuffer().setText("012\n 345")
-        editor.setCursorScreenPosition([1, 1])
-        vimState.setRegister('"', text: " 456", type: 'linewise')
-        keydown('p')
+          expect(editor.getText()).toBe "0 345\n2"
+          expect(editor.getCursorScreenPosition()).toEqual [1, 0]
 
-      it "inserts the contents of the default register at end of line", ->
-        expect(editor.getText()).toBe "012\n 345\n 456"
-        expect(editor.getCursorScreenPosition()).toEqual [2, 1]
+      describe "on multiple lines", ->
+        beforeEach ->
+          editor.getBuffer().setText("012\n 345")
+          vimState.setRegister('"', text: " 456\n", type: 'linewise')
+
+        it "inserts the contents of the default register at middle line", ->
+          editor.setCursorScreenPosition([0, 1])
+          keydown('p')
+
+          expect(editor.getText()).toBe "012\n 456\n 345"
+          expect(editor.getCursorScreenPosition()).toEqual [1, 1]
+
+        it "inserts the contents of the default register at end of line", ->
+          editor.setCursorScreenPosition([1, 1])
+          keydown('p')
+
+          expect(editor.getText()).toBe "012\n 345\n 456"
+          expect(editor.getCursorScreenPosition()).toEqual [2, 1]
 
     describe "with multiple linewise contents", ->
       beforeEach ->
@@ -816,6 +870,17 @@ describe "Operators", ->
           it "outdents all three lines", ->
             expect(editor.getText()).toBe "12345\nabcde\nABCDE"
 
+    describe "in visual mode", ->
+      beforeEach ->
+        editor.setCursorScreenPosition([0, 0])
+        keydown('v', shift: true)
+        keydown('>')
+
+      it "indents the current line and remains in visual mode", ->
+        expect(editorView).toHaveClass 'visual-mode'
+        expect(editor.getText()).toBe "  12345\nabcde\nABCDE"
+        expect(editor.getSelectedText()).toBe "  12345\n"
+
   describe "the < keybinding", ->
     beforeEach ->
       editor.setText("  12345\n  abcde\nABCDE")
@@ -845,6 +910,16 @@ describe "Operators", ->
 
         it "indents both lines", ->
           expect(editor.getText()).toBe "  12345\n  abcde\nABCDE"
+
+    describe "in visual mode", ->
+      beforeEach ->
+        keydown('v', shift: true)
+        keydown('<')
+
+      it "indents the current line and remains in visual mode", ->
+        expect(editorView).toHaveClass 'visual-mode'
+        expect(editor.getText()).toBe "12345\n  abcde\nABCDE"
+        expect(editor.getSelectedText()).toBe "12345\n"
 
   describe "the = keybinding", ->
     oldGrammar = []

@@ -1,5 +1,17 @@
 ## Changelog
 
+### 3.10.3
+
+- Fix for branch names being shortened unnecessarily.
+
+### 3.10.2
+
+- Fix 'Git Log' for windows users
+
+### 3.10.1
+
+- Git pull lists remotes if there are multiple and remote branches
+
 ### 3.9.0
 
 - From the Git Status list, you can go to the modified file or open its diff file
