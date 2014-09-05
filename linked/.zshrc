@@ -86,7 +86,7 @@ alias gv='git commit -v'
 alias e='ghq list -p | p cd'
 alias f='ghq get -p $@'
 alias ll='ls -1'
-alias j='find . -type d -name ".git" -prune -o -type d -print | p cd'
+alias j='find . -type d -name ".git" -prune -o -type d -print | p open'
 
 
 ## function
