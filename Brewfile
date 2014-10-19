@@ -4,6 +4,7 @@ upgrade
 install go
 install hub
 install imagemagick
+install jq
 install mysql
 install npm
 install openssl
