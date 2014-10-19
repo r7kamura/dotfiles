@@ -1,0 +1,315 @@
+'fileTypes': [
+  'slim'
+]
+'name': 'Slim'
+'patterns': [
+  {
+    'include': '#embedded-engine-css'
+  }
+  {
+    'include': '#embedded-engine-sass'
+  }
+  {
+    'include': '#embedded-engine-stylus'
+  }
+  {
+    'include': '#embedded-engine-scss'
+  }
+  {
+    'include': '#embedded-engine-coffee'
+  }
+  {
+    'include': '#embedded-engine-javascript'
+  }
+  {
+    'include': '#slim-block-comment'
+  }
+  {
+    'include': '#slim-line-comment'
+  }
+  {
+    'include': '#slim-escaped-content'
+  }
+  {
+    'include': '#ruby-logic'
+  }
+  {
+    'include': '#ruby-content'
+  }
+  {
+    'include': '#ruby-embedded'
+  }
+  {
+    'include': '#tag-unenclosed'
+  }
+  {
+    'include': '#tag-enclosed-1'
+  }
+  {
+    'include': '#tag-enclosed-2'
+  }
+  {
+    'include': '#tag-enclosed-3'
+  }
+  {
+    'include': '#illegal'
+  }
+]
+'repository':
+  'brackets-content-1':
+    'begin': '\\['
+    'end': '\\]'
+    'patterns': [
+      {
+        'include': '#brackets-content-1'
+      }
+      {
+        'include': 'source.ruby.rails'
+      }
+    ]
+  'brackets-content-2':
+    'begin': '\\{'
+    'end': '\\}'
+    'patterns': [
+      {
+        'include': '#brackets-content-2'
+      }
+      {
+        'include': 'source.ruby.rails'
+      }
+    ]
+  'brackets-content-3':
+    'begin': '\\('
+    'end': '\\)'
+    'patterns': [
+      {
+        'include': '#brackets-content-3'
+      }
+      {
+        'include': 'source.ruby.rails'
+      }
+    ]
+  'embedded-engine-coffee':
+    'begin': '^(\\s*)(coffee:)\\s.*$'
+    'beginCaptures':
+      '2':
+        'name': 'entity.name.tag.slim'
+    'end': '^(?!(\\1(\t|  ))|\\s*$)'
+    'patterns': [
+      {
+        'include': 'source.coffee'
+      }
+    ]
+  'embedded-engine-css':
+    'begin': '^(\\s*)(css:)\\s.*$'
+    'beginCaptures':
+      '2':
+        'name': 'entity.name.tag.slim'
+    'end': '^(?!(\\1(\t|  ))|\\s*$)'
+    'patterns': [
+      {
+        'include': 'source.css'
+      }
+    ]
+  'embedded-engine-javascript':
+    'begin': '^(\\s*)(javascript:)\\s.*$'
+    'beginCaptures':
+      '2':
+        'name': 'entity.name.tag.slim'
+    'end': '^(?!(\\1(\t|  ))|\\s*$)'
+    'patterns': [
+      {
+        'include': 'source.js'
+      }
+    ]
+  'embedded-engine-sass':
+    'begin': '^(\\s*)(sass:)\\s.*$'
+    'beginCaptures':
+      '2':
+        'name': 'entity.name.tag.slim'
+    'end': '^(?!(\\1(\t|  ))|\\s*$)'
+    'patterns': [
+      {
+        'include': 'source.sass'
+      }
+    ]
+  'embedded-engine-scss':
+    'begin': '^(\\s*)(scss:)\\s.*$'
+    'beginCaptures':
+      '2':
+        'name': 'entity.name.tag.slim'
+    'end': '^(?!(\\1(\t|  ))|\\s*$)'
+    'patterns': [
+      {
+        'include': 'source.scss'
+      }
+    ]
+  'embedded-engine-stylus':
+    'begin': '^(\\s*)(styl:)\\s.*$'
+    'beginCaptures':
+      '2':
+        'name': 'entity.name.tag.slim'
+    'end': '^(?!(\\1(\t|  ))|\\s*$)'
+    'patterns': [
+      {
+        'include': 'source.stylus'
+      }
+    ]
+  'illegal':
+    'match': '^\\s*+[^\\w=.#|\'-].*$'
+    'name': 'invalid.illegal'
+  'ruby-content':
+    'begin': '==?\'? '
+    'end': '(?<=do\\n)|(?<!\\\\|,)\\n'
+    'name': 'source.ruby.rails.embedded.slim'
+    'patterns': [
+      {
+        'include': 'source.ruby.rails'
+      }
+    ]
+  'ruby-embedded':
+    'begin': '(?<!\\\\)#{'
+    'end': '}'
+    'name': 'source.ruby.rails.embedded.slim'
+    'patterns': [
+      {
+        'include': 'source.ruby.rails'
+      }
+    ]
+  'ruby-logic':
+    'begin': '^\\s*(?=-)'
+    'end': '(?<=do\\n)|(?<!\\\\)\\n'
+    'name': 'source.ruby.rails.embedded.slim'
+    'patterns': [
+      {
+        'include': 'source.ruby.rails'
+      }
+    ]
+  'slim-block-comment':
+    'begin': '^(\\s*)(/)\\s.*$'
+    'end': '^(?!(\\1(\t|  ))|\\s*$)'
+    'name': 'comment.block.slim'
+  'slim-escaped-content':
+    'begin': '^(\\s*)[|\'][ \t]'
+    'end': '^(?!(\\1(\t|  ))|\\s*$)'
+    'name': 'text.slim.escaped-content'
+    'patterns': [
+      {
+        'include': '#ruby-embedded'
+      }
+      {
+        'include': 'text.html.basic'
+      }
+    ]
+  'slim-line-comment':
+    'match': '^\\s*/.*$'
+    'name': 'comment.line.slash.slim'
+  'tag-enclosed-1':
+    'begin': '(([A-Za-z.#][\\w.#-]*\\w)++|\\w)\\['
+    'beginCaptures':
+      '1':
+        'name': 'entity.name.tag.slim'
+    'end': '\\]'
+    'name': 'tag-enclosed-1'
+    'patterns': [
+      {
+        'include': '#tag-params'
+      }
+      {
+        'include': '#ruby-content'
+      }
+    ]
+  'tag-enclosed-2':
+    'begin': '(([A-Za-z.#][\\w.#-]*\\w)++|\\w)\\{'
+    'beginCaptures':
+      '1':
+        'name': 'entity.name.tag.slim'
+    'end': '\\}'
+    'patterns': [
+      {
+        'include': '#tag-params'
+      }
+      {
+        'include': '#ruby-content'
+      }
+    ]
+  'tag-enclosed-3':
+    'begin': '(([A-Za-z.#][\\w.#-]*\\w)++|\\w)\\('
+    'beginCaptures':
+      '1':
+        'name': 'entity.name.tag.slim'
+    'end': '\\)'
+    'patterns': [
+      {
+        'include': '#tag-params'
+      }
+      {
+        'include': '#ruby-content'
+      }
+    ]
+  'tag-param-name':
+    'match': '(?<=[\\s\\[\\{\\(])\\w[\\w:-]*(?==)'
+    'name': 'entity.other.attribute-name.slim'
+  'tag-param-value':
+    'begin': '(?<=\\w)=(?!\\s)'
+    'end': '\\s|(?=[\\]\\}\\)]|:\\s)'
+    'name': 'source.ruby.rails.embedded.slim'
+    'patterns': [
+      {
+        'include': '#brackets-content-1'
+      }
+      {
+        'include': '#brackets-content-2'
+      }
+      {
+        'include': '#brackets-content-3'
+      }
+      {
+        'include': 'source.ruby.rails'
+      }
+    ]
+  'tag-params':
+    'patterns': [
+      {
+        'include': '#tag-param-name'
+      }
+      {
+        'include': '#tag-param-value'
+      }
+    ]
+  'tag-unenclosed':
+    'begin': '(?:^\\s*|(?!^):\\s*)((?:([A-Za-z.#][\\w.#-]*\\w)++|[A-Za-z]))(?![\\[\\{\\(])'
+    'beginCaptures':
+      '1':
+        'name': 'entity.name.tag.slim'
+    'end': '$'
+    'patterns': [
+      {
+        'include': '#tag-params'
+      }
+      {
+        'include': '#inline-tags'
+      }
+      {
+        'include': '#ruby-content'
+      }
+      {
+        'include': '#ruby-embedded'
+      }
+      {
+        'include': '#tag-unenclosed'
+      }
+      {
+        'include': '#tag-enclosed-1'
+      }
+      {
+        'include': '#tag-enclosed-2'
+      }
+      {
+        'include': '#tag-enclosed-3'
+      }
+      {
+        'include': 'text.html.basic'
+      }
+    ]
+'scopeName': 'text.slim'

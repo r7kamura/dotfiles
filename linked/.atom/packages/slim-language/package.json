@@ -1,0 +1,26 @@
+{
+  "name": "slim-language",
+  "version": "2.0.0",
+  "description": "Syntax highlighting for the Slim template language",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ianmitchell/slim-language"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# Atom Slim Support\n\nThis is an automatically generated language package, based off this excellent Sublime Text package: https://github.com/tycooon/slim-tmbundle\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/ianmitchell/slim-language/issues"
+  },
+  "homepage": "https://github.com/ianmitchell/slim-language",
+  "_id": "slim-language@2.0.0",
+  "dist": {
+    "shasum": "b34dffc74f8976464964d79ca3256d6d598ec2a2"
+  },
+  "_resolved": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-11485-48081-1hjeql8/package.tgz",
+  "_from": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-11485-48081-1hjeql8/package.tgz"
+}
