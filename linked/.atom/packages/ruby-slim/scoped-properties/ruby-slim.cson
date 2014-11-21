@@ -1,0 +1,3 @@
+'.text.slim':
+  'editor':
+    'commentStart': '/ '

@@ -1,4 +1,19 @@
 {Subscriber} = require 'emissary'
+os = require 'os'
+
+inputCfg = switch os.platform()
+  when 'darwin'
+    key: 'altKey'
+    mouse: 1
+    middleMouse: true
+  when 'linux'
+    key: 'shiftKey'
+    mouse: 2
+    middleMouse: false
+  else
+    key: 'shiftKey'
+    mouse: 2
+    middleMouse: true
 
 module.exports =
 
@@ -11,55 +26,56 @@ module.exports =
 
   _handleLoad: (editorView) ->
     editor     = editorView.getEditor()
-    scrollView = editorView.find('.scroll-view')
 
-    altDown    = false
-    mouseStart = null
-    mouseEnd   = null
-    columnWidth  = null
+    mouseStart  = null
+    mouseEnd    = null
+    columnWidth = null
 
-    calculateMonoSpacedCharacterWidth = =>
-      if scrollView
-        # Create a span with an x in it and measure its width then remove it
-        span = document.createElement 'span'
-        span.appendChild document.createTextNode('x')
-        scrollView.append span
-        size = span.offsetWidth
-        span.remove()
-        return size
-      null
-
-    onKeyDown = (e) =>
-      if e.which is 18
-        altDown = true
-
-    onKeyUp = (e) =>
-      if e.which is 18
-        altDown = false
+    resetState = =>
+      mouseStart  = null
+      mouseEnd    = null
+      columnWidth = null
 
     onMouseDown = (e) =>
-      if altDown
+      if mouseStart
+        e.preventDefault()
+        return false
+
+      if (inputCfg.middleMouse and e.which is 2) or (e.which is inputCfg.mouse and e[inputCfg.key])
+        resetState()
         columnWidth = calculateMonoSpacedCharacterWidth()
         mouseStart  = overflowableScreenPositionFromMouseEvent(e)
         mouseEnd    = mouseStart
         e.preventDefault()
         return false
 
-    onMouseUp = (e) =>
-      mouseStart = null
-      mouseEnd = null
-
     onMouseMove = (e) =>
       if mouseStart
-        mouseEnd = overflowableScreenPositionFromMouseEvent(e)
-        selectBoxAroundCursors()
+        if (inputCfg.middleMouse and e.which is 2) or (e.which is inputCfg.mouse)
+          mouseEnd = overflowableScreenPositionFromMouseEvent(e)
+          selectBoxAroundCursors()
+          e.preventDefault()
+          return false
+        if e.which == 0
+          resetState()
+
+    # Hijack all the mouse events when selecting
+    hikackMouseEvent = (e) =>
+      if mouseStart
         e.preventDefault()
         return false
 
-    onMouseleave = (e) =>
-      if altDown
-        e.preventDefault()
-        return false
+    onFocusOut = (e) =>
+      resetState()
+
+    # Create a span with an x in it and measure its width then remove it
+    calculateMonoSpacedCharacterWidth = =>
+      span = document.createElement 'span'
+      span.appendChild document.createTextNode('x')
+      editorView.scrollView.append span
+      size = span.offsetWidth
+      span.remove()
+      return size
 
     # I had to create my own version of editorView.screenPositionFromMouseEvent
     # The editorView one doesnt quite do what I need
@@ -71,6 +87,7 @@ module.exports =
       column            = Math.round (pageX - offset.left) / columnWidth
       return {row: row, column: column}
 
+    # Do the actual selecting
     selectBoxAroundCursors = =>
       if mouseStart and mouseEnd
         allRanges = []
@@ -93,11 +110,12 @@ module.exports =
           editor.setSelectedBufferRanges allRanges
 
     # Subscribe to the various things
-    @subscribe editorView, 'keydown',    onKeyDown
-    @subscribe editorView, 'keyup',      onKeyUp
-    @subscribe editorView, 'mousedown',  onMouseDown
-    @subscribe editorView, 'mouseup',    onMouseUp
-    @subscribe editorView, 'mousemove',  onMouseMove
-    @subscribe editorView, 'mouseleave', onMouseleave
+    @subscribe editorView, 'mousedown',   onMouseDown
+    @subscribe editorView, 'mousemove',   onMouseMove
+    @subscribe editorView, 'mouseup',     hikackMouseEvent
+    @subscribe editorView, 'mouseleave',  hikackMouseEvent
+    @subscribe editorView, 'mouseenter',  hikackMouseEvent
+    @subscribe editorView, 'contextmenu', hikackMouseEvent
+    @subscribe editorView, 'focusout',    onFocusOut
 
 Subscriber.extend module.exports

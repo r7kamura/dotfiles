@@ -1,0 +1,37 @@
+{
+  "name": "language-ejs",
+  "version": "0.1.0",
+  "private": true,
+  "description": "EJS support for Atom.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/darron/language-ejs"
+  },
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {},
+  "readme": "# language-ejs package\n\nEJS support for Atom.\n\nConverted from [https://github.com/gregory-m/ejs-tmbundle](https://github.com/gregory-m/ejs-tmbundle).\n",
+  "readmeFilename": "README.md",
+  "bugs": {
+    "url": "https://github.com/darron/language-ejs/issues"
+  },
+  "homepage": "https://github.com/darron/language-ejs",
+  "_id": "language-ejs@0.1.0",
+  "dist": {
+    "shasum": "e442df56fef1ba246481fc316973d676aa547613"
+  },
+  "_resolved": "/private/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-1141014-29222-31vsuc/package.tgz",
+  "_from": "/private/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-1141014-29222-31vsuc/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [],
+    "extensions": {
+      ".json": [
+        "package.json"
+      ]
+    },
+    "folders": []
+  }
+}

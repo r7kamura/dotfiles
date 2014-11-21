@@ -1,0 +1,133 @@
+'.text.slim':
+  'HTML 5':
+    'prefix': 'doctype'
+    'body': 'doctype 5'
+  'XHTML 1.0 Strict':
+    'prefix': 'doctype'
+    'body': 'doctype strict'
+  'XHTML 1.0 Transitional':
+    'prefix': 'doctype'
+    'body': 'doctype transitional'
+  'XHTML 1.1':
+    'prefix': 'doctype'
+    'body': 'doctype 1.1'
+  '.columns':
+    'prefix': '.c'
+    'body': '.columns.clearfix\n\t.column.one\n\t.column.two\n\t.column.three'
+  'a':
+    'prefix': 'a'
+    'body': 'a href="${1:/}"$0'
+  'blockquote':
+    'prefix': 'b'
+    'body': 'blockquote'
+  'br':
+    'prefix': 'br'
+    'body': 'br\n\t'
+  'div (class)':
+    'prefix': '.'
+    'body': '.${1:class_selector}\n\t$0'
+  'div (id)':
+    'prefix': '#'
+    'body': '#${1:id_selector}\n\t$0'
+  'emphasized':
+    'prefix': 'e'
+    'body': 'em $0'
+  'filter (erb)':
+    'prefix': ':f'
+    'body': 'erb:\n\t$0'
+  'filter (escaped)':
+    'prefix': ':f'
+    'body': 'escaped:\n\t$0'
+  'filter (javascript)':
+    'prefix': ':f'
+    'body': 'javascript:\n\t$0'
+  'filter (markdown)':
+    'prefix': ':f'
+    'body': 'markdown:\n\t$0'
+  'filter (plain)':
+    'prefix': ':f'
+    'body': 'plain:\n\t$0'
+  'filter (preserve)':
+    'prefix': ':f'
+    'body': 'preserve:\n\t$0'
+  'filter (ruby)':
+    'prefix': ':f'
+    'body': 'ruby:\n\t$0'
+  'filter (sass)':
+    'prefix': ':f'
+    'body': 'sass:\n\t$0'
+  'filter (textile)':
+    'prefix': ':f'
+    'body': 'textile:\n\t$0'
+  'h1':
+    'prefix': 'h'
+    'body': 'h1 ${1:Heading Level 1}\n$0'
+  'h2':
+    'prefix': 'h'
+    'body': 'h2 ${1:Heading Level 2}\n$0'
+  'h3':
+    'prefix': 'h'
+    'body': 'h3 ${1:Heading Level 3}\n$0'
+  'h4':
+    'prefix': 'h'
+    'body': 'h4 ${1:Heading Level 4}\n$0'
+  'h5':
+    'prefix': 'h'
+    'body': 'h5 ${1:Heading Level 5}\n$0'
+  'h6':
+    'prefix': 'h'
+    'body': 'h6 ${1:Heading Level 6}\n$0'
+  'li':
+    'prefix': 'li'
+    'body': 'li ${5:Lorem ipsum...}$0'
+  'link_to (route)':
+    'prefix': '='
+    'body': '= link_to "${1:Anchor Text}", ${2:route}_url'
+  'link_to (url)':
+    'prefix': '='
+    'body': '= link_to "${1:Anchor Text}", "${2:#}"'
+  'link_to (wrap selected text)':
+    'prefix': '='
+    'body': '= link_to "Anchor text...", ${1:"${2:$0}"}'
+  'ol':
+    'prefix': 'ol'
+    'body': 'ol${1:#${2:selector}}\n\tli ${3:Lorem ipsum dolor sit amet, consectetur adipisicing elit.}$0'
+  'p':
+    'prefix': 'p'
+    'body': 'p ${1:Lorem ipsum...}'
+  'render_partial':
+    'prefix': '='
+    'body': '= render partial="${1:partial_name}"'
+  'span':
+    'prefix': 's'
+    'body': 'span $0'
+  'strong':
+    'prefix': 's'
+    'body': 'strong $0'
+  'table (basic)':
+    'prefix': 't'
+    'body': 'table\n\ttr\n\t\ttd\n\t\t\t${1:Table Data}'
+  'table (templated)':
+    'prefix': 't'
+    'body': 'table\n\tthead\n\t\ttr\n\t\t\tth\n\t\t\t${1:Table Heading}\n\ttbody\n\t\ttr\n\t\t\ttd\n\t\t\t\t${2:Table Data}'
+  'tbody':
+    'prefix': 't'
+    'body': 'tbody\n\ttr\n\t\ttd\n\t\t\t${1:Table Data} $0'
+  'td':
+    'prefix': 'td'
+    'body': 'td $0'
+  'tfooter':
+    'prefix': 't'
+    'body': 'tfoot\n\ttr\n\t\ttd\n\t\t\t${1:Table Data} $0'
+  'th':
+    'prefix': 'th'
+    'body': 'th $0'
+  'thead':
+    'prefix': 't'
+    'body': 'thead\n\ttr\n\t\tth\n\t\t\t${1:Table Heading} $0'
+  'tr':
+    'prefix': 'tr'
+    'body': 'tr\n\t${1:td}\n\t\t${2:Table Data} $0'
+  'ul':
+    'prefix': 'ul'
+    'body': 'ul${1:#${2:selector}}\n\tli ${3:Lorem ipsum dolor sit amet, consectetur adipisicing elit.}$0'

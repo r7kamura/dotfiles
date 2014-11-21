@@ -75,7 +75,6 @@ alias gg='git grep'
 alias br='git symbolic-ref HEAD | cut -b 12-'
 alias t='tig'
 alias r='bundle exec rspec -f d'
-alias q='exit'
 alias z='v ~/.zshrc'
 alias zz='. ~/.zshrc'
 alias v='atom'
@@ -106,3 +105,6 @@ export ATOM_PATH=/opt/homebrew-cask/Caskroom/atom/latest
 
 ## local
 [ -f ~/.zshrc.local ] && source ~/.zshrc.local
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

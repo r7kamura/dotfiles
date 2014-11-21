@@ -268,7 +268,7 @@
 	<key>HideScrollbar</key>
 	<false/>
 	<key>HideTab</key>
-	<true/>
+	<false/>
 	<key>HighlightTabLabels</key>
 	<true/>
 	<key>HotKeyBookmark</key>
@@ -323,7 +323,7 @@
 	<key>NSTableView Sort Ordering KeyBingingTable</key>
 	<array/>
 	<key>NSWindow Frame Preferences</key>
-	<string>996 305 924 485 0 0 1920 1058 </string>
+	<string>996 294 924 485 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
 	<string>0 0 2560 1440 0 0 2560 1418 </string>
 	<key>NeverWarnAboutMeta</key>
@@ -914,11 +914,11 @@
 			<key>Semantic History</key>
 			<dict>
 				<key>action</key>
-				<string>best editor</string>
+				<string>raw command</string>
 				<key>editor</key>
 				<string>com.sublimetext.2</string>
 				<key>text</key>
-				<string></string>
+				<string>open \1</string>
 			</dict>
 			<key>Send Code When Idle</key>
 			<false/>
@@ -1832,6 +1832,8 @@
 	<integer>8</integer>
 	<key>RightOption</key>
 	<integer>3</integer>
+	<key>SUAutomaticallyUpdate</key>
+	<false/>
 	<key>SUEnableAutomaticChecks</key>
 	<true/>
 	<key>SUFeedURL</key>
@@ -1839,7 +1841,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2014-10-03T08:28:45Z</date>
+	<date>2014-11-14T04:36:38Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Show Toolbelt</key>
@@ -1875,7 +1877,7 @@
 	<key>WebKitDefaultFontSize</key>
 	<integer>11</integer>
 	<key>WebKitStandardFont</key>
-	<string>Lucida Grande</string>
+	<string>.Lucida Grande UI</string>
 	<key>WindowNumber</key>
 	<false/>
 	<key>WindowStyle</key>
