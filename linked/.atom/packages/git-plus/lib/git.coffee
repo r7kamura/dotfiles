@@ -1,4 +1,4 @@
-{BufferedProcess} = require 'atom'
+{BufferedProcess, GitRepository} = require 'atom'
 StatusView = require './views/status-view'
 
 # Public: Execute a git command.
@@ -124,23 +124,24 @@ _prettifyDiff = (data) ->
   data[1..data.length] = ('@@' + line for line in data[1..])
   data
 
-# Returns the root directory for a git repo.
+# Returns the working directory for a git repo.
 # Will search for submodule first if currently
 #   in one or the project root
 #
-# @param submodules boolean determining whether to account for submodules
-dir = (submodules=true) ->
+# @param andSubmodules boolean determining whether to account for submodules
+dir = (andSubmodules=true) ->
   found = false
-  if submodules
+  if andSubmodules
     if submodule = getSubmodule()
-      found = submodule.getWorkingDirectory()
+      return submodule.getWorkingDirectory()
   if not found
-    found = atom.project.getRepo()?.getWorkingDirectory() ? atom.project.getPath()
-  found
+    repo = GitRepository.open(atom.workspace.getActiveEditor()?.getPath())
+    return repo?.getWorkingDirectory() ? atom.project.getPath()
 
-# returns filepath relativized for either a submodule, repository or a project
+# returns filepath relativized for either a submodule or repository
+#   otherwise just a full path
 relativize = (path) ->
-  getSubmodule(path)?.relativize(path) ? atom.project.getRepo()?.relativize(path) ? atom.project.relativize(path)
+  getSubmodule(path)?.relativize(path) ? atom.project.getRepo()?.relativize(path) ? path
 
 # returns submodule for given file or undefined
 getSubmodule = (path) ->

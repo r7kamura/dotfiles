@@ -5,25 +5,37 @@ _ = require 'underscore-plus'
 
 module.exports =
 class Replace extends OperatorWithInput
-  constructor: (@editorView, @vimState, {@selectOptions}={}) ->
-    super(@editorView, @vimState)
-    @viewModel = new ViewModel(@, class: 'replace', hidden: true, singleChar: true)
+  constructor: (@editor, @vimState, {@selectOptions}={}) ->
+    super(@editor, @vimState)
+    @viewModel = new ViewModel(@, class: 'replace', hidden: true, singleChar: true, defaultText: '\n')
 
   execute: (count=1) ->
-    pos = @editor.getCursorBufferPosition()
-    currentRowLength = @editor.lineLengthForBufferRow(pos.row)
 
-    # Do nothing on an empty line
-    return unless currentRowLength > 0
-    # Do nothing if asked to replace more characters than there are on a line
-    return unless currentRowLength - pos.column >= count
+    @editor.transact =>
+      if @motion?
+        if _.contains(@motion.select(), true)
+          @editor.replaceSelectedText null, (text) =>
+            text.replace(/./g, @input.characters)
+          for selection in @editor.getSelections()
+            point = selection.getBufferRange().start
+            selection.setBufferRange(Range.fromPointWithDelta(point, 0, 0))
+      else
+        for cursor in @editor.getCursors()
+          pos = cursor.getBufferPosition()
+          currentRowLength = @editor.lineTextForBufferRow(pos.row).length
+          continue unless currentRowLength - pos.column >= count
 
-    @undoTransaction =>
-      start = @editor.getCursorBufferPosition()
-      _.times count, =>
-        point = @editor.getCursorBufferPosition()
-        @editor.setTextInBufferRange(Range.fromPointWithDelta(point, 0, 1), @input.characters)
-        @editor.moveCursorRight()
-      @editor.setCursorBufferPosition(start)
+          _.times count, =>
+            point = cursor.getBufferPosition()
+            @editor.setTextInBufferRange(Range.fromPointWithDelta(point, 0, 1), @input.characters)
+            cursor.moveRight()
+          cursor.setBufferPosition(pos)
+
+        # Special case: when replaced with a newline move to the start of the
+        # next row.
+        if @input.characters is "\n"
+          _.times count, =>
+            @editor.moveDown()
+          @editor.moveToFirstCharacterOfLine()
 
     @vimState.activateCommandMode()

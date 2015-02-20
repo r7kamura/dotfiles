@@ -1,26 +1,25 @@
-'global':
-  'editor':
-    'showInvisibles': true
-    'preferredLineLength': 100
-    'showIndentGuide': true
-    'softWrapped': false
-    'fontSize': 15
-    'invisibles': {}
-  'exception-reporting':
-    'userId': '2e1f2aa3-a554-8e91-25c2-5c463ce679fa'
-  'welcome':
-    'showOnStartup': false
-  'metrics':
-    'userId': 'b832666770086ac438f048fa92e90bcc4b7fd383'
-  'tree-view':
-    'hideVcsIgnoredFiles': true
-    'hideIgnoredNames': true
-  'atom-alignment':
-    'alignmentSpaceChars': [
-      '='
-      ':'
-      '=>'
+"*":
+  editor:
+    showInvisibles: true
+    showIndentGuide: true
+    preferredLineLength: 100
+    invisibles: {}
+  "exception-reporting":
+    userId: "2e1f2aa3-a554-8e91-25c2-5c463ce679fa"
+  welcome:
+    showOnStartup: false
+  metrics:
+    userId: "b832666770086ac438f048fa92e90bcc4b7fd383"
+  "tree-view":
+    hideVcsIgnoredFiles: true
+    hideIgnoredNames: true
+  "atom-alignment":
+    alignmentSpaceChars: [
+      "="
+      ":"
+      "=>"
     ]
-  'autocomplete-emojis':
-    'fileWhitelist': '*.md, COMMIT_EDITMSG'
-  'core': {}
+  "autocomplete-emojis":
+    fileWhitelist: "*.md, COMMIT_EDITMSG"
+  core: {}
+  "vim-mode": {}

@@ -17,8 +17,12 @@ class Insert extends Operator
   execute: ->
     if @typingCompleted
       return unless @typedText? and @typedText.length > 0
-      @undoTransaction =>
-        @editor.getBuffer().insert(@editor.getCursorBufferPosition(), @typedText, true)
+      @editor.transact =>
+        @editor.getBuffer().insert(
+          @editor.getCursorBufferPosition(),
+          @typedText,
+          normalizeLineEndings: true
+        )
     else
       @vimState.activateInsertMode()
       @typingCompleted = true
@@ -27,14 +31,14 @@ class Insert extends Operator
 
 class InsertAfter extends Insert
   execute: ->
-    @editor.moveCursorRight() unless @editor.getCursor().isAtEndOfLine()
+    @editor.moveRight() unless @editor.getLastCursor().isAtEndOfLine()
     super
 
 class InsertAboveWithNewline extends Insert
   execute: (count=1) ->
-    @editor.beginTransaction() unless @typingCompleted
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
     @editor.insertNewlineAbove()
-    @editor.getCursor().skipLeadingWhitespace()
+    @editor.getLastCursor().skipLeadingWhitespace()
 
     if @typingCompleted
       # We'll have captured the inserted newline, but we want to do that
@@ -47,9 +51,9 @@ class InsertAboveWithNewline extends Insert
 
 class InsertBelowWithNewline extends Insert
   execute: (count=1) ->
-    @editor.beginTransaction() unless @typingCompleted
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
     @editor.insertNewlineBelow()
-    @editor.getCursor().skipLeadingWhitespace()
+    @editor.getLastCursor().skipLeadingWhitespace()
 
     if @typingCompleted
       # We'll have captured the inserted newline, but we want to do that
@@ -65,42 +69,39 @@ class InsertBelowWithNewline extends Insert
 #
 class Change extends Insert
   standalone: false
+  register: '"'
 
   # Public: Changes the text selected by the given motion.
   #
   # count - The number of times to execute.
   #
   # Returns nothing.
-  execute: (count=1) ->
+  execute: (count) ->
     # If we've typed, we're being repeated. If we're being repeated,
     # undo transactions are already handled.
-    @editor.beginTransaction() unless @typingCompleted
-    operator = new Delete(@editor, @vimState, allowEOL: true, selectOptions: {excludeWhitespace: true})
-    operator.compose(@motion)
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
 
-    lastRow = @onLastRow()
-    onlyRow = @editor.getBuffer().getLineCount() is 1
-    operator.execute(count)
-    if @motion.isLinewise?() and not onlyRow
-      if lastRow
-        @editor.insertNewlineBelow()
+    if _.contains(@motion.select(count, excludeWhitespace: true), true)
+      @setTextRegister(@register, @editor.getSelectedText())
+      if @motion.isLinewise?()
+        @editor.insertNewline()
+        @editor.moveLeft()
       else
-        @editor.insertNewlineAbove()
+        @editor.delete()
 
     return super if @typingCompleted
 
     @vimState.activateInsertMode(transactionStarted = true)
     @typingCompleted = true
 
-  onLastRow: ->
-    {row, column} = @editor.getCursorBufferPosition()
-    row is @editor.getBuffer().getLastRow()
-
 class Substitute extends Insert
+  register: '"'
   execute: (count=1) ->
-    @editor.beginTransaction() unless @typingCompleted
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
     _.times count, =>
       @editor.selectRight()
+    text = @editor.getLastSelection().getText()
+    @setTextRegister(@register, text)
     @editor.delete()
 
     if @typingCompleted
@@ -111,14 +112,18 @@ class Substitute extends Insert
     @typingCompleted = true
 
 class SubstituteLine extends Insert
+  register: '"'
   execute: (count=1) ->
-    @editor.beginTransaction() unless @typingCompleted
-    @editor.moveCursorToBeginningOfLine()
+    @vimState.setInsertionCheckpoint() unless @typingCompleted
+    @editor.moveToBeginningOfLine()
     _.times count, =>
-      @editor.selectDown()
+      @editor.selectToEndOfLine()
+      @editor.selectRight()
+    text = @editor.getLastSelection().getText()
+    @setTextRegister(@register, text)
     @editor.delete()
     @editor.insertNewlineAbove()
-    @editor.getCursor().skipLeadingWhitespace()
+    @editor.getLastCursor().skipLeadingWhitespace()
 
     if @typingCompleted
       @typedText = @typedText.trimLeft()

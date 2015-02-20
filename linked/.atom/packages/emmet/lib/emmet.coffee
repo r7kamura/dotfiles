@@ -1,17 +1,18 @@
 path = require 'path'
-fs   = require 'fs'
+fs = require 'fs'
+{CompositeDisposable} = require 'atom'
 
-emmet        = require 'emmet'
+emmet = require 'emmet'
 emmetActions = require 'emmet/lib/action/main'
-resources    = require 'emmet/lib/assets/resources'
+resources = require 'emmet/lib/assets/resources'
 
 editorProxy  = require './editor-proxy'
-interactive  = require './interactive'
+# interactive  = require './interactive'
 
 singleSelectionActions = [
   'prev_edit_point', 'next_edit_point', 'merge_lines',
   'reflect_css_value', 'select_next_item', 'select_previous_item',
-  'wrap_with_abbreviation', 'update_tag', 'insert_formatted_line_break_only'
+  'wrap_with_abbreviation', 'update_tag'
 ]
 
 toggleCommentSyntaxes = ['html', 'css', 'less', 'scss']
@@ -28,8 +29,8 @@ getUserHome = () ->
 # @param  {Object} action Action to perform
 # @return {Function}
 actionDecorator = (action) ->
-  (editorView, evt) ->
-    editorProxy.setup(editorView)
+  (evt) ->
+    editorProxy.setup @getModel()
     editorProxy.editor.transact =>
       runAction action, evt
 
@@ -38,8 +39,8 @@ actionDecorator = (action) ->
 # @param  {Object} action Action to perform
 # @return {Function}
 multiSelectionActionDecorator = (action) ->
-  (editorView, evt) ->
-    editorProxy.setup(editorView)
+  (evt) ->
+    editorProxy.setup(@getModel())
     editorProxy.editor.transact =>
       editorProxy.exec (i) ->
         runAction action, evt
@@ -49,11 +50,11 @@ runAction = (action, evt) ->
   syntax = editorProxy.getSyntax()
   if action is 'expand_abbreviation_with_tab'
     # do not handle Tab key if:
-    # 1. syntax is unknown
+    # -1. syntax is unknown- (defined by keymap selector)
     # 2. there’s a selection (user wants to indent it)
     # 3. has expanded snippet (e.g. has tabstops)
     activeEditor = editorProxy.editor;
-    if not resources.hasSyntax(syntax) or not activeEditor.getSelection().isEmpty()
+    if not activeEditor.getSelection().isEmpty()
       return evt.abortKeyBinding()
     if activeEditor.snippetExpansion
       # in case of snippet expansion: expand abbreviation if we currently on last
@@ -83,8 +84,9 @@ registerInteractiveActions = (actions) ->
   for name in ['wrap_with_abbreviation', 'update_tag', 'interactive_expand_abbreviation']
     do (name) ->
       atomAction = atomActionName name
-      actions[atomAction] = (editorView, evt) ->
-        editorProxy.setup(editorView)
+      actions[atomAction] = (evt) ->
+        editorProxy.setup(@getModel())
+        interactive = require './interactive'
         interactive.run(name, editorProxy)
 
 loadExtensions = () ->
@@ -107,14 +109,14 @@ loadExtensions = () ->
     console.warn 'Emmet: no such extension folder:', extPath
 
 module.exports =
-  editorSubscription: null
   configDefaults:
     extensionsPath: '~/emmet'
     formatLineBreaks: true
 
   activate: (@state) ->
+    @subscriptions = new CompositeDisposable
     unless @actions
-      atom.config.observe 'emmet.extensionsPath', loadExtensions
+      @subscriptions.add atom.config.observe 'emmet.extensionsPath', loadExtensions
       @actions = {}
       registerInteractiveActions @actions
       for action in emmetActions.getList()
@@ -124,13 +126,7 @@ module.exports =
         cmd = if singleSelectionActions.indexOf(action.name) isnt -1 then actionDecorator(action.name) else multiSelectionActionDecorator(action.name)
         @actions[atomAction] = cmd
 
-    @editorViewSubscription = atom.workspaceView.eachEditorView (editorView) =>
-      if editorView.attached and not editorView.mini
-        for name, action of @actions
-          do (name, action) =>
-            editorView.command name, (e) =>
-              action(editorView, e)
+    @subscriptions.add atom.commands.add 'atom-text-editor', @actions
 
   deactivate: ->
-    @editorViewSubscription?.off()
-    @editorViewSubscription = null
+    atom.config.transact => @subscriptions.dispose()

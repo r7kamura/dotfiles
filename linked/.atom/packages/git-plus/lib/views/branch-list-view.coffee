@@ -1,5 +1,5 @@
 fs = require 'fs-plus'
-{$$, SelectListView} = require 'atom'
+{$$, SelectListView} = require 'atom-space-pen-views'
 
 git = require '../git'
 StatusView = require './status-view'
@@ -8,8 +8,9 @@ module.exports =
 class ListView extends SelectListView
   initialize: (@data) ->
     super
-    @addClass 'overlay from-top'
+    @show()
     @parseData()
+    @currentPane = atom.workspace.getActivePane()
 
   parseData: ->
     items = @data.split("\n")
@@ -19,10 +20,20 @@ class ListView extends SelectListView
       unless item is ''
         branches.push {name: item}
     @setItems branches
-    atom.workspaceView.append this
     @focusFilterEditor()
 
   getFilterKey: -> 'name'
+
+  show: ->
+    @panel ?= atom.workspace.addModalPanel(item: this)
+    @panel.show()
+
+    @storeFocusedElement()
+
+  cancelled: -> @hide()
+
+  hide: ->
+    @panel?.destroy()
 
   viewForItem: ({name}) ->
     current = false
@@ -42,8 +53,10 @@ class ListView extends SelectListView
   checkout: (branch) ->
     git.cmd
       args: ['checkout', branch],
-      stdout: (data) ->
+      stdout: (data) =>
         new StatusView(type: 'success', message: data.toString())
         atom.workspace.eachEditor (editor) ->
-          fs.exists editor.getPath(), (exist) -> editor.destroy() if not exist
-        atom.project.getRepo()?.refreshStatus()
+          fs.exists editor.getPath(), (exist) ->
+            editor.destroy() if not exist
+        git.refresh()
+        @currentPane.activate()

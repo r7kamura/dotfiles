@@ -1,7 +1,7 @@
 {
   "name": "vim-mode",
   "main": "./lib/vim-mode",
-  "version": "0.15.0",
+  "version": "0.30.0",
   "description": "Add vim modal control",
   "license": "MIT",
   "private": true,
@@ -10,10 +10,11 @@
     "url": "https://github.com/atom/vim-mode"
   },
   "engines": {
-    "atom": ">0.99.0"
+    "atom": ">0.151.0"
   },
   "dependencies": {
-    "underscore-plus": "1.x"
+    "underscore-plus": "1.x",
+    "event-kit": "^0.7.2"
   },
   "readme": "## Vim Mode package [![Build Status](https://travis-ci.org/atom/vim-mode.svg?branch=master)](https://travis-ci.org/atom/vim-mode)\n\nProvides vim modal control for Atom, ideally blending the best of vim\nand Atom.\n\n### Installing\n\nUse the Atom package manager, which can be found in the Settings view or\nrun `apm install vim-mode` from the command line.\n\n### Current Status\n\nSizable portions of Vim's command mode work as you'd expect, including\nmany complex combinations. Even so, this package is far from finished (Vim\nwasn't built in a day).\n\nCurrently, vim-mode requires soft line wraps to be disabled, and has some issues\nwith international keyboard layouts.\n\nIf there's a feature of Vim you're missing, it might just be that you use it\nmore often than other developers. Adding a feature can be quick and easy. Check\nout the [closed pull requests](https://github.com/atom/vim-mode/pulls?direction=desc&page=1&sort=created&state=closed)\nto see examples of community contributions. We're looking forward to yours, too.\n\n### Documentation\n\n* [Overview](https://github.com/atom/vim-mode/blob/master/docs/overview.md)\n* [Motions](https://github.com/atom/vim-mode/blob/master/docs/motions.md)\n* [Operators](https://github.com/atom/vim-mode/blob/master/docs/operators.md)\n* [Windows](https://github.com/atom/vim-mode/blob/master/docs/windows.md)\n* [Scrolling](https://github.com/atom/vim-mode/blob/master/docs/scrolling.md)\n\n### Development\n\n* Create a branch with your feature/fix.\n* Add a spec (take inspiration from the ones that are already there).\n* If you're adding a command be sure to update the appropriate file in\n  `docs/`\n* Create a PR.\n\nWhen in doubt, open a PR earlier rather than later so that you can receive\nfeedback from the community. We want to get your fix or feature included as much\nas you do.\n\nSee [the contribution guide](https://github.com/atom/vim-mode/blob/master/CONTRIBUTING.md).\n",
   "readmeFilename": "README.md",
@@ -21,18 +22,51 @@
     "url": "https://github.com/atom/vim-mode/issues"
   },
   "homepage": "https://github.com/atom/vim-mode",
-  "_id": "vim-mode@0.15.0",
-  "dist": {
-    "shasum": "9141543ff2312e878b9e49384ed1830c7be8553f"
-  },
-  "_resolved": "/private/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-114106-1516-t9d4ua/package.tgz",
-  "_from": "/private/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-114106-1516-t9d4ua/package.tgz",
+  "_id": "vim-mode@0.30.0",
+  "_shasum": "d7958b338a2fbf02c0a27d743f688c8057638610",
+  "_resolved": "file:../d-11516-21794-146977t/package.tgz",
+  "_from": "../d-11516-21794-146977t/package.tgz",
   "_atomModuleCache": {
     "version": 1,
     "dependencies": [
       {
+        "name": "event-kit",
+        "version": "0.7.2",
+        "path": "node_modules/event-kit/lib/event-kit.js"
+      },
+      {
+        "name": "grim",
+        "version": "0.12.0",
+        "path": "node_modules/event-kit/node_modules/grim/lib/grim.js"
+      },
+      {
+        "name": "emissary",
+        "version": "1.3.1",
+        "path": "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib/emissary.js"
+      },
+      {
+        "name": "harmony-collections",
+        "version": "0.3.7",
+        "path": "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/harmony-collections/harmony-collections.js"
+      },
+      {
+        "name": "mixto",
+        "version": "1.0.0",
+        "path": "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/mixto/lib/mixin.js"
+      },
+      {
+        "name": "property-accessors",
+        "version": "1.1.0",
+        "path": "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js"
+      },
+      {
+        "name": "harmony-collections",
+        "version": "0.3.7",
+        "path": "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.js"
+      },
+      {
         "name": "underscore-plus",
-        "version": "1.6.1",
+        "version": "1.6.6",
         "path": "node_modules/underscore-plus/lib/underscore-plus.js"
       },
       {
@@ -43,6 +77,7 @@
     ],
     "extensions": {
       ".coffee": [
+        "lib/global-vim-state.coffee",
         "lib/motions/find-motion.coffee",
         "lib/motions/general-motions.coffee",
         "lib/motions/index.coffee",
@@ -57,6 +92,7 @@
         "lib/panes.coffee",
         "lib/prefixes.coffee",
         "lib/scroll.coffee",
+        "lib/status-bar-manager.coffee",
         "lib/text-objects.coffee",
         "lib/utils.coffee",
         "lib/view-models/search-view-model.coffee",
@@ -65,29 +101,96 @@
         "lib/vim-mode.coffee",
         "lib/vim-state.coffee"
       ],
-      ".js": [
-        "node_modules/underscore-plus/lib/underscore-plus.js",
-        "node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
-        "node_modules/underscore-plus/node_modules/underscore/underscore.js"
-      ],
       ".json": [
+        "node_modules/event-kit/api.json",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/harmony-collections/package.json",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/mixto/package.json",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/package.json",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors/package.json",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/package.json",
+        "node_modules/event-kit/node_modules/grim/package.json",
+        "node_modules/event-kit/package.json",
         "node_modules/underscore-plus/node_modules/underscore/package.json",
         "node_modules/underscore-plus/package.json",
         "package.json"
+      ],
+      ".js": [
+        "node_modules/event-kit/lib/composite-disposable.js",
+        "node_modules/event-kit/lib/disposable.js",
+        "node_modules/event-kit/lib/emitter.js",
+        "node_modules/event-kit/lib/event-kit.js",
+        "node_modules/event-kit/node_modules/grim/lib/deprecation.js",
+        "node_modules/event-kit/node_modules/grim/lib/grim.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib/behavior.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib/emissary.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib/emitter.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib/helpers.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib/signal.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib/subscriber.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib/subscription.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/harmony-collections/harmony-collections.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/harmony-collections/harmony-collections.min.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/mixto/lib/mixin.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors/lib/property-accessors.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.js",
+        "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors/node_modules/harmony-collections/harmony-collections.min.js",
+        "node_modules/underscore-plus/lib/underscore-plus.js",
+        "node_modules/underscore-plus/node_modules/underscore/underscore-min.js",
+        "node_modules/underscore-plus/node_modules/underscore/underscore.js"
       ]
     },
     "folders": [
       {
         "paths": [
+          "lib",
           "lib/motions",
           "lib/operators",
-          "lib",
           "lib/view-models",
           "",
           "spec"
         ],
         "dependencies": {
-          "underscore-plus": "1.x"
+          "underscore-plus": "1.x",
+          "event-kit": "^0.7.2"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/event-kit",
+          "node_modules/event-kit/lib"
+        ],
+        "dependencies": {
+          "grim": "^0.12.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/event-kit/node_modules/grim/lib",
+          "node_modules/event-kit/node_modules/grim"
+        ],
+        "dependencies": {
+          "underscore-plus": "^1.0.0",
+          "emissary": "^1.2.0"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/event-kit/node_modules/grim/node_modules/emissary/lib",
+          "node_modules/event-kit/node_modules/grim/node_modules/emissary"
+        ],
+        "dependencies": {
+          "underscore-plus": "1.x",
+          "mixto": "1.x",
+          "property-accessors": "^1.1"
+        }
+      },
+      {
+        "paths": [
+          "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors/lib",
+          "node_modules/event-kit/node_modules/grim/node_modules/emissary/node_modules/property-accessors"
+        ],
+        "dependencies": {
+          "mixto": "1.x"
         }
       },
       {

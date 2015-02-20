@@ -86,7 +86,7 @@ alias e='ghq list -p | p cd'
 alias f='ghq get -p $@'
 alias ll='ls -1'
 alias j='find . -type d -name ".git" -prune -o -type d -print | p open'
-
+alias pr='hub browse -- pull/$(git rev-parse --abbrev-ref HEAD)'
 
 ## function
 a() { git add . $1 --all; git status --short }

@@ -1,37 +1,23 @@
-{View, EditorView} = require 'atom'
+{View, TextEditorView} = require 'atom'
 
 module.exports =
-
 class VimCommandModeInputView extends View
   @content: ->
     @div class: 'command-mode-input', =>
       @div class: 'editor-container', outlet: 'editorContainer', =>
-        @subview 'editor', new EditorView(mini: true)
+        @subview 'editor', new TextEditorView(mini: true)
 
   initialize: (@viewModel, opts = {})->
-    @editor.setFontSize(atom.config.get('vim-mode.commandModeInputViewFontSize'))
-
     if opts.class?
       @editorContainer.addClass opts.class
 
-    if opts.hidden?
+    if opts.hidden
       @editorContainer.addClass 'hidden-input'
 
-    if opts.singleChar?
-      @singleChar = true
+    @singleChar = opts.singleChar
+    @defaultText = opts.defaultText ? ''
 
-    unless atom.workspaceView?
-      # We're in test mode. Don't append to anything, just initialize.
-      @focus()
-      @handleEvents()
-      return
-
-    statusBar = atom.workspaceView.find('.status-bar')
-
-    if statusBar.length > 0
-      @.insertBefore(statusBar)
-    else
-      atom.workspace.getActivePane().append(@)
+    @panel = atom.workspace.addBottomPanel(item: this, priority: 100)
 
     @focus()
     @handleEvents()
@@ -55,7 +41,7 @@ class VimCommandModeInputView extends View
     @confirm()
 
   confirm: =>
-    @value = @editor.getText()
+    @value = @editor.getText() or @defaultText
     @viewModel.confirm(@)
     @remove()
 
@@ -68,5 +54,5 @@ class VimCommandModeInputView extends View
 
   remove: =>
     @stopHandlingEvents()
-    atom.workspaceView.focus() if atom.workspaceView?
-    super()
+    atom.workspace.getActivePane().activate()
+    @panel.destroy()

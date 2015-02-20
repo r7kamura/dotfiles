@@ -13,7 +13,7 @@
 #   if path.extname(editor.getPath()) is '.md'
 #     editor.setSoftWrap(true)
 
-path = require 'path'
-atom.workspaceView.eachEditorView (editorView) ->
-  editor = editorView.getEditor()
-  if path.basename(editor.getPath()) is 'Makefile'
+# path = require 'path'
+# atom.workspaceView.eachEditorView (editorView) ->
+#   editor = editorView.getEditor()
+#   if path.basename(editor.getPath()) is 'Makefile'

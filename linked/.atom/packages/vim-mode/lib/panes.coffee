@@ -1,38 +1,37 @@
 class FocusAction
-  constructor: ->
   isComplete: -> true
   isRecordable: -> false
 
+  paneContainer: ->
+    atom.views.getView(atom.workspace.paneContainer)
+
   focusCursor: ->
-    editor = atom.workspace.getActivePaneItem()
-    editorView = atom.workspaceView.getActiveView()
-    if editor? and editorView?
-      cursorPosition = editor.getCursorBufferPosition()
-      editorView.scrollToBufferPosition(cursorPosition)
+    editor = atom.workspace.getActiveTextEditor()
+    editor?.scrollToCursorPosition()
 
 class FocusPaneViewOnLeft extends FocusAction
   execute: ->
-    atom.workspaceView.focusPaneViewOnLeft()
+    @paneContainer().focusPaneViewOnLeft()
     @focusCursor()
 
 class FocusPaneViewOnRight extends FocusAction
   execute: ->
-    atom.workspaceView.focusPaneViewOnRight()
+    @paneContainer().focusPaneViewOnRight()
     @focusCursor()
 
 class FocusPaneViewAbove extends FocusAction
   execute: ->
-    atom.workspaceView.focusPaneViewAbove()
+    @paneContainer().focusPaneViewAbove()
     @focusCursor()
 
 class FocusPaneViewBelow extends FocusAction
   execute: ->
-    atom.workspaceView.focusPaneViewBelow()
+    @paneContainer().focusPaneViewBelow()
     @focusCursor()
 
 class FocusPreviousPaneView extends FocusAction
   execute: ->
-    atom.workspaceView.focusPreviousPaneView()
+    atom.workspace.activatePreviousPane()
     @focusCursor()
 
 module.exports = { FocusPaneViewOnLeft, FocusPaneViewOnRight,

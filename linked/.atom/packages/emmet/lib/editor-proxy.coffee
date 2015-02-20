@@ -56,8 +56,7 @@ preprocessSnippet = (value) ->
   tabStops.processText(value, tabstopOptions)
 
 module.exports =
-  setup: (@editorView, @selectionIndex=0) ->
-    @editor = @editorView.getEditor()
+  setup: (@editor, @selectionIndex=0) ->
     buf = @editor.getBuffer()
     bufRanges = @editor.getSelectedBufferRanges()
     @_selection =
@@ -71,29 +70,32 @@ module.exports =
   # Executes given function for every selection
   exec: (fn) ->
     ix = @_selection.bufferRanges.length - 1
-    @_selection.saved = new Array(@_selection.bufferRanges.length)
+    @_selection.saved = []
     success = true
     while ix >= 0
-      @_selection.index = ix--
+      @_selection.index = ix
       if fn(@_selection.index) is false
         success = false
         break
+      ix--
 
     if success and @_selection.saved.length > 1
       @_setSelectedBufferRanges(@_selection.saved)
 
   _setSelectedBufferRanges: (sels) ->
-    @editor.setSelectedBufferRanges(sels.filter (s) -> !!s)
+    filteredSels = sels.filter (s) -> !!s
+    if filteredSels.length
+      @editor.setSelectedBufferRanges(filteredSels)
 
   _saveSelection: (delta) ->
     @_selection.saved[@_selection.index] = @editor.getSelectedBufferRange()
     if delta
-      i = @_selection.index + 1
+      i = @_selection.index
       delta = Point.fromObject([delta, 0])
-      while i < @_selection.saved.length
+      while ++i < @_selection.saved.length
         range = @_selection.saved[i]
-        @_selection.saved[i] = new Range(range.start.translate(delta), range.end.translate(delta))
-        i++
+        if range
+          @_selection.saved[i] = new Range(range.start.translate(delta), range.end.translate(delta))
 
   selectionList: ->
     @_selection.indexRanges
@@ -136,7 +138,7 @@ module.exports =
   getCurrentLineRange: ->
     sel = @getSelectionBufferRange()
     row = sel.getRows()[0]
-    lineLength = @editor.lineLengthForBufferRow(row)
+    lineLength = @editor.lineTextForBufferRow(row).length
     index = @editor.getBuffer().characterIndexForPosition({row: row, column: 0})
     return {
       start: index
@@ -203,7 +205,7 @@ module.exports =
   #
   # See emmet.setupProfile for more information.
   getProfileName: ->
-    @editor.getGrammar().name
+    'html'
 
   # Returns the current editor's file path
   getFilePath: ->

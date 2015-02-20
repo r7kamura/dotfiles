@@ -18,10 +18,10 @@ class Indent extends Operator
   #
   # Returns nothing.
   indent: (count, direction='indent') ->
-    row = @editor.getCursorScreenRow()
     mode = @vimState.mode
 
     @motion.select(count)
+    {start} = @editor.getSelectedBufferRange()
     if direction == 'indent'
       @editor.indentSelectedRows()
     else if direction == 'outdent'
@@ -30,8 +30,8 @@ class Indent extends Operator
       @editor.autoIndentSelectedRows()
 
     if mode != 'visual'
-      @editor.setCursorScreenPosition([row, 0])
-      @editor.moveCursorToFirstCharacterOfLine()
+      @editor.setCursorScreenPosition([start.row, 0])
+      @editor.moveToFirstCharacterOfLine()
       @vimState.activateCommandMode()
 
 #
