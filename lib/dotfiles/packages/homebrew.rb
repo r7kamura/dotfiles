@@ -5,7 +5,7 @@ module Dotfiles
       def install
         system(<<-EOS)
           mkdir ~/Library/Caches/Homebrew &&
-          ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)" &&
+          ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)" &&
           brew update
         EOS
       end
