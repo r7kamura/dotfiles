@@ -1,13 +1,16 @@
 brew update
 brew upgrade
 
+brew install cmake
 brew install go
 brew install hub
+brew install icu4c
 brew install imagemagick
 brew install jq
 brew install mysql
 brew install npm
 brew install openssl
+brew install pow
 brew install rbenv
 brew install rbenv-default-gems # depends on rbenv
 brew install readline
