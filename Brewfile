@@ -1,51 +1,51 @@
-update
-upgrade
+brew update
+brew upgrade
 
-install go
-install hub
-install imagemagick
-install jq
-install mysql
-install npm
-install openssl
-install rbenv
-install rbenv-default-gems # depends on rbenv
-install readline
-install reattach-to-user-namespace
-install redis
-install ruby-build
-install tig
-install tmux
-install tree
-install vim
-install zsh
+brew install go
+brew install hub
+brew install imagemagick
+brew install jq
+brew install mysql
+brew install npm
+brew install openssl
+brew install rbenv
+brew install rbenv-default-gems # depends on rbenv
+brew install readline
+brew install reattach-to-user-namespace
+brew install redis
+brew install ruby-build
+brew install tig
+brew install tmux
+brew install tree
+brew install vim
+brew install zsh
 
-tap caskroom/cask || true
-install brew-cask
-cask alfred link
-cask install alfred
-cask install atom
-cask install cooviewer
-cask install dropbox
-cask install google-chrome
-cask install google-japanese-ime
-cask install gyazo
-cask install iterm2
-cask install karabiner
-cask install licecap
-cask install macvim
-cask install sequel-pro
-cask install skitch
-cask install slack
-cask install totalfinder
-cask install vagrant
-cask install vlc
-cask install yorufukurou
+brew tap caskroom/cask || true
+brew install brew-cask
+brew cask alfred link
+brew cask install alfred
+brew cask install atom
+brew cask install cooviewer
+brew cask install dropbox
+brew cask install google-chrome
+brew cask install google-japanese-ime
+brew cask install gyazo
+brew cask install iterm2
+brew cask install karabiner
+brew cask install licecap
+brew cask install macvim
+brew cask install sequel-pro
+brew cask install skitch
+brew cask install slack
+brew cask install totalfinder
+brew cask install vagrant
+brew cask install vlc
+brew cask install yorufukurou
 
-tap r7kamura/ghq
-install ghq
+brew tap r7kamura/ghq
+brew install ghq
 
-tap peco/peco
-install peco
+brew tap peco/peco
+brew install peco
 
-cleanup
+brew cleanup
