@@ -1,0 +1,4 @@
+resources:
+  - id: install_ruby
+    type: rbenv_ruby
+    version: 2.2.0
