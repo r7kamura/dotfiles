@@ -1,6 +1,6 @@
 GIT
   remote: git://github.com/r7kamura/serverkit-rbenv.git
-  revision: 377573c23dc63dfab95f94316f8937babd5d5570
+  revision: e121ed1245ae21740d79706aade97f6cd9dfbbeb
   specs:
     serverkit-rbenv (0.1.0)
 
