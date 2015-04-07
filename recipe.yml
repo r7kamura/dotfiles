@@ -1,4 +1,7 @@
 resources:
+  - id: install_rbenv
+    type: package
+    name: rbenv
   - id: install_ruby
     type: rbenv_ruby
     version: 2.2.0
