@@ -9,7 +9,8 @@
     'submenu': [
       'label': 'atom-alignment'
       'submenu': [
-        { 'label': 'Toggle', 'command': 'atom-alignment:align' }
+        { 'label': 'Align', 'command': 'atom-alignment:align' },
+        { 'label': 'Align Multiple', 'command': 'atom-alignment:alignMultiple' }
       ]
     ]
   }

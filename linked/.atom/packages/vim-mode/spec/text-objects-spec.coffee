@@ -19,9 +19,7 @@ describe "TextObjects", ->
     helpers.keydown(key, options)
 
   commandModeInputKeydown = (key, opts = {}) ->
-    opts.element = editor.commandModeInputView.editor.find('input').get(0)
-    opts.raw = true
-    keydown(key, opts)
+    editor.commandModeInputView.editorElement.getModel().setText(key)
 
   describe "the 'iw' text object", ->
     beforeEach ->
@@ -139,6 +137,30 @@ describe "TextObjects", ->
       keydown('<')
       expect(editor.getText()).toBe "< something in here and in <> >"
       expect(editor.getCursorScreenPosition()).toEqual [0, 28]
+      expect(editorElement.classList.contains('operator-pending-mode')).toBe(false)
+      expect(editorElement.classList.contains('command-mode')).toBe(true)
+
+  describe "the 'it' text object", ->
+    beforeEach ->
+      editor.setText("<something>here</something><again>")
+      editor.setCursorScreenPosition([0, 5])
+
+    it "applies only if in the value of a tag", ->
+      keydown('d')
+      keydown('i')
+      keydown('t')
+      expect(editor.getText()).toBe "<something>here</something><again>"
+      expect(editor.getCursorScreenPosition()).toEqual [0, 5]
+      expect(editorElement.classList.contains('operator-pending-mode')).toBe(false)
+      expect(editorElement.classList.contains('command-mode')).toBe(true)
+
+    it "applies operators inside the current word in operator-pending mode", ->
+      editor.setCursorScreenPosition([0, 13])
+      keydown('d')
+      keydown('i')
+      keydown('t')
+      expect(editor.getText()).toBe "<something></something><again>"
+      expect(editor.getCursorScreenPosition()).toEqual [0, 11]
       expect(editorElement.classList.contains('operator-pending-mode')).toBe(false)
       expect(editorElement.classList.contains('command-mode')).toBe(true)
 

@@ -1,12 +1,9 @@
 {
   "name": "atom-alignment",
   "main": "./lib/atom-alignment",
-  "version": "0.9.3",
+  "version": "0.12.0",
   "private": true,
   "description": "A simple key-binding for aligning multi-line and multiple selections in Atom (Based on the sublime text plugin)",
-  "activationEvents": [
-    "atom-alignment:align"
-  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/Freyskeyd/atom-alignment"
@@ -15,16 +12,59 @@
   "engines": {
     "atom": ">0.50.0"
   },
-  "readme": "# atom-alignment package\n\n[Atom package](https://atom.io/packages/atom-alignment)\n\n> Inspired by sublime text plugin ([sublime_alignment](https://github.com/wbond/sublime_alignment))\n\n\n## Usage\n\nA simple key-binding for aligning multi-line and multiple selections in Atom.\n\nuse `ctrl+cmd+a` (like sublime text)\n\n```javascript\nvar a = b;\nvar ab = c;\nvar abcd = d;\nvar ddddd =d;\n```\n\n```javascript\nvar a     = b;\nvar ab    = c;\nvar abcd  = d;\nvar ddddd = d;\n```\n\nOn multiple range line\n\n```javascript\nvar a = b;\nvar ab = c;\nvar notMePlease='NOOOO';\nvar abcd = d;\nvar ddddd =d;\n```\n\n```javascript\nvar a     = b;\nvar ab    = c;\nvar notMePlease='NOOOO';\nvar abcd  = d;\nvar ddddd = d;\n```\n\n## License\n\nMIT © [Simon Paitrault](http://www.freyskeyd.fr)\n",
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
+  "readme": "# atom-alignment package\n\n[Atom package](https://atom.io/packages/atom-alignment)\n\n> Inspired by sublime text plugin ([sublime_alignment](https://github.com/wbond/sublime_alignment))\n\n## Usage\n\nA simple key-binding for aligning multi-line, multi-cursor and multiple selections in Atom.\n\nUse `ctrl+cmd+a` on Mac or `ctrl+alt+a` to align multiple matches. If you want to align the first match only, call `Atom Alignment:Align` from the command palette. The following examples all use the mentioned key binding to call `Atom Alignment:AlignMultiple`.\n\n```javascript\nvar a = b;\nvar ab = c;\nvar abcd = d;\nvar ddddd =d;\n```\n\n```javascript\nvar a     = b;\nvar ab    = c;\nvar abcd  = d;\nvar ddddd = d;\n```\n\nWith more than one selection\n\n```javascript\nvar a = b;    /* selection 1 */\nvar ab = c;   /* selection 1 */\nvar notMePlease='NOOOO';\nvar abcd = d; /* selection 2 */\nvar ddddd =d; /* selection 2 */\n```\n\n```javascript\nvar a     = b;\nvar ab    = c;\nvar notMePlease='NOOOO';\nvar abcd  = d;\nvar ddddd = d;\n```\n\nOn a single line started with `ctrl+cmd+a`\n\n```javascript\nvar a = b var cde =   d\n```\n\n```javascript\nvar a = b\nvar cde = d\n```\n\nWhen working with multiple cursors, the different lines are aligned at the best matching cursor position. In the following example the | shows the cursor position.\n\n```javascript\nvar a    =b var c|= d\nvar e c|=   f var g = h\nvar i c=j var k |= l\n```\n\n```javascript\nvar a    =b var c = d\nvar e c           = f var g = h\nvar i c=j var k   = l\n```\n\nYou can even align multiple matches\n\n```javascript\nlets = see = what := happens\na  = a  = b = c : d := e\n```\n\n```javascript\nlets = see = what      := happens\na    = a   = b = c : d := e\n```\n\n## License\n\nMIT © [Andre Lerche](https://github.com/papermoon1978)\n\nMIT © [Simon Paitrault](http://www.freyskeyd.fr)\n",
   "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/Freyskeyd/atom-alignment/issues"
   },
   "homepage": "https://github.com/Freyskeyd/atom-alignment",
-  "_id": "atom-alignment@0.9.3",
-  "dist": {
-    "shasum": "687d7380ae8de3ba6face6bdff7096a4ae8a97a4"
-  },
-  "_resolved": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-11481-19250-5isack/package.tgz",
-  "_from": "/var/folders/5s/j85s_3cs13351rtbdkq04pdm0000gn/T/d-11481-19250-5isack/package.tgz"
+  "_id": "atom-alignment@0.12.0",
+  "_shasum": "1fc901d8f79b4ee3a64eab8d4d615c4ae2a23999",
+  "_resolved": "file:../d-11531-2416-12ejd4e/package.tgz",
+  "_from": "../d-11531-2416-12ejd4e/package.tgz",
+  "_atomModuleCache": {
+    "version": 1,
+    "dependencies": [
+      {
+        "name": "lodash",
+        "version": "2.4.1",
+        "path": "node_modules/lodash/dist/lodash.js"
+      }
+    ],
+    "extensions": {
+      ".json": [
+        "coffeelint.json",
+        "node_modules/lodash/package.json",
+        "package.json"
+      ],
+      ".coffee": [
+        "lib/aligner.coffee",
+        "lib/atom-alignment.coffee"
+      ],
+      ".js": [
+        "node_modules/lodash/dist/lodash.compat.js",
+        "node_modules/lodash/dist/lodash.compat.min.js",
+        "node_modules/lodash/dist/lodash.js",
+        "node_modules/lodash/dist/lodash.min.js",
+        "node_modules/lodash/dist/lodash.underscore.js",
+        "node_modules/lodash/dist/lodash.underscore.min.js",
+        "node_modules/lodash/lodash.js"
+      ]
+    },
+    "folders": [
+      {
+        "paths": [
+          "",
+          "lib",
+          "spec"
+        ],
+        "dependencies": {
+          "lodash": "^2.4.1"
+        }
+      }
+    ]
+  }
 }

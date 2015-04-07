@@ -19,8 +19,7 @@
   * `yw` - with a motion
   * `yy` - linewise
   * `y2y` - repeated linewise
-  * `"ayy` - supports registers (only named a-h, pending more
-    advanced atom keymap support)
+  * `"ayy` - supports registers (named a-z, A-Z for append, *, +, %, _)
   * `Y` - linewise
 * Indent/Outdent/Auto-indent
   * `vw>` - works in visual mode
@@ -36,3 +35,7 @@
   * `J` - joins the current line with the immediately following line.
 * [Mark](http://vimhelp.appspot.com/motion.txt.html#m)
   * `m[a-z][A-Z]` - marks the current cursor position
+* [Case](http://vimhelp.appspot.com/motion.txt.html#operator)
+  * `~` or `g~` - toggles case
+  * `gU`, or `U` in visual mode - changes to upper case
+  * `gu`, or `u` in visual mode - changes to lower case

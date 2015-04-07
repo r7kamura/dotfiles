@@ -3,6 +3,7 @@ _ = require 'underscore-plus'
 SearchViewModel = require '../view-models/search-view-model'
 {Input} = require '../view-models/view-model'
 {Point, Range} = require 'atom'
+settings = require '../settings'
 
 class SearchBase extends MotionWithInput
   operatesInclusively: false
@@ -56,7 +57,7 @@ class SearchBase extends MotionWithInput
   getSearchTerm: (term) ->
     modifiers = {'g': true}
 
-    if not term.match('[A-Z]') and atom.config.get('vim-mode.useSmartcaseForSearch')
+    if not term.match('[A-Z]') and settings.useSmartcaseForSearch()
       modifiers['i'] = true
 
     if term.indexOf('\\c') >= 0
@@ -96,21 +97,23 @@ class SearchCurrentWord extends SearchBase
 
     @input = new Input(@getCurrentWordMatch())
 
-  getCurrentWord: (onRecursion=false) ->
+  getCurrentWord: ->
     cursor = @editor.getLastCursor()
-    wordRange  = cursor.getCurrentWordBufferRange(wordRegex: @keywordRegex)
-    characters = @editor.getTextInBufferRange(wordRange)
+    wordStart = cursor.getBeginningOfCurrentWordBufferPosition(wordRegex: @keywordRegex, allowPrevious: false)
+    wordEnd   = cursor.getEndOfCurrentWordBufferPosition      (wordRegex: @keywordRegex, allowNext: false)
+    cursorPosition = cursor.getBufferPosition()
 
-    # We are not standing on top of a word, let's try to
-    # get to the next word and try again
-    if characters.length is 0 and not onRecursion
-      if @cursorIsOnEOF(cursor)
-        ""
-      else
-        cursor.moveToNextWordBoundary(wordRegex: @keywordRegex)
-        @getCurrentWord(true)
-    else
-      characters
+    if wordEnd.column is cursorPosition.column
+      # either we don't have a current word, or it ends on cursor, i.e. precedes it, so look for the next one
+      wordEnd = cursor.getEndOfCurrentWordBufferPosition      (wordRegex: @keywordRegex, allowNext: true)
+      return "" if wordEnd.row isnt cursorPosition.row # don't look beyond the current line
+
+      cursor.setBufferPosition wordEnd
+      wordStart = cursor.getBeginningOfCurrentWordBufferPosition(wordRegex: @keywordRegex, allowPrevious: false)
+
+    cursor.setBufferPosition wordStart
+
+    @editor.getTextInBufferRange([wordStart, wordEnd])
 
   cursorIsOnEOF: (cursor) ->
     pos = cursor.getNextWordBoundaryBufferPosition(wordRegex: @keywordRegex)

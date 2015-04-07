@@ -1,5 +1,32 @@
 ## Changelog
 
+### 4.4.10
+
+- Remove uses of `atom.project.getRepo()` 
+
+### 4.4.9
+
+- Refactoring
+- Fixes issue #173
+
+### 4.4.8
+
+- Proper fix for GitRepository trying to refresh on window focus by setting `refreshOnWindowFocus` to false
+
+### 4.4.7
+
+- Update style selectors for diff highlighting
+
+### 4.4.6
+
+- Try to keep only one instance of GitRepository floating around by using either
+`atom.project.getRepo` or calling `::destroy` on an opened instance
+
+### 4.4.2
+
+- Gracefully handle `Git not found error` thanks to @TrangPham.
+- Fix for files not opening when selected from status list
+
 ### 4.4.1
 
 - Fix for `Git status` not opening selected file when accessed outside of repo.
@@ -9,7 +36,7 @@
 
 - Many internal upgrades to keep up with atom 1.0.0 api
 - Commands can now be run from the Git-plus palette for files in other repos outside of the current project.
-  - This means you can open a directory of multiple Git repositories and work with individual repos while in the same project.
+- This means you can open a directory of multiple Git repositories and work with individual repos while in the same project.
 
 ### 4.3.8
 

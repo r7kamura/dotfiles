@@ -10,6 +10,9 @@ editorUtils = require 'emmet/lib/utils/editor'
 insertSnippet = (snippet, editor) ->
   atom.packages.getLoadedPackage('snippets')?.mainModule?.insert(snippet, editor)
 
+  # Fetch expansions and assign to editor
+  editor.snippetExpansion = atom.packages.getLoadedPackage('snippets')?.mainModule?.getExpansions(editor)[0]
+
 visualize = (str) ->
   str
     .replace(/\t/g, '\\t')
@@ -197,9 +200,24 @@ module.exports =
     @_saveSelection(utils.splitByLines(value).length - utils.splitByLines(oldValue).length)
     value
 
+  getGrammar: ->
+    @editor.getGrammar().name.toLowerCase()
+
   # Returns the editor's syntax mode.
   getSyntax: ->
-    @editor.getGrammar().name.toLowerCase()
+    syntax = @getGrammar()
+    if syntax is 'html'
+      # HTML can contain embedded syntaxes
+      embedded = @getCurrentScope().filter((s) -> /\.embedded\./.test s).pop()
+      if embedded
+        m = embedded.match /source\.(.+?)\.embedded/
+        syntax = m[1] if m
+
+    return syntax
+
+  getCurrentScope: ->
+    range = @_selection.bufferRanges[@_selection.index]
+    @editor.scopeDescriptorForBufferPosition(range.start).getScopesArray()
 
   # Returns the current output profile name
   #

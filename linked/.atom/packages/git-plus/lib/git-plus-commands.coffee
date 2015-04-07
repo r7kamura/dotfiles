@@ -1,4 +1,3 @@
-{GitRepository} = require 'atom'
 git = require './git'
 
 getCommands = ->
@@ -33,17 +32,15 @@ getCommands = ->
   GitMerge               = require './models/git-merge'
 
   commands = []
-  # If no file open
-  if not atom.workspace.getActiveEditor()?.getPath()?
-    # If no repo for project
-    if not atom.project.getRepo()?
-      commands.push ['git-plus:init', 'Init', -> GitInit()]
-  # If there is an open file
-  else
+  # If no file open and if no repo for project
+  noOpenFile = not atom.workspace.getActiveEditor()?.getPath()?
+  noRepoHere = noOpenFile and atom.project.getRepositories().length is 0
+  if noRepoHere
+    commands.push ['git-plus:init', 'Init', -> GitInit()]
+  else # there is an open file or repo
     git.refresh()
     # Look for repo
-    repo = GitRepository.open(atom.workspace.getActiveEditor().getPath())
-    if repo is null
+    if git.getRepo() is null
       commands.push ['git-plus:init', 'Init', -> GitInit()]
     else
       commands.push ['git-plus:add', 'Add', -> GitAdd()]
