@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/r7kamura/serverkit-defaults.git
+  revision: 7e948bf66421a3a790e60d516583d359eb656ed4
+  specs:
+    serverkit-defaults (0.0.1)
+      plist
+      serverkit
+
+GIT
   remote: git://github.com/r7kamura/serverkit-rbenv.git
   revision: e121ed1245ae21740d79706aade97f6cd9dfbbeb
   specs:
@@ -38,6 +46,7 @@ GEM
     net-scp (1.2.1)
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
+    plist (3.1.0)
     slop (3.6.0)
     specinfra (2.28.1)
       net-scp
@@ -51,4 +60,5 @@ PLATFORMS
 
 DEPENDENCIES
   serverkit!
+  serverkit-defaults!
   serverkit-rbenv!

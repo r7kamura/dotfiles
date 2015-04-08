@@ -6,3 +6,13 @@ resources:
     type: rbenv_ruby
     version: 2.2.0
     global: true
+  - id: autohide_dock
+    type: defaults
+    domain: com.apple.dock
+    key: autohide
+    value: 1
+  - id: empty_dock
+    type: defaults
+    domain: com.apple.dock
+    key: persistent-apps
+    value: []
