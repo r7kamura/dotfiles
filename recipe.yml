@@ -16,3 +16,12 @@ resources:
     domain: com.apple.dock
     key: persistent-apps
     value: []
+  - id: remove_download_folder_from_dock
+    type: defaults
+    domain: com.apple.dock
+    key: persistent-others
+    value: []
+  - id: enable_full_keyboard_access
+    type: defaults
+    key: AppleKeyboardUIMode
+    value: 3
