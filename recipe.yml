@@ -11,17 +11,27 @@ resources:
     domain: com.apple.dock
     key: autohide
     value: 1
+    notify:
+      - restart_dock
   - id: empty_dock
     type: defaults
     domain: com.apple.dock
     key: persistent-apps
     value: []
+    notify:
+      - restart_dock
   - id: remove_download_folder_from_dock
     type: defaults
     domain: com.apple.dock
     key: persistent-others
     value: []
+    notify:
+      - restart_dock
   - id: enable_full_keyboard_access
     type: defaults
     key: AppleKeyboardUIMode
     value: 3
+handlers:
+  - id: restart_dock
+    type: command
+    script: killall Dock
