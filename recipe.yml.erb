@@ -49,5 +49,6 @@ resources:
     check_script: "finger -l | grep -E 'Shell: /bin/zsh$'"
     script: sudo chsh -s /bin/zsh r7kamura
 handlers:
-  - type: command
+  - id: restart_dock
+    type: command
     script: killall Dock
