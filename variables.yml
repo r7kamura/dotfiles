@@ -20,7 +20,6 @@ homebrew_package_names:
   - tmux
   - tree
   - vim
-  - zsh
 homebrew_cask_package_names:
   - alfred
   - atom
