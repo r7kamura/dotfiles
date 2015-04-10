@@ -1,5 +1,6 @@
 homebrew_package_names:
   - cmake
+  - ghq
   - gnu-sed
   - hub
   - icu4c
@@ -8,6 +9,7 @@ homebrew_package_names:
   - mysql
   - node
   - openssl
+  - peco
   - rbenv
   - rbenv-default-gems
   - readline
