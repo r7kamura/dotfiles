@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -e
+set -eo pipefail
 
 tempfile=/tmp/dotfiles.zip
 workspace=/tmp/dotfiles
@@ -13,8 +13,12 @@ unzip -oq ${tempfile} -d ${workspace}
 # Move to repository root path
 pushd ${workspace}/dotfiles-master > /dev/null
 
+# Install serverkit and its dependencies
+gem install bundler > /dev/null
+bundle install > /dev/null
+
 # Run installer
-bin/install
+bundle exec serverkit apply recipe.yml.erb --variables=variables.yml
 
 # Move to original path
 popd > /dev/null
