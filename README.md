@@ -47,3 +47,5 @@ $ curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.
 [DONE] defaults com.apple.dock persistent-others on localhost
 [DONE] defaults NSGlobalDomain AppleKeyboardUIMode on localhost
 ```
+
+![](/images/install.gif)
