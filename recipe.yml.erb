@@ -31,6 +31,14 @@ resources:
   - type: defaults
     key: AppleKeyboardUIMode
     value: 3
+  - type: git
+    repository: git@github.com:r7kamura/dotfiles.git
+    path: /Users/r7kamura/src/github.com/r7kamura/dotfiles
+  <%- dotfiles.each do |filename| -%>
+  - type: symlink
+    destination: /Users/r7kamura/src/github.com/r7kamura/dotfiles/linked/<%= filename %>
+    source: /Users/r7kamura/<%= filename %>
+  <%- end -%>
 handlers:
   - type: command
     script: killall Dock

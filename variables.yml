@@ -39,3 +39,16 @@ homebrew_cask_package_names:
   - totalfinder
   - vagrant
   - vlc
+dotfiles:
+  - .gemrc
+  - .gitconfig
+  - .gitexcludes
+  - .gitignore
+  - .inputrc
+  - .pryrc
+  - .rbenv
+  - .rspec
+  - .tigrc
+  - .tmux.conf
+  - .zsh
+  - .zshrc
