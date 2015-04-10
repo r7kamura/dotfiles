@@ -1,4 +1,6 @@
 resources:
+  - type: package
+    name: gnu-sed
   - id: install_rbenv
     type: package
     name: rbenv
