@@ -1,30 +1,3 @@
-GIT
-  remote: git://github.com/r7kamura/serverkit-defaults.git
-  revision: 5bd228399e8b5f5086a6dfeecd1aaf6fa590fd69
-  specs:
-    serverkit-defaults (0.0.1)
-      plist
-      serverkit
-
-GIT
-  remote: git://github.com/r7kamura/serverkit-rbenv.git
-  revision: e121ed1245ae21740d79706aade97f6cd9dfbbeb
-  specs:
-    serverkit-rbenv (0.1.0)
-
-GIT
-  remote: git://github.com/r7kamura/serverkit.git
-  revision: e151be7fc765b53649a6021865df20c13d3ef4b0
-  specs:
-    serverkit (0.2.5)
-      activemodel
-      activesupport
-      bundler
-      hashie
-      highline
-      slop (~> 3.4)
-      specinfra
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -47,6 +20,20 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     plist (3.1.0)
+    serverkit (0.2.5)
+      activemodel
+      activesupport
+      bundler
+      hashie
+      highline
+      slop (~> 3.4)
+      specinfra
+    serverkit-defaults (0.0.1)
+      plist
+      serverkit
+    serverkit-karabiner (0.0.1)
+      serverkit
+    serverkit-rbenv (0.0.1)
     slop (3.6.0)
     specinfra (2.28.1)
       net-scp
@@ -59,6 +46,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  serverkit!
-  serverkit-defaults!
-  serverkit-rbenv!
+  serverkit
+  serverkit-defaults
+  serverkit-karabiner
+  serverkit-rbenv
