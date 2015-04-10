@@ -5,7 +5,7 @@ dotfiles:
   - .gitignore
   - .inputrc
   - .pryrc
-  - .rbenv
+  - .rbenv/default-gems
   - .rspec
   - .tigrc
   - .tmux.conf
