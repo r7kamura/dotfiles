@@ -1,39 +1,34 @@
 resources:
+  <%- homebrew_package_names.each do |homebrew_package_name| -%>
   - type: package
-    name: gnu-sed
-  - id: install_rbenv
-    type: package
+    name: <%= homebrew_package_name %>
+  <%- end -%>
+  - type: package
     name: rbenv
-  - id: install_ruby
-    type: rbenv_ruby
+  - type: rbenv_ruby
     version: 2.2.0
     global: true
-  - id: autohide_dock
-    type: defaults
+  - type: defaults
     domain: com.apple.dock
     key: autohide
     value: 1
     notify:
       - restart_dock
-  - id: empty_dock
-    type: defaults
+  - type: defaults
     domain: com.apple.dock
     key: persistent-apps
     value: []
     notify:
       - restart_dock
-  - id: remove_download_folder_from_dock
-    type: defaults
+  - type: defaults
     domain: com.apple.dock
     key: persistent-others
     value: []
     notify:
       - restart_dock
-  - id: enable_full_keyboard_access
-    type: defaults
+  - type: defaults
     key: AppleKeyboardUIMode
     value: 3
 handlers:
-  - id: restart_dock
-    type: command
+  - type: command
     script: killall Dock

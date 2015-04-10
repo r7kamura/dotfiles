@@ -1,0 +1,21 @@
+homebrew_package_names:
+  - cmake
+  - gnu-sed
+  - hub
+  - icu4c
+  - imagemagick
+  - jq
+  - mysql
+  - npm
+  - openssl
+  - rbenv
+  - rbenv-default-gems
+  - readline
+  - reattach-to-user-namespace
+  - redis
+  - ruby-build
+  - tig
+  - tmux
+  - tree
+  - vim
+  - zsh
