@@ -6,7 +6,7 @@ homebrew_package_names:
   - imagemagick
   - jq
   - mysql
-  - npm
+  - node
   - openssl
   - rbenv
   - rbenv-default-gems
