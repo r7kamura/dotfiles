@@ -29,8 +29,12 @@ resources:
     notify:
       - restart_dock
   - type: defaults
+    domain: com.apple.screencapture
+    key: type
+    value: png
+  - type: defaults
     key: AppleKeyboardUIMode
-    value: 3
+    value: 3 # Allow full keyboard access
   - type: git
     repository: git@github.com:r7kamura/dotfiles.git
     path: /Users/r7kamura/src/github.com/r7kamura/dotfiles
