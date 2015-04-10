@@ -1,3 +1,34 @@
+dotfiles:
+  - .gemrc
+  - .gitconfig
+  - .gitexcludes
+  - .gitignore
+  - .inputrc
+  - .pryrc
+  - .rbenv
+  - .rspec
+  - .tigrc
+  - .tmux.conf
+  - .zsh
+  - .zshrc
+homebrew_cask_package_names:
+  - alfred
+  - atom
+  - cooviewer
+  - dropbox
+  - google-chrome
+  - google-japanese-ime
+  - gyazo
+  - iterm2
+  - karabiner
+  - licecap
+  - night-owl
+  - sequel-pro
+  - skitch
+  - slack
+  - totalfinder
+  - vagrant
+  - vlc
 homebrew_package_names:
   - cmake
   - ghq
@@ -21,34 +52,3 @@ homebrew_package_names:
   - tree
   - vim
   - zsh
-homebrew_cask_package_names:
-  - alfred
-  - atom
-  - cooviewer
-  - dropbox
-  - google-chrome
-  - google-japanese-ime
-  - gyazo
-  - iterm2
-  - karabiner
-  - licecap
-  - night-owl
-  - sequel-pro
-  - skitch
-  - slack
-  - totalfinder
-  - vagrant
-  - vlc
-dotfiles:
-  - .gemrc
-  - .gitconfig
-  - .gitexcludes
-  - .gitignore
-  - .inputrc
-  - .pryrc
-  - .rbenv
-  - .rspec
-  - .tigrc
-  - .tmux.conf
-  - .zsh
-  - .zshrc
