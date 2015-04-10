@@ -20,7 +20,7 @@ if [ "$?" -ne 0 ]; then
   while :
   do
     xcode-select -p
-    if [ "$?" -ne 0 ]; then
+    if [ "$?" -eq 0 ]; then
       break
     fi
     sleep 5
