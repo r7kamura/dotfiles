@@ -19,3 +19,21 @@ homebrew_package_names:
   - tree
   - vim
   - zsh
+homebrew_cask_package_names:
+  - alfred
+  - atom
+  - cooviewer
+  - dropbox
+  - google-chrome
+  - google-japanese-ime
+  - gyazo
+  - iterm2
+  - karabiner
+  - licecap
+  - night-owl
+  - sequel-pro
+  - skitch
+  - slack
+  - totalfinder
+  - vagrant
+  - vlc
