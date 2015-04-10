@@ -45,6 +45,9 @@ resources:
   - type: karabiner
     key: repeat.initial_wait
     value: 0
+  - type: command
+    check_script: "finger -l | grep -E 'Shell: /bin/zsh$'"
+    script: sudo chsh -s /bin/zsh r7kamura
 handlers:
   - type: command
     script: killall Dock
