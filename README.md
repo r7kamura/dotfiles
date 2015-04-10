@@ -1,6 +1,6 @@
 ## Usage
 ```
-$ curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh | bash
+$ curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh | sh
 [DONE] package cmake on localhost
 [DONE] package ghq on localhost
 [DONE] package gnu-sed on localhost
