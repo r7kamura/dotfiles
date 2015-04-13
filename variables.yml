@@ -38,12 +38,12 @@ homebrew_cask_package_names:
 homebrew_package_names:
   - caskroom/cask/brew-cask
   - cmake
-  - ghq
   - gnu-sed
   - hub
   - icu4c
   - imagemagick
   - jq
+  - motemen/ghq/ghq
   - mysql
   - node
   - openssl
