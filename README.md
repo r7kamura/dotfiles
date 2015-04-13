@@ -1,6 +1,6 @@
 ## Usage
 ```
-$ curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh | sh
+$ curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh | bash
 [DONE] homebrew_package caskroom/cask/brew-cask on localhost
 [DONE] homebrew_package cmake on localhost
 [DONE] homebrew_package ghq on localhost
