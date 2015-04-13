@@ -20,7 +20,7 @@ GEM
       net-ssh (>= 2.6.5)
     net-ssh (2.9.2)
     plist (3.1.0)
-    serverkit (0.2.6)
+    serverkit (0.3.2)
       activemodel
       activesupport
       bundler
@@ -32,6 +32,8 @@ GEM
       serverkit
     serverkit-defaults (0.0.1)
       plist
+      serverkit
+    serverkit-homebrew (0.0.1)
       serverkit
     serverkit-karabiner (0.0.1)
       serverkit
@@ -51,5 +53,6 @@ DEPENDENCIES
   serverkit
   serverkit-atom
   serverkit-defaults
+  serverkit-homebrew
   serverkit-karabiner
   serverkit-rbenv

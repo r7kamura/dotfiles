@@ -1,10 +1,10 @@
 resources:
   <%- homebrew_package_names.each do |homebrew_package_name| -%>
-  - type: package
+  - type: homebrew_package
     name: <%= homebrew_package_name %>
   <%- end -%>
   <%- homebrew_cask_package_names.each do |homebrew_cask_package_name| -%>
-  - type: homebrew_cask
+  - type: homebrew_cask_package
     name: <%= homebrew_cask_package_name %>
   <%- end -%>
   <%- atom_package_names.each do |atom_package_name| -%>

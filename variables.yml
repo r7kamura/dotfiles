@@ -36,6 +36,7 @@ homebrew_cask_package_names:
   - vagrant
   - vlc
 homebrew_package_names:
+  - caskroom/cask/brew-cask
   - cmake
   - ghq
   - gnu-sed
