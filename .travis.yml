@@ -1,0 +1,7 @@
+language: ruby
+os:
+  - osx
+rvm:
+  - 2.0.0
+script:
+  - curl -LSfs https://raw.githubusercontent.com/r7kamura/dotfiles/master/install.sh | sh
