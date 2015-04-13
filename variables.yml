@@ -4,6 +4,7 @@ atom_package_names:
   - sort-lines
   - vim-mode
 dotfiles:
+  - .atom/keymap.cson
   - .gemrc
   - .gitconfig
   - .gitexcludes

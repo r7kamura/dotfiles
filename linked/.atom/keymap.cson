@@ -1,0 +1,2 @@
+'.active.pane':
+  'ctrl-p': 'autocomplete:toggle'
