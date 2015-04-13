@@ -14,17 +14,12 @@ unzip -oq ${tempfile} -d ${workspace}
 pushd ${workspace}/dotfiles-master > /dev/null
 
 # Install command-line-tools
-xcode-select -p > /dev/null
-if [ "$?" -ne 0 ]; then
-  xcode-select --install
-  while :
-  do
-    xcode-select -p
-    if [ "$?" -eq 0 ]; then
-      break
-    fi
-    sleep 5
-  done
+if [[ ! -d /usr/include ]]; then
+  PLACEHOLDER=/tmp/.com.apple.dt.CommandLineTools.installondemand.in-progress
+  touch $PLACEHOLDER
+  PROD=$(softwareupdate -l | grep "\*.*Command Line" | head -n 1 | awk -F"*" '{print $2}' | sed -e 's/^ *//' | tr -d '\n')
+  softwareupdate -i "${PROD}"
+  [[ -f $PLACEHOLDER ]] && rm $PLACEHOLDER
 fi
 
 # Install homebrew
