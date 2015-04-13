@@ -33,7 +33,7 @@ GEM
     serverkit-defaults (0.0.1)
       plist
       serverkit
-    serverkit-homebrew (0.0.1)
+    serverkit-homebrew (0.0.2)
       serverkit
     serverkit-karabiner (0.0.1)
       serverkit
