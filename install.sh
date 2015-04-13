@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-set -eo pipefail
 
 tempfile=/tmp/dotfiles.zip
 workspace=/tmp/dotfiles
