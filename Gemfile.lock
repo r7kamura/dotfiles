@@ -28,6 +28,8 @@ GEM
       highline
       slop (~> 3.4)
       specinfra
+    serverkit-atom (0.0.1)
+      serverkit
     serverkit-defaults (0.0.1)
       plist
       serverkit
@@ -47,6 +49,7 @@ PLATFORMS
 
 DEPENDENCIES
   serverkit
+  serverkit-atom
   serverkit-defaults
   serverkit-karabiner
   serverkit-rbenv

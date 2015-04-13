@@ -1,3 +1,8 @@
+atom_package_names:
+  - git-plus
+  - language-slim
+  - sort-lines
+  - vim-mode
 dotfiles:
   - .gemrc
   - .gitconfig

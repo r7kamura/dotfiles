@@ -7,6 +7,10 @@ resources:
   - type: homebrew_cask
     name: <%= homebrew_cask_package_name %>
   <%- end -%>
+  <%- atom_package_names.each do |atom_package_name| -%>
+  - type: atom_package
+    name: <%= atom_package_name %>
+  <%- end -%>
   - type: rbenv_ruby
     version: 2.2.0
     global: true
