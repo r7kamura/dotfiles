@@ -34,6 +34,7 @@ homebrew_cask_package_names:
   - slack
   - totalfinder
   - vagrant
+  - virtualbox
   - vlc
 homebrew_package_names:
   - caskroom/cask/brew-cask
