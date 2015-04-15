@@ -48,7 +48,7 @@ my_copyline
 
 
 ## prompt
-PROMPT="%{${fg[yellow]}%}✘╹◡╹✘%{${reset_color}%} "
+PROMPT="%{${fg[yellow]}%}$%{${reset_color}%} "
 
 
 ## history
