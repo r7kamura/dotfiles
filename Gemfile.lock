@@ -21,7 +21,7 @@ GEM
     net-ssh (2.9.2)
     plist (3.1.0)
     rainbow (2.0.0)
-    serverkit (0.4.4)
+    serverkit (0.4.6)
       activemodel
       activesupport
       bundler
