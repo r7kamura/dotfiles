@@ -35,7 +35,7 @@
   autosetuprebase = always
 
 [alias]
-  br = branch
+  br = "for-each-ref --format='%1B[0;34m%(authordate:iso8601)%1B[m %(refname:short)' refs/heads"
   co = checkout
   dbr = !git branch --merged | grep -v \"\\* \" | xargs git branch --delete
   bbb = browse -- pull/$(git rev-parse --abbrev-ref HEAD)
