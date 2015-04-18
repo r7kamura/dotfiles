@@ -48,7 +48,7 @@ resources:
   <%- dotfiles.each do |path| -%>
   - type: symlink
     destination: /Users/<%= ENV["USER"] %>/src/github.com/r7kamura/dotfiles/linked/<%= path %>
-    source: /Users/r7kamura/<%= path %>
+    source: /Users/<%= ENV["USER"] %>/<%= path %>
   <%- end -%>
   - type: karabiner
     key: repeat.wait
