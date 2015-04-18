@@ -1,4 +1,4 @@
-# r7kamura/dotfiles [![Build Status](https://travis-ci.org/r7kamura/dotfiles.svg?branch=master)](https://travis-ci.org/r7kamura/dotfiles)
+# dotfiles [![Build Status](https://travis-ci.org/r7kamura/dotfiles.svg?branch=master)](https://travis-ci.org/r7kamura/dotfiles)
 A chain of configurations for my laptop.
 
 ## Usage
