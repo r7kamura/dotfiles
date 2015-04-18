@@ -42,7 +42,7 @@ resources:
     key: AppleKeyboardUIMode
     value: 3 # Allow full keyboard access
   - type: git
-    repository: git@github.com:r7kamura/dotfiles.git
+    repository: https://github.com/r7kamura/dotfiles.git
     path: /Users/<%= ENV["USER"] %>/src/github.com/r7kamura/dotfiles
     status: updated
   <%- dotfiles.each do |path| -%>
