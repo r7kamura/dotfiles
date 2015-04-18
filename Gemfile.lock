@@ -1,3 +1,17 @@
+GIT
+  remote: git://github.com/r7kamura/serverkit.git
+  revision: a52fc3a2f94b7631aa44fcd069d49788cab9f526
+  specs:
+    serverkit (0.3.5)
+      activemodel
+      activesupport
+      bundler
+      hashie
+      highline
+      rainbow
+      slop (~> 3.4)
+      specinfra
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -21,15 +35,6 @@ GEM
     net-ssh (2.9.2)
     plist (3.1.0)
     rainbow (2.0.0)
-    serverkit (0.3.5)
-      activemodel
-      activesupport
-      bundler
-      hashie
-      highline
-      rainbow
-      slop (~> 3.4)
-      specinfra
     serverkit-atom (0.0.1)
       serverkit
     serverkit-defaults (0.0.1)
@@ -52,7 +57,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  serverkit
+  serverkit!
   serverkit-atom
   serverkit-defaults
   serverkit-homebrew
