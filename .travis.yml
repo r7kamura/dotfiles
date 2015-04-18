@@ -2,5 +2,4 @@ language: objective-c
 os:
   - osx
 script:
-  - bundle install
   - bundle exec serverkit apply recipe.yml.erb --variables=variables.yml
