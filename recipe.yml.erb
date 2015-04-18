@@ -53,11 +53,11 @@ resources:
   - type: karabiner
     key: repeat.wait
     value: 15
-    recheck: "true"
+    recheck_script: "true"
   - type: karabiner
     key: repeat.initial_wait
     value: 0
-    recheck: "true"
+    recheck_script: "true"
   - type: command
     check_script: "finger -l | grep -E 'Shell: /bin/zsh$'"
     script: sudo chsh -s /bin/zsh <%= ENV["USER"] %>
