@@ -3,4 +3,4 @@ os:
   - osx
 script:
   - bundle install
-  - bundle exec serverkit apply recipe.yml.erb --variables=variables.yml --log-level=DEBUG
+  - bundle exec serverkit apply recipe.yml.erb --variables=variables.yml

@@ -57,8 +57,6 @@ resources:
     key: repeat.initial_wait
     value: 0
   - type: command
-    script: /Applications/Karabiner.app/Contents/Library/bin/karabiner changed
-  - type: command
     check_script: "finger -l | grep -E 'Shell: /bin/zsh$'"
     script: sudo chsh -s /bin/zsh <%= ENV["USER"] %>
 handlers:
