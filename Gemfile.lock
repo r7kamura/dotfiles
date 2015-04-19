@@ -33,7 +33,7 @@ GEM
       unix-crypt
     serverkit-atom (0.0.1)
       serverkit
-    serverkit-defaults (0.0.2)
+    serverkit-defaults (0.0.3)
       plist
       serverkit
     serverkit-homebrew (0.0.3)
