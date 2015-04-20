@@ -12,7 +12,7 @@ GEM
       tzinfo (~> 1.1)
     builder (3.2.2)
     hashie (3.4.1)
-    highline (1.7.1)
+    highline (1.7.2)
     i18n (0.7.0)
     json (1.8.2)
     minitest (5.6.0)
@@ -21,7 +21,7 @@ GEM
     net-ssh (2.9.2)
     plist (3.1.0)
     rainbow (2.0.0)
-    serverkit (0.4.2)
+    serverkit (0.4.4)
       activemodel
       activesupport
       bundler
@@ -29,21 +29,21 @@ GEM
       highline
       rainbow
       slop (~> 3.4)
-      specinfra
+      specinfra (>= 2.29.0)
       unix-crypt
     serverkit-atom (0.0.1)
       serverkit
     serverkit-defaults (0.0.3)
       plist
       serverkit
-    serverkit-homebrew (0.0.4)
+    serverkit-homebrew (0.0.5)
       serverkit
     serverkit-karabiner (0.0.1)
       serverkit
     serverkit-rbenv (0.0.3)
       serverkit
     slop (3.6.0)
-    specinfra (2.28.4)
+    specinfra (2.29.0)
       net-scp
       net-ssh
     thread_safe (0.3.5)
