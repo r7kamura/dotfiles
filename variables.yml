@@ -22,6 +22,7 @@ homebrew_cask_package_names:
   - atom
   - cooviewer
   - dropbox
+  - firefox
   - google-chrome
   - google-japanese-ime
   - gyazo
