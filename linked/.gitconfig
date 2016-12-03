@@ -1,5 +1,5 @@
 [user]
-  name = Ryo Nakamura
+  name = r7kamura
   email = r7kamura@gmail.com
 
 [include]
@@ -25,7 +25,7 @@
   default = current
 
 [core]
-  autocrlf     = input
+  # autocrlf     = input
   quotepath    = false
   excludesfile = ~/.gitexcludes
   editor = atom --wait
@@ -38,7 +38,6 @@
   br = branch
   co = checkout
   dbr = !git branch --merged | grep -v \"\\* \" | xargs git branch --delete
-  bbb = browse -- pull/$(git rev-parse --abbrev-ref HEAD)
 [remote "origin"]
   fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
 [ghq]

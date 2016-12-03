@@ -1,2 +1,2 @@
-'.active.pane':
-  'ctrl-p': 'autocomplete:toggle'
+'atom-text-editor':
+  'ctrl-p': 'autocomplete-plus:activate'
