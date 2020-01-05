@@ -25,10 +25,11 @@
   default = current
 
 [core]
-  # autocrlf     = input
+  # autocrlf     = true
+  # safecrlf     = true
   quotepath    = false
   excludesfile = ~/.gitexcludes
-  editor = atom --wait
+  editor = vim
 
 [branch]
   quotepath       = true

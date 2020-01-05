@@ -24,7 +24,7 @@ set modelines=1                     " line num in :set
 set number                          " show line num
 set autoindent                      " auto indent
 set cursorline                      " highlight cursor line
-set clipboard+=unnamed              " clipboard <=> yank
+set clipboard^=unnamed              " clipboard <=> yank
 set list                            " highlight space/tab at the end of line
 set listchars=tab:^\ ,trail:~       " highlight space/tab at the end of line
 set visualbell t_vb=                " kill beep flash
@@ -43,28 +43,9 @@ map k      gk
 map <Up>   g<Up>
 map <Down> g<Down>
 map Y y$
-map <F1> :CopyPath<CR><ESC>
-map <F2> <Plug>(altr-back)
-map <F3> <Plug>(altr-forward)
-imap {} {}<Left>
-imap [] []<Left>
-imap () ()<Left>
-imap <> <><Left>
-imap "" ""<Left>
-imap '' ''<Left>
-nmap <ESC><ESC> :nohlsearch<CR><ESC>
-nmap "" :%s/'/"/g<CR>
-vnoremap < <gv
-vnoremap > >gv
-vnoremap <F4> :Alignta <<0 \ /1<CR>
 
 au BufNewFile,BufRead *.md   set filetype=markdown
-au BufNewFile,BufRead *.sass set filetype=sass
 au BufNewFile,BufRead *.json set filetype=json
-
-
-" vim-powerline
-let g:Powerline_symbols = 'fancy'
 
 " emphasis 2byte-space at the end of line
 function! ZenkakuSpace()
@@ -78,21 +59,6 @@ if has('syntax')
   augroup END
   call ZenkakuSpace()
 endif
-
-" zencoding.vim
-let g:user_zen_expandabbr_key = '<c-z>'
-let g:user_zen_settings = {
-\  'lang' : 'ja',
-\  'indentation' : '  ',
-\}
-
-" gist.vim
-let g:gist_clip_command = 'pbcopy'
-let g:gist_detect_filetype = 1
-let g:gist_open_browser_after_post = 1
-
-" ctrlp.vim
-set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*.so,*.swp,*.swo
 
 " vim-altr
 " call altr#remove_all()

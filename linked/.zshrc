@@ -8,8 +8,6 @@ autoload -Uz my_rprompt
 autoload -Uz my_copyline
 
 ## setopt
-setopt AUTO_CD
-setopt AUTO_PUSHD
 setopt EXTENDED_HISTORY
 setopt HIST_EXPAND
 setopt HIST_IGNORE_ALL_DUPS
@@ -54,12 +52,10 @@ zstyle ':completion:*' list-colors ''
 zstyle :compinstall filename "$HOME/.zshrc"
 
 ## alias
-alias ll='ls -1'
 alias xl='tmux list-session'
 alias xa='tmux a -t'
 alias xn='tmux new -s'
 alias b='bundle exec'
-alias o='git ls-files | p open'
 alias c='open .'
 alias g='hub'
 alias d='git diff'
@@ -71,9 +67,10 @@ alias r='bundle exec rspec -f d'
 alias v='atom'
 alias copy='tmux save - | pbcopy'
 alias gv='git commit -v'
-alias e='ghq list -p | p cd'
+alias e='cd $(ghq root)/$(ghq list | peco)'
 alias f='ghq get -p $@'
 alias pr='hub browse -- pull/$(git rev-parse --abbrev-ref HEAD)'
+alias gc='git branch | peco | xargs git checkout'
 
 ## function
 a() { git add . $1 --all; git status --short }
@@ -98,7 +95,15 @@ export PATH="/usr/local/heroku/bin:$PATH"
 export NVM_DIR="/Users/r7kamura/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-### Added by the Bluemix CLI
-source /usr/local/Bluemix/bx/zsh_autocomplete
+. "/usr/local/opt/nvm/nvm.sh"
 
 export EDITOR=vi
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/r7kamura/Desktop/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/r7kamura/Desktop/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/r7kamura/Desktop/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/r7kamura/Desktop/google-cloud-sdk/completion.zsh.inc'; fi
+
+eval "$(nodenv init -)"
+export PATH="$HOME/.nodenv/bin:$PATH"
