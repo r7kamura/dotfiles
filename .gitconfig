@@ -2,43 +2,21 @@
   name = r7kamura
   email = r7kamura@gmail.com
 
-[include]
-  path = .gitconfig.local
-
 [github]
   user = r7kamura
 
-[color]
-  diff        = auto
-  grep        = auto
-  branch      = auto
-  status      = auto
-  interactive = auto
-
-[merge]
-  ff = false # from 1.7.6
-
 [pull]
-  rebase = true # from 1.7.9
+  rebase = true
 
 [push]
   default = current
 
 [core]
-  # autocrlf     = input
-  quotepath    = false
-  excludesfile = ~/.gitexcludes
-  editor = atom --wait
+  quotepath = false
 
 [branch]
-  quotepath       = true
   autosetuprebase = always
 
 [alias]
   br = branch
   co = checkout
-  dbr = !git branch --merged | grep -v \"\\* \" | xargs git branch --delete
-[remote "origin"]
-  fetch = +refs/pull/*/head:refs/remotes/origin/pull/*
-[ghq]
-  root = ~/src
