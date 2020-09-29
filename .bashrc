@@ -1,3 +1,9 @@
+# Wrap given text with specified color's escape sequence.
+#
+# ## Arguments
+#
+# 1. preserved color name (e.g. 'yellow')
+# 2. wrapped text (e.g. 'Lorem i@sum dolor sit amet')
 color() {
   local clear='\033[00m'
   local code
