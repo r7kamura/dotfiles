@@ -1,3 +1,0 @@
-test:
-  override:
-    - bundle exec serverkit apply recipe.yml.erb --variables=variables.yml --log-level=DEBUG
