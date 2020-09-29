@@ -33,12 +33,20 @@ git_branch_list() {
   git branch --format '%(refname:lstrip=2)'
 }
 
+git_commit_with_arguments_message() {
+  git commit --message "$*"
+}
+
 git_fuzzy_branch_select() {
   git_branch_list | peco
 }
 
 git_fuzzy_branch_switch() {
   git_fuzzy_branch_select | xargs git checkout
+}
+
+git_replace() {
+  git grep --files-with-matches ${1} | xargs sed -i "s/${1}/${2}/g"
 }
 
 prompt() {
@@ -50,5 +58,28 @@ SHELL
 
 export PS1='$(prompt)'
 
+# 1 character aliases.
+alias a='git add --all; git status --short'
+alias b='bundle exec'
+alias c='open .'
+alias d='git diff'
 alias e='ghq_fuzzy_switch'
+alias f='ghq get -p'
+alias g='git'
+alias k='git_replace'
+alias m='git_commit_with_arguments_message'
+alias s='git status --short'
+alias t='tig'
+alias r='source ~/.bashrc'
+
+# 2 characters aliases.
+alias br='git_branch_list'
+alias dc='git diff --cached'
+alias dh='git diff HEAD'
 alias gc='git_fuzzy_branch_switch'
+alias gg='git grep'
+alias gr='gh repo view --web'
+alias gp='git push'
+alias ta='tmux attach-session -t'
+alias tl='tmux list-session'
+alias tn='tmux new-session --session-name'
