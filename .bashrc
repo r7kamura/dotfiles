@@ -3,7 +3,7 @@
 # ## Arguments
 #
 # 1. preserved color name (e.g. 'yellow')
-# 2. wrapped text (e.g. 'Lorem i@sum dolor sit amet')
+# 2. wrapped text (e.g. 'Lorem ipsum dolor sit amet')
 color() {
   local clear='\033[00m'
   local code
