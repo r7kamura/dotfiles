@@ -5,18 +5,18 @@
 # 1. preserved color name (e.g. 'yellow')
 # 2. wrapped text (e.g. 'Lorem ipsum dolor sit amet')
 color() {
-  local clear='\033[00m'
+  local clear='\001\033[00m\002'
   local code
 
   case "${1}" in
     yellow)
-      code='\033[01;33m'
+      code='\001\033[01;33m\002'
       ;;
     blue)
-      code='\033[01;34m'
+      code='\001\033[01;34m\002'
       ;;
     purple)
-      code='\033[01;35m'
+      code='\001\033[01;35m\002'
       ;;
   esac
 
