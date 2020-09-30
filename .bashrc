@@ -52,7 +52,7 @@ git_fuzzy_branch_switch() {
 }
 
 git_replace() {
-  git grep --files-with-matches ${1} | xargs sed -i "s/${1}/${2}/g"
+  git grep --files-with-matches "${1}" | xargs sed -i "s/${1}/${2}/g"
 }
 
 prompt() {
