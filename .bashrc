@@ -79,7 +79,7 @@ alias s='git status --short'
 alias t='tig'
 
 # 2 characters aliases.
-alias br='git_branch_list'
+alias br='git_branch_current'
 alias dc='git diff --cached'
 alias dh='git diff HEAD'
 alias dr='git branch --merged | grep -v \* | xargs git branch --delete 2> /dev/null'
