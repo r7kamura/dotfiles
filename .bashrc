@@ -51,6 +51,10 @@ git_fuzzy_branch_switch() {
   git_fuzzy_branch_select | xargs git checkout
 }
 
+git_fuzzy_stage_files() {
+  git status --porcelain | sed -e 's/^...//' | peco | xargs git add
+}
+
 git_replace() {
   git grep --files-with-matches "${1}" | xargs sed -i "s/${1}/${2}/g"
 }
@@ -83,6 +87,7 @@ alias br='git_branch_current'
 alias dc='git diff --cached'
 alias dh='git diff HEAD'
 alias dr='git branch --merged | grep -v \* | xargs git branch --delete 2> /dev/null'
+alias ga='git_fuzzy_stage_files; git status --short'
 alias gc='git_fuzzy_branch_switch'
 alias gg='git grep'
 alias gm='git commit'
