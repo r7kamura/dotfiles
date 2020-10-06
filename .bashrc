@@ -66,6 +66,18 @@ $(color 'yellow' '$') $()
 SHELL
 }
 
+tmux_fuzzy_attach_session() {
+  tmux attach-session -t $(tmux_fuzzy_select_session)
+}
+
+tmux_fuzzy_select_session() {
+  tmux_list_session | peco
+}
+
+tmux_list_session() {
+  tmux list-session -F "#{session_name}"
+}
+
 export PS1='$(prompt)'
 
 # 1 character aliases.
@@ -94,6 +106,6 @@ alias gm='git commit'
 alias gp='git push'
 alias gr='gh repo view --web'
 alias pr='gh pr view -w || gh pr create -w'
-alias ta='tmux attach-session -t'
-alias tl='tmux list-session'
+alias ta='tmux_fuzzy_attach_session'
+alias tl='tmux_list_session'
 alias tn='tmux new-session -s'
