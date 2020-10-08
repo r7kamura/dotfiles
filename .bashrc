@@ -66,6 +66,10 @@ $(color 'yellow' '$') $()
 SHELL
 }
 
+tmux_create_new_session_from_pwd() {
+  tmux new-session -s $(basename ${PWD})
+}
+
 tmux_fuzzy_attach_session() {
   tmux attach-session -t $(tmux_fuzzy_select_session)
 }
@@ -108,4 +112,4 @@ alias gr='gh repo view --web'
 alias pr='gh pr view -w || gh pr create -w'
 alias ta='tmux_fuzzy_attach_session'
 alias tl='tmux_list_session'
-alias tn='tmux new-session -s'
+alias tn='tmux_create_new_session_from_pwd'
