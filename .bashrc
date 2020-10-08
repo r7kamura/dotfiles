@@ -67,7 +67,7 @@ SHELL
 }
 
 tmux_create_new_session_from_pwd() {
-  tmux new-session -s $(basename ${PWD})
+  tmux new-session -s $(tmux_session_name_from_pwd)
 }
 
 tmux_fuzzy_attach_session() {
@@ -80,6 +80,10 @@ tmux_fuzzy_select_session() {
 
 tmux_list_session() {
   tmux list-session -F "#{session_name}"
+}
+
+tmux_session_name_from_pwd() {
+  basename ${PWD} | sed 's/\.//g'
 }
 
 export PS1='$(prompt)'
