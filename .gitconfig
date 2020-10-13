@@ -20,4 +20,3 @@
 [alias]
   br = branch
   co = checkout
-  d = diff
