@@ -93,7 +93,7 @@ tmux_session_name_from_pwd() {
 export PS1='$(prompt)'
 
 alias ga='git_fuzzy_stage_files; git status --short'
-alias gb='git_branch_current'
+alias gb='git branch'
 alias gc='git_fuzzy_branch_switch'
 alias gd='git diff HEAD'
 alias gg='git grep'
