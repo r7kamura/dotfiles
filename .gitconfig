@@ -16,7 +16,3 @@
 
 [branch]
   autosetuprebase = always
-
-[alias]
-  br = branch
-  co = checkout
