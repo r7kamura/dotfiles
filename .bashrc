@@ -35,6 +35,10 @@ git_branch_current() {
   git branch --show-current 2> /dev/null
 }
 
+git_branch_delete_merged() {
+  git branch --merged | grep -v \* | xargs git branch --delete 2> /dev/null
+}
+
 git_branch_list() {
   git branch --format '%(refname:lstrip=2)'
 }
@@ -96,7 +100,7 @@ alias gg='git grep'
 alias gm='git_commit_with_arguments_message'
 alias gr='git_replace'
 alias gs='git status --short'
-alias gz='git branch --merged | grep -v \* | xargs git branch --delete 2> /dev/null'
+alias gz='git_branch_delete_merged'
 alias pr='gh pr view -w || gh pr create -w'
 alias qe='ghq_fuzzy_switch'
 alias qf='ghq get -p'
