@@ -90,12 +90,9 @@ export PS1='$(prompt)'
 
 # 1 character aliases.
 alias a='git add --all; git status --short'
-alias b='bundle exec'
-alias c='open .'
 alias d='git diff'
 alias e='ghq_fuzzy_switch'
 alias f='ghq get -p'
-alias g='git'
 alias k='git_replace'
 alias m='git_commit_with_arguments_message'
 alias r='source ~/.bashrc'
