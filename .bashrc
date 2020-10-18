@@ -9,6 +9,9 @@ color() {
   local code
 
   case "${1}" in
+    red)
+      code='\001\033[01;31m\002'
+      ;;
     yellow)
       code='\001\033[01;33m\002'
       ;;
@@ -64,9 +67,14 @@ git_replace() {
 }
 
 prompt() {
+  if [ $? -eq 0 ]; then
+    local symbol_color_name='yellow'
+  else
+    local symbol_color_name='red'
+  fi
   cat <<-SHELL
 $(color 'blue' ${PWD}) $(color 'purple' $(git_branch_current))
-$(color 'yellow' '$') $()
+$(color ${symbol_color_name} '$') $()
 SHELL
 }
 
