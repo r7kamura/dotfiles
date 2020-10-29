@@ -1,3 +1,3 @@
 # dotfiles
 
-A chain of configurations for my laptop.
+A chain of configurations for my workstation.
