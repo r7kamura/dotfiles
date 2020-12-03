@@ -1,3 +1,11 @@
+clipboard_copy() {
+  clip.exe
+}
+
+clipboard_paste() {
+  powershell.exe -command get-clipboard
+}
+
 # Wrap given text with specified color's escape sequence.
 #
 # ## Arguments
@@ -100,6 +108,7 @@ tmux_session_name_from_pwd() {
 
 export PS1='$(prompt)'
 
+alias co='clipboard_copy'
 alias dc='docker-compose'
 alias ga='git_fuzzy_stage_files; git status --short'
 alias gb='git branch'
@@ -110,6 +119,7 @@ alias gm='git_commit_with_arguments_message'
 alias gr='git_replace'
 alias gs='git status --short'
 alias gz='git_branch_delete_merged'
+alias pa='clipboard_paste'
 alias pr='gh pr view -w || gh pr create -w'
 alias qe='ghq_fuzzy_switch'
 alias qf='ghq get -p'
