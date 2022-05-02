@@ -75,7 +75,7 @@ git_fuzzy_stage_files() {
 }
 
 git_replace() {
-  git grep --files-with-matches -- "${1}" | xargs sed -i "s;${1};${2};g"
+  git grep --files-with-matches -E -- "${1}" | xargs sed -i -r "s;${1};${2};g"
 }
 
 prompt() {
