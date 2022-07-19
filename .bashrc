@@ -114,6 +114,7 @@ export PS1='$(prompt)'
 
 alias co='clipboard_copy'
 alias dc='docker-compose'
+alias dk='docker ps --quiet | xargs --no-run-if-empty docker kill'
 alias ga='git_fuzzy_stage_files; git status --short'
 alias gb='git branch'
 alias gc='git_fuzzy_branch_switch'
