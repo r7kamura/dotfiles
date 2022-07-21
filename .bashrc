@@ -42,6 +42,10 @@ ghq_fuzzy_switch() {
   cd $(ghq_fuzzy_select)
 }
 
+git_branch_create_feature() {
+  git switch --create "feature/$1"
+}
+
 git_branch_current() {
   git branch --show-current 2> /dev/null
 }
@@ -119,6 +123,7 @@ alias ga='git_fuzzy_stage_files; git status --short'
 alias gb='git branch'
 alias gc='git_fuzzy_branch_switch'
 alias gd='git diff'
+alias gf='git_branch_create_feature'
 alias gg='git grep'
 alias gm='git_commit_with_arguments_message'
 alias gr='git_replace'
