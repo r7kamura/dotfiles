@@ -47,7 +47,7 @@ git_branch_create_feature() {
 }
 
 git_branch_current() {
-  git rev-parse --abbrev-ref HEAD
+  git rev-parse --abbrev-ref HEAD 2> /dev/null
 }
 
 git_branch_delete_selected() {
