@@ -63,7 +63,7 @@ git_branch_list() {
 }
 
 git_commit_with_arguments_message() {
-  git commit --message "$*"
+  git commit --allow-empty --message "$*"
 }
 
 git_fuzzy_branch_select() {
