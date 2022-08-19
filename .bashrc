@@ -94,6 +94,12 @@ $(color ${symbol_color_name} '$') $()
 SHELL
 }
 
+retry_previous_command_with_prompt() {
+  previous_command=$(fc -ln -2 -2 | awk '{$1=$1}1')
+  echo "$ ${previous_command}"
+  $previous_command
+}
+
 tmux_create_new_session_from_pwd() {
   tmux new-session -s $(tmux_session_name_from_pwd)
 }
@@ -135,6 +141,7 @@ alias po='gh repo view --web'
 alias pr='gh pr view -w || gh pr create -w'
 alias qe='ghq_fuzzy_switch'
 alias qf='ghq get -p'
+alias re='retry_previous_command_with_prompt'
 alias sb='source ~/.bashrc'
 alias ta='tmux_fuzzy_attach_session'
 alias tl='tmux_list_session'
