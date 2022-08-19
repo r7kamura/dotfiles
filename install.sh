@@ -16,5 +16,3 @@ apt install --yes \
   gh \
   peco \
   tig
-
-export EDITOR="code --wait"
