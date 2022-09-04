@@ -5,13 +5,14 @@ ln -fs ~/dotfiles/.bashrc ~/.bashrc
 ln -fs ~/dotfiles/.tigrc ~/.tigrc
 
 apt update
-apt install --yes curl
-curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg
-chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg
-echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-
-apt update
 apt install --yes \
-  gh \
+  curl \
   peco \
   tig
+
+# Install the latest gh binary.
+VERSION=`curl "https://api.github.com/repos/cli/cli/releases/latest" | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/' | cut -c2-`
+echo $VERSION
+curl -sSL https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_linux_amd64.tar.gz -o gh_${VERSION}_linux_amd64.tar.gz
+tar xvf gh_${VERSION}_linux_amd64.tar.gz
+cp gh_${VERSION}_linux_amd64/bin/gh /usr/local/bin/
