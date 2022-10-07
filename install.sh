@@ -16,3 +16,5 @@ echo $VERSION
 curl -sSL https://github.com/cli/cli/releases/download/v${VERSION}/gh_${VERSION}_linux_amd64.tar.gz -o gh_${VERSION}_linux_amd64.tar.gz
 tar xvf gh_${VERSION}_linux_amd64.tar.gz
 cp gh_${VERSION}_linux_amd64/bin/gh /usr/local/bin/
+
+echo 'EDITOR="code --wait"' >> ~/.bashrc
