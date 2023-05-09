@@ -1,11 +1,11 @@
 #!/bin/bash
 set -euo pipefail
 
-ln -fs ~/dotfiles/.bashrc ~/.bashrc
-ln -fs ~/dotfiles/.tigrc ~/.tigrc
+ln -fs .bashrc ~/.bashrc
+ln -fs .tigrc ~/.tigrc
 
-apt update
-apt install --yes \
+sudo apt-get update
+sudo apt-get install --yes \
   curl \
   peco \
   tig
