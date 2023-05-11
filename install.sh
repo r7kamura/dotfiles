@@ -11,5 +11,3 @@ sudo apt-get install --yes \
   curl \
   peco \
   tig
-
-echo 'EDITOR="code --wait"' >> ~/.bashrc
