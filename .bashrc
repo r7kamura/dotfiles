@@ -43,7 +43,7 @@ ghq_fuzzy_switch() {
 }
 
 git_branch_create_feature() {
-  git switch --create "feature/$1"
+  git switch --create "$1"
 }
 
 git_branch_current() {
@@ -122,23 +122,32 @@ tmux_session_name_from_pwd() {
 
 export PS1='$(prompt)'
 
+alias cb='code ~/.bashrc'
 alias co='clipboard_copy'
 alias dc='docker-compose'
 alias dk='docker ps --quiet | xargs --no-run-if-empty docker kill'
 alias ga='git_fuzzy_stage_files; git status --short'
+alias gaa='git add --all'
 alias gb='git branch'
 alias gc='git_fuzzy_branch_switch'
+alias gco='git checkout'
 alias gd='git diff'
 alias gf='git_branch_create_feature'
 alias gg='git grep'
+alias gl='git pull'
 alias gm='git_commit_with_arguments_message'
+alias gpf='git push --force'
 alias gr='git_replace'
+alias grc='git rebase --continue'
 alias gs='git status --short'
 alias gx='git_branch_delete_selected'
 alias gz='git_branch_delete_merged'
 alias pa='clipboard_paste'
+alias pd='gh pr create --draft'
 alias po='gh repo view --web'
 alias pr='gh pr view -w || gh pr create -w'
+alias prc='gh pr create --fill'
+alias prcd='prc --draft'
 alias qe='ghq_fuzzy_switch'
 alias qf='ghq get -p'
 alias rc='retry_previous_command_with_prompt | clipboard_copy'
