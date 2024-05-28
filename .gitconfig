@@ -16,3 +16,7 @@
 
 [branch]
   autosetuprebase = always
+[advice]
+	skippedCherryPicks = false
+[init]
+	defaultBranch = main
