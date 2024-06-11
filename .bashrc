@@ -155,3 +155,5 @@ alias sb='source ~/.bashrc'
 alias ta='tmux_fuzzy_attach_session'
 alias tl='tmux_list_session'
 alias tn='tmux_create_new_session_from_pwd'
+
+export EDITOR="code --wait"
