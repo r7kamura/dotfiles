@@ -158,3 +158,4 @@ alias tl='tmux_list_session'
 alias tn='tmux_create_new_session_from_pwd'
 
 export EDITOR="code --wait"
+export TERM=xterm # For peco on codespaces
