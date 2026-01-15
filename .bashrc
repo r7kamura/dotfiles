@@ -94,47 +94,18 @@ $(color ${symbol_color_name} '$') $()
 SHELL
 }
 
-retry_previous_command_with_prompt() {
-  previous_command=$(fc -ln -2 -2 | awk '{$1=$1}1')
-  echo "$ ${previous_command}"
-  $previous_command
-}
-
-tmux_create_new_session_from_pwd() {
-  tmux new-session -s $(tmux_session_name_from_pwd)
-}
-
-tmux_fuzzy_attach_session() {
-  tmux attach-session -t $(tmux_fuzzy_select_session)
-}
-
-tmux_fuzzy_select_session() {
-  tmux_list_session | peco
-}
-
-tmux_list_session() {
-  tmux list-session -F "#{session_name}"
-}
-
-tmux_session_name_from_pwd() {
-  basename ${PWD} | sed 's/\.//g'
-}
-
 export PS1='$(prompt)'
 
 alias cb='code ~/.bashrc'
 alias co='clipboard_copy'
-alias dc='docker-compose'
 alias dk='docker ps --quiet | xargs --no-run-if-empty docker kill'
 alias ga='git_fuzzy_stage_files; git status --short'
 alias gaa='git add --all'
 alias gb='git branch'
 alias gc='git_fuzzy_branch_switch'
-alias gco='git checkout'
 alias gd='git diff'
 alias gf='git_branch_create_feature'
 alias gg='git grep -n'
-alias gl='git pull'
 alias gm='git_commit_with_arguments_message'
 alias gpf='git push --force'
 alias grs='gh repo set-default'
@@ -151,11 +122,7 @@ alias prc='gh pr create --fill'
 alias prcd='prc --draft'
 alias qe='ghq_fuzzy_switch'
 alias qf='ghq get -p'
-alias rc='retry_previous_command_with_prompt | clipboard_copy'
 alias sb='source ~/.bashrc'
-alias ta='tmux_fuzzy_attach_session'
-alias tl='tmux_list_session'
-alias tn='tmux_create_new_session_from_pwd'
 
 export EDITOR="code --wait"
 export TERM=xterm # For peco on codespaces
